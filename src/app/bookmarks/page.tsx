@@ -15,10 +15,10 @@ export default async function Todos() {
         <Suspense fallback={<p className="mt-4">TODO データ Loading...</p>}>
             <div>
                 <>
-                    {todos.map((curr: Todo, idx: number) => (
-                        <div key={idx}>
-                            <Link href={`/todos/${curr.id}`}>Todo: {curr.id}</Link>
-                            <p>{curr.completed}</p>
+                    {todos.map((ramen: Todo, id: number) => (
+                        <div key={id}>
+                            <Link href={`/bookmarks/${ramen.id}`}>Todo: {ramen.id}</Link>
+                            <p>{ramen.completed}</p>
                         </div>
                     ))}
                 </>

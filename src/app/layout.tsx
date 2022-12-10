@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import Head from './components/Layout/head';
-import Header from './components/Layout/Header';
+import Head from './Components/Layout/head';
+import Header from './Components/Layout/Header';
 
 
 export default function RootLayout({
@@ -11,11 +11,9 @@ export default function RootLayout({
     return (
         <html lang='ja'>
             <Head />
-            <body className='bg-indigo-100'>
+            <body className='bg-orange-50'>
                 <Header />
                 <div className='flex space-x-10'>
-                    <Link href={'todos'}>TODO</Link>
-                    <Link href={'/ramens'}>Ramen</Link>
                 </div>
                 {children}
             </body>

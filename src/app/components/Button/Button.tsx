@@ -1,8 +1,8 @@
 "use client"
 import { redirect } from 'next/navigation';
 import { FC, ReactNode } from 'react'
-import { cn } from '../../utils/cn'
-import { ROOT_URL } from '../../libs/client/constants';
+import { cn } from '../../../utils/cn'
+import { ROOT_URL } from '../../../libs/client/constants';
 
 type ButtonProps = {
     children?: ReactNode

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loading from '../Components/Loading';
+
 
 export default function DashboardLayout({
     children,
@@ -10,9 +10,9 @@ export default function DashboardLayout({
         <>
             <div className="backdrop-blur-sm bg-white/50 h-10 w-full sticky top-0">
             </div>
-            <Suspense fallback={<div><Loading /></div>}>
+            <Suspense fallback={<div>保存したお店を取得中.. </div>}>
                 <div>{children}</div>
             </Suspense>
         </>
-    );
+    )
 }
