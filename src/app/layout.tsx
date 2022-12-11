@@ -11,7 +11,7 @@ export default function RootLayout({
         <html lang='ja'>
             <title>Ramen Review</title>
             <meta content="width=device-width, initial-scale=1" name="viewport" />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/ramen-orange.svg" />
             <body className='bg-orange-50'>
                 <RecoilProvider>
 

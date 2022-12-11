@@ -5,13 +5,15 @@ import "/styles/globals.css";
 import { Bars4Icon, MagnifyingGlassIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import { useSetRecoilState } from 'recoil';
 import { isDrawerOpen } from '../../../@types/models/Drawer';
+import Image from 'next/image';
 
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
     return (
         <header className="p-5 bg-[#FFAF19] flex justify-center place-items-center">
-            <Link href="/" className="absolute justify-center font-bold text-3xl text-white"
-            >RAMEN KUITAI</Link>
+            <Link href="/" className="absolute flex justify-center items-center font-bold text-3xl text-white"
+            >RAMEN KUITAI<Image src="/ramen-white.svg" alt="ramen" width={30} height={30} className="ml-2" />
+            </Link>
             {/* Click menu button here */}
 
             <button className="flex-1 rounded-full w-10">

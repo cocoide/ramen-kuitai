@@ -1,7 +1,8 @@
 "use client"
 import { Dialog } from '@headlessui/react';
 import { MapPinIcon, XCircleIcon } from "@heroicons/react/24/outline"
-import { CursorArrowRaysIcon, MapIcon } from '@heroicons/react/24/solid';
+import { CursorArrowRaysIcon, MapIcon, TagIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useRecoilState } from "recoil"
@@ -11,6 +12,7 @@ import { RamenCateory } from '../../../@types/models/Ramen';
 import Contents from '../Disclosure/Contents';
 import DrawerDisclosure from '../Disclosure/DrawerDisclosure';
 import DrawerAnimation from './Animation';
+import { motion } from "framer-motion"
 
 export const Drawer = () => {
 
@@ -30,12 +32,23 @@ export const Drawer = () => {
                                 className="z-30 h-12 w-12"
                             ><XCircleIcon />
                             </button>
-                            <h2 className='z-20 w-full absolute flex justify-center font-bold text-3xl'
-                            >RAMEN KUITAI</h2>
+                            <h2 className='z-20 w-full flex justify-center font-bold text-3xl'
+                            >RAMEN KUITAI
+                            </h2>
+                            <Image src="/ramen-orange.svg" alt="ramen" width={40} height={40} />
                         </Dialog.Title>
                     </div>
 
                     {/* Contents start here */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{
+                            duration: 1,
+                            delay: 0,
+                            ease: [0, 0.71, 0.2, 1.01]
+                        }}
+                    >
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
                         <div className="absolute inset-0 px-4 sm:px-6 space-y-5">
 
@@ -57,7 +70,7 @@ export const Drawer = () => {
                             <DrawerDisclosure panelChildren={<Contents contents={RamenCateory} />}>
                                 <button
                                     className="z-50 bg-[#FFAF19] h-10 w-full rounded-md text-white flex justify-center items-center"
-                                ><MapIcon className='text-white w-5 mr-3' />ラーメンの種類</button>
+                                    ><TagIcon className='text-white w-5 mr-3' />ラーメンの種類</button>
                             </DrawerDisclosure>
 
                             <Link href={'/ramens'}
@@ -69,8 +82,8 @@ export const Drawer = () => {
 
                         </div>
                     </div>
+                    </motion.div>
                 </div>
-
             </DrawerAnimation>
         </div>
     )
