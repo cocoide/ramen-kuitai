@@ -2,17 +2,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { use } from "react";
-import { Ramen } from '../../@types/models/Ramen';
+import { Ramen, ramens } from '../../@types/models/Ramen';
 import { ROOT_URL } from '../../libs/client/constants';
-async function getRamenAll() {
-    const res = await fetch(`${ROOT_URL}/api/ramen`);
-    return res.json();
-}
+// async function getRamenAll() {
+//     const res = await fetch(`${ROOT_URL}/api/ramen`);
+//     return res.json();
+// }
 
 
 export default function Page() {
 
-    const ramens: Ramen[] = use(getRamenAll())
+    // const ramens: Ramen[] = use(getRamenAll())
+
 
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 place-items-center">
