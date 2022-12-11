@@ -1,6 +1,6 @@
-import Header from './@Components/@Common/Header';
+import Header from './@Components/@Header';
 import RecoilProvider from './@Components/Layouts/Providers/RecoilProvider';
-import Drawer from './@Components/Drawer';
+import Drawer from './@Components/@Header/Drawer';
 
 export default function RootLayout({
     children,

@@ -1,4 +1,4 @@
-import { RamenCity } from '../../../@types/models/City'
+import { RamenCity } from '../../../../../@types/models/City'
 
 const Contents = ({ contents }) => {
     return (

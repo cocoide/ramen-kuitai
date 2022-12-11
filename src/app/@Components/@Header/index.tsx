@@ -6,7 +6,6 @@ import { Bars4Icon, MagnifyingGlassIcon, MapPinIcon } from '@heroicons/react/24/
 import { useSetRecoilState } from 'recoil';
 import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
-import Avater from '../UserView/Avater';
 import AvaterMenu from '../UserView/AvaterMenu';
 
 function Header() {
@@ -35,10 +34,10 @@ function Header() {
                     <div className="flex text-bold md:font-extrabold space-x-3">
                         <Link href={'/ramens'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
                         ><MapPinIcon className='text-white w-5' /> 保存したお店</Link>
-                    <Link href={'/ramens'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
-                    ><MapPinIcon className='text-white w-5' /> 保存したお店</Link>
+                        <Link href={'/ramens'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
+                        ><MapPinIcon className='text-white w-5' /> 保存したお店</Link>
+                    </div>
                 </div>
-            </div>
                 {/* UserIcon Menu */}
                 {/* <Avater /> */}
                 <AvaterMenu />

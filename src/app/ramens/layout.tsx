@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loading from '../@Components/@Common/Loading';
+import Loading from '../@Components/Animations/Loading';
 
 export default function DashboardLayout({
     children,
