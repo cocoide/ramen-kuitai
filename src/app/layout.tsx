@@ -1,9 +1,6 @@
-import Link from 'next/link';
-import Head from './@Components/Layout/head';
-import Header from './Header';
-import RecoilProvider from './@Components/Layout/Providers/RecoilProvider';
+import Header from './@Components/@Common/Header';
+import RecoilProvider from './@Components/Layouts/Providers/RecoilProvider';
 import Drawer from './@Components/Drawer';
-
 
 export default function RootLayout({
     children,
@@ -12,9 +9,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang='ja'>
-            <Head />
+            <title>Ramen Review</title>
+            <meta content="width=device-width, initial-scale=1" name="viewport" />
+            <link rel="icon" href="/favicon.ico" />
             <body className='bg-orange-50'>
                 <RecoilProvider>
+
                 <Header />
                     <Drawer />
                 <div className='flex space-x-10'>

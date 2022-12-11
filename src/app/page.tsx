@@ -3,6 +3,10 @@ import React from "react";
 import "/styles/globals.css";
 import { motion } from "framer-motion"
 import SearchRamen from './@Components/SearchRamen';
+import RamenListbox from './@Components/SearchRamen/Listbox';
+import { RamenCateory } from '../@types/models/Ramen';
+import { RamenCity } from '../@types/models/City';
+import { FunnelIcon } from '@heroicons/react/24/solid';
 
 function Home() {
     return (
@@ -19,7 +23,22 @@ function Home() {
                         }}
                     >
                         <div className="mt-[200px] mb-[50px]">
+
                             <SearchRamen />
+                            <div className="flex justify-center space-x-3 pt-3 lg:pt-5">
+                                <RamenListbox ramen={RamenCateory} />
+                                <RamenListbox ramen={RamenCity} />
+
+                                <div className="hidden lg:inline-block w-[33%]">
+                                    <button className="flex justify-center w-full p-2 bg-[#808080] text-white rounded-md place-items-center">
+                                        <FunnelIcon className='flex text-white w-5 h-7 mr-2'
+                                        /> この条件で探す</button>
+                                </div>
+                            </div>
+                            <button className="mt-4 lg:hidden flex justify-center w-full p-2 
+                            bg-[#808080] text-white rounded-md place-items-center">
+                                <FunnelIcon className='flex text-white w-5 h-7 mr-2'
+                                /> この条件で探す</button>
                         </div>
                     </motion.div>
                 </div>
