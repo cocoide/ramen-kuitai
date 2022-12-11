@@ -8,8 +8,6 @@ export default function DashboardLayout({
 }) {
     return (
         <>
-            <div className="backdrop-blur-sm bg-white/50 h-10 w-full sticky top-0">
-            </div>
             <Suspense fallback={<div><Loading /></div>}>
                 <div>{children}</div>
             </Suspense>

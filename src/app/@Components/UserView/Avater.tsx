@@ -1,6 +1,8 @@
 const Avater = () => {
     return (
-        <div>Avater</div>
+        <>
+            <button className="w-12 h-12 bg-white rounded-full" />
+        </>
     )
 }
 export default Avater

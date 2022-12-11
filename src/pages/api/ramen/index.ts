@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { Ramen } from '../../../@types/models/Ramen';
 
 export default async (req: NextApiRequest, res: NextApiResponse<Ramen[]>) => {
-  await new Promise((resolve) => setTimeout(resolve, 500)); // for slow test
+  // await new Promise((resolve) => setTimeout(resolve, 500)); // for slow test
 
   res
     .status(200)
