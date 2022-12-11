@@ -3,11 +3,6 @@ import React from "react";
 import "/styles/globals.css";
 import { motion } from "framer-motion"
 import SearchRamen from './@Components/SearchRamen';
-import RamenListbox from './@Components/SearchRamen/Listbox';
-import { RamenCateory } from '../@types/models/Ramen';
-import { RamenCity } from '../@types/models/City';
-import { FunnelIcon } from '@heroicons/react/24/solid';
-import { RamenSlider } from './@Components/Slider';
 
 function Home() {
     return (
@@ -25,8 +20,7 @@ function Home() {
                         }}
                     >
                         <div className="mt-[10px] mb-[20px]">
-
-                            <RamenSlider />
+                            {/* <RamenSlider /> */}
                             <SearchRamen />
                             {/* <div className="flex justify-center space-x-3 pt-3 lg:pt-5">
                                 <RamenListbox ramen={RamenCateory} />

@@ -55,9 +55,10 @@ const ListItem = ({
     label: string;
 }) => {
     return (
+
         <span
             className={cn(
-                'flex items-center space-x-2 p-2 rounded text-sm text-left',
+                'flex items-center space-x-2 p-2 rounded text-xl text-left',
                 active && 'text-white bg-[#FFAF19]'
             )}
         >
@@ -80,9 +81,6 @@ const AvaterMenu = () => {
             <Menu as="div" className="relative z-30">
                 <Menu.Button className="inline-flex w-full justify-center rounded-full bg-white 
                 hover:opacity-70 px-7 py-7 focus:outline-none focus-visible:ring-2">
-                    {/* from block changed */}
-
-                    {/* Fix avater error later */}
 
                 </Menu.Button>
                 <Transition
@@ -94,8 +92,8 @@ const AvaterMenu = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-slate-200 
-        rounded-md shadow-lg focus:outline-none ring-none text-[#FFAF19]">
+                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-[#FFAF19]
+        rounded-md drop-shadow-xl focus:outline-none ring-none text-[#FFAF19]">
                         <div className="p-1 border-b">
                             {Links.map((link) => (
                                 <Menu.Item key={link.path}>

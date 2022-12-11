@@ -13,6 +13,7 @@ import Contents from './Disclosure/Contents';
 import DrawerDisclosure from './Disclosure/DrawerDisclosure';
 import DrawerAnimation from './Animation';
 import { motion } from "framer-motion"
+import SimpleAvater from '../../UserView/SimpleAvater';
 
 export const Drawer = () => {
 
@@ -52,8 +53,16 @@ export const Drawer = () => {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
+                        <div className="flex justify-center p-5">
+
+                            {/* User Dynamic View */}
+                            <SimpleAvater w={50} h={50} image={"/avaters/user2.jpeg"}
+                                onClick={() => { router.push("/user/profile"); setOpen(false) }} />
+
+                        </div>
                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                             <div className="absolute inset-0 px-4 sm:px-6 space-y-5">
+
 
 
                                 <button onClick={() => {
