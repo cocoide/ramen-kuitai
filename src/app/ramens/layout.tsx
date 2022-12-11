@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import Loading from '../@Components/Animations/Loading';
+import CircleLoading from '../@Components/Animations/CircleLoading';
 
 export default function DashboardLayout({
     children,
@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
     return (
         <>
-            <Suspense fallback={<div><Loading /></div>}>
+            <Suspense fallback={<div><CircleLoading /></div>}>
                 <div>{children}</div>
             </Suspense>
         </>

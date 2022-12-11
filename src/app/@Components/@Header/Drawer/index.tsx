@@ -25,17 +25,20 @@ export const Drawer = () => {
 
                 <div className="flex h-full flex-col overflow-y-scroll bg-orange-50 py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
-                        <Dialog.Title className="flex items-center text-[#FFAF19]">
+                        <Dialog.Title className="flex justify-between place-items-center text-[#FFAF19]">
+                            <Image src="/ramen-orange.svg" alt="ramen" width={33} height={33} className="mb-3" />
+
+                            <h2 className='z-20 w-auto font-bold text-3xl'
+                            >RAMEN KUITAI
+                            </h2>
+
                             <button
                                 type="button"
                                 onClick={() => setOpen(false)}
-                                className="z-30 h-12 w-12"
+                                className="z-30 h-10 w-10 rounded-full"
                             ><XCircleIcon />
                             </button>
-                            <h2 className='z-20 w-full flex justify-center font-bold text-3xl'
-                            >RAMEN KUITAI
-                            </h2>
-                            <Image src="/ramen-orange.svg" alt="ramen" width={40} height={40} />
+
                         </Dialog.Title>
                     </div>
 

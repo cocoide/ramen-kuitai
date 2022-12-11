@@ -37,7 +37,7 @@ export default function DrawerAnimation({ open, setOpen, children }: React.Props
                                     leaveTo="-translate-x-full"
                                 >
                                     {/* Change width of drawer here */}
-                                    <Dialog.Panel className="pointer-events-auto relative w-screen max-w-[65%] md:max-w-[50%] lg:max-w-[40%]">
+                                    <Dialog.Panel className="pointer-events-auto relative w-screen max-w-[75%] md:max-w-[60%] lg:max-w-[50%]">
 
                                         {children}
 

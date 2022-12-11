@@ -1,4 +1,4 @@
-const Loading = () => {
+const CircleLoading = () => {
     return (
         <div className='fixed flex justify-center place-items-center 
         inset-0 bg-gray-300 opacity-50'>
@@ -6,4 +6,4 @@ const Loading = () => {
         </div>
     )
 }
-export default Loading
+export default CircleLoading
