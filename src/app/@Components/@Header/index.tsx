@@ -11,7 +11,7 @@ import AvaterMenu from '../UserView/AvaterMenu';
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
     return (
-        <header className="p-5 bg-[#FFAF19] flex justify-between place-items-center">
+        <header className="z-50 p-5 bg-[#FFAF19] flex justify-between place-items-center">
 
             {/* Humbergur Menu */}
             <button className="md:hidden inline-block rounded-full w-10">

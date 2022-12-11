@@ -14,7 +14,7 @@ export default function RootLayout({
             <title>Ramen Review</title>
             <meta content="width=device-width, initial-scale=1" name="viewport" />
             <link rel="icon" href="/ramen-orange.svg" />
-            <body className='bg-orange-50'>
+            <body className='bg-[#FFAF19]'>
                 <Suspense fallback={<CircleLoading />}>
                     <RecoilProvider>
                 <Header />

@@ -77,7 +77,7 @@ const ListItem = ({
 const AvaterMenu = () => {
     return (
         <div>
-            <Menu as="div" className="relative">
+            <Menu as="div" className="relative z-30">
                 <Menu.Button className="inline-flex w-full justify-center rounded-full bg-white 
                 hover:opacity-70 px-7 py-7 focus:outline-none focus-visible:ring-2">
                     {/* from block changed */}
