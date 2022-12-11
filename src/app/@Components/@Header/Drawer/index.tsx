@@ -26,9 +26,9 @@ export const Drawer = () => {
                 <div className="flex h-full flex-col overflow-y-scroll bg-orange-50 py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                         <Dialog.Title className="flex justify-between place-items-center text-[#FFAF19]">
-                            <Image src="/ramen-orange.svg" alt="ramen" width={33} height={33} className="mb-3" />
+                            <Image src="/ramen-orange.svg" alt="ramen" width={33} height={33} className="mb-2" />
 
-                            <h2 className='z-20 w-auto font-bold text-3xl'
+                            <h2 className='z-20 w-auto font-bold text-2xl sm:text-3xl'
                             >RAMEN KUITAI
                             </h2>
 
