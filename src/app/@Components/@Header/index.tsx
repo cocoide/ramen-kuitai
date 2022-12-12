@@ -8,6 +8,7 @@ import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
 import AvaterMenu from '../UserView/AvaterMenu';
 import { UserPlusIcon } from '@heroicons/react/24/solid';
+import LoginModal from '../Modals/LoginModal';
 
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
@@ -38,7 +39,7 @@ function Header() {
                         ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
                         {/* <Link href={'/user/login'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
                         ><UserPlusIcon className='text-white w-5 mr-3' /> ログイン</Link> */}
-
+                        <LoginModal children={""} />
 
                     </div>
                 </div>

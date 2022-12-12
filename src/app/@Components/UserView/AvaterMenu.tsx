@@ -3,8 +3,9 @@ import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, PencilSquareIcon, UserCircl
 import Link from 'next/link';
 import { Fragment, ReactNode } from 'react'
 import { cn } from '../../../utils/cn';
+import { useAuth } from '../../../utils/hooks/useAuth';
 
-
+const { Logout } = useAuth();
 const MenuLink = ({
     href,
     children,
@@ -112,7 +113,8 @@ const AvaterMenu = () => {
                         <div className="p-1">
                             <Menu.Item>
                                 {({ active }) => (
-                                    <button className="w-full">
+                                    <button onClick={Logout}
+                                        className="w-full">
                                         <ListItem
                                             icon={<UserMinusIcon />}
                                             label="ログアウト"

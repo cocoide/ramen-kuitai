@@ -14,6 +14,7 @@ import DrawerDisclosure from './Disclosure/DrawerDisclosure';
 import DrawerAnimation from './Animation';
 import { motion } from "framer-motion"
 import SimpleAvater from '../../UserView/SimpleAvater';
+import LoginModal from '../../Modals/LoginModal';
 
 export const Drawer = () => {
 
@@ -90,6 +91,7 @@ export const Drawer = () => {
                                     onClick={() => setOpen(false)}
                                 ><MapPinIcon className='text-white w-5 mr-3'
                                     /> 保存したお店</Link>
+
                             </div>
                         </div>
                     </motion.div>

@@ -1,52 +1,16 @@
+"use client"
 import { Dialog, Transition } from '@headlessui/react'
 import { UserPlusIcon } from '@heroicons/react/24/solid';
+import { signIn } from 'next-auth/react';
 import { ButtonHTMLAttributes, Fragment, ReactNode, useState } from "react"
-import { cn } from '../../../../utils/cn';
-// import { login } from "../../lib/auth";
 import { useRecoilState } from 'recoil';
 import { isLoginModalOpen } from '../../../../@types/models/Modal';
+import { useAuth } from '../../../../utils/hooks/useAuth';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
     children: ReactNode;
 };
-type Provider = { name: string, image: string, theme: string }
-export const providers: Provider[] = [
-    {
-        name: "Google",
-        image: "",
-        theme: "red-300",
-    }, {
-        name: "Twitter",
-        image: "",
-        theme: "blue-300",
-    }, {
-        name: "ライン",
-        image: "",
-        theme: "green-300",
-    }, {
-        name: "Email",
-        image: "",
-        theme: "gray-300",
-    }
-];
-
-const LoginButton = () => {
-    return (
-        <>
-            {providers.map(provider => {
-                return (
-
-                    <button key={provider.name}
-                        type="button"
-                        className={cn(`ring-${provider.theme} ring-1 text-${provider.theme} bg-white hover:bg-${provider.theme} hover:opacity-70 justify-center rounded-md px-4 py-3 border border-transparent ring-none`)}
-                    ><h4 className="font-bold text-md"
-                    >ログイン with {provider.name}</h4>
-                    </button>
-                );
-            })
-            }
-        </>);
-}
+const { signInWithGoogle } = useAuth();
 
 const LoginModal = ({ children, ...props }: Props) => {
 
@@ -61,12 +25,10 @@ const LoginModal = ({ children, ...props }: Props) => {
                 {...props}
             >
                 <div className="flex flex-row items-center gap-1">
-
                     <UserPlusIcon
                         height={20}
                         width={20}
-                    />
-                    <h3>ログイン</h3>
+                    /><h3>ログイン</h3>
 
                 </div>
             </button>
@@ -110,15 +72,14 @@ const LoginModal = ({ children, ...props }: Props) => {
                                             type="button"
                                             className="justify-center rounded-md px-4 py-3
                                             font-bold text-md  text-[#ce6056] hover:opacity-80 bg-white ring-1 ring-[#ce6056] hover:bg-[#ce6056] hover:text-white"
-                                        //   onClick={login}
-                                        >
-                                            ログイン with Google
+                                            // onClick={signInWithGoogle}
+                                            onClick={signInWithGoogle}
+                                        >ログイン with Google
                                         </button>
                                         <button
                                             type="button"
                                             className="justify-center rounded-md px-4 py-3
                                             font-bold text-md text-[#56c7f0] hover:opacity-70 bg-white ring-1 ring-[#56c7f0] hover:bg-[#56c7f0] hover:text-white"
-                                            onClick={() => setIsOpen(false)}
                                         >
                                             ログイン with Twitter
                                         </button>
@@ -156,3 +117,45 @@ const LoginModal = ({ children, ...props }: Props) => {
     )
 }
 export default LoginModal
+
+
+
+// type Provider = { name: string, image: string, theme: string }
+// export const providers: Provider[] = [
+//     {
+//         name: "Google",
+//         image: "",
+//         theme: "red-300",
+//     }, {
+//         name: "Twitter",
+//         image: "",
+//         theme: "blue-300",
+//     }, {
+//         name: "ライン",
+//         image: "",
+//         theme: "green-300",
+//     }, {
+//         name: "Email",
+//         image: "",
+//         theme: "gray-300",
+//     }
+// ];
+
+
+// const LoginButton = () => {
+//     return (
+//         <>
+//             {providers.map(provider => {
+//                 return (
+
+//                     <button key={provider.name}
+//                         type="button"
+//                         className={cn(`ring-${provider.theme} ring-1 text-${provider.theme} bg-white hover:bg-${provider.theme} hover:opacity-70 justify-center rounded-md px-4 py-3 border border-transparent ring-none`)}
+//                     ><h4 className="font-bold text-md"
+//                     >ログイン with {provider.name}</h4>
+//                     </button>
+//                 );
+//             })
+//             }
+//         </>);
+// }
