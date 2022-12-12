@@ -1,11 +1,11 @@
 "use client"
 import { Dialog } from '@headlessui/react';
 import { MapPinIcon, XCircleIcon } from "@heroicons/react/24/outline"
-import { CursorArrowRaysIcon, MapIcon, TagIcon } from '@heroicons/react/24/solid';
+import { CursorArrowRaysIcon, MapIcon, TagIcon, UserPlusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { RamenCity } from '../../../../@types/models/City';
 import { isDrawerOpen } from '../../../../@types/models/Drawer';
 import { RamenCateory } from '../../../../@types/models/Ramen';
@@ -14,6 +14,7 @@ import DrawerDisclosure from './Disclosure/DrawerDisclosure';
 import DrawerAnimation from './Animation';
 import { motion } from "framer-motion"
 import SimpleAvater from '../../UserView/SimpleAvater';
+import { isLoginModalOpen } from '../../../../@types/models/Modal';
 
 export const Drawer = () => {
 
@@ -92,6 +93,22 @@ export const Drawer = () => {
                                 ><MapPinIcon className='text-white w-5 mr-3'
                                     /> 保存したお店</Link>
 
+                                <button
+                                    type="button"
+                                    onClick={() => useSetRecoilState(isLoginModalOpen)}
+                                    className=" md:py-4 md:px-5 px-3 py-3 rounded-xl bg-[#db6459] hover:bg-[#ac544c]  
+        text-white disabled:cursor-default disabled:opacity-50"
+                                >
+                                    <div className="flex flex-row items-center gap-1">
+
+                                        <UserPlusIcon
+                                            height={20}
+                                            width={20}
+                                        />
+                                        <h3>ログイン</h3>
+
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </motion.div>

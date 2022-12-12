@@ -2,11 +2,13 @@
 import Link from "next/link";
 import React from "react";
 import "/styles/globals.css";
-import { Bars4Icon, MagnifyingGlassIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import { Bars4Icon, MapPinIcon } from '@heroicons/react/24/outline'
 import { useSetRecoilState } from 'recoil';
 import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
 import AvaterMenu from '../UserView/AvaterMenu';
+import { UserPlusIcon } from '@heroicons/react/24/solid';
+import ModalButton from '../Modals/LoginModal';
 
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
@@ -32,14 +34,14 @@ function Header() {
 
                 <div className="hidden md:inline-block">
                     <div className="flex text-bold md:font-extrabold space-x-3">
-                        <Link href={'/ramens'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
-                        ><MapPinIcon className='text-white w-5' /> 保存したお店</Link>
-                        <Link href={'/ramens'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
-                        ><MapPinIcon className='text-white w-5' /> 保存したお店</Link>
+                        <Link href={'/ramens'} className="flex p-2 bg-white text-[#FFAF19] rounded-xl place-items-center"
+                        ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
+                        {/* <Link href={'/user/login'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
+                        ><UserPlusIcon className='text-white w-5 mr-3' /> ログイン</Link> */}
+
+                        <ModalButton>ログイン</ModalButton>
                     </div>
                 </div>
-                {/* UserIcon Menu */}
-                {/* <Avater /> */}
                 <AvaterMenu />
 
             </div>

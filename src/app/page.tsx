@@ -7,7 +7,7 @@ import SearchRamen from './@Components/SearchRamen';
 function Home() {
     return (
         <>
-            <div className="flex justify-center p-10 bg-[#FFAF19]">
+            <div className="flex justify-center  bg-[#FFAF19]">
                 <div className="flex-col">
 
                     <motion.div
@@ -19,7 +19,7 @@ function Home() {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
-                        <div className="mt-[10px] mb-[20px]">
+                        <div className="mt-[30px] mb-[20px]">
                             {/* <RamenSlider /> */}
                             <SearchRamen />
                             {/* <div className="flex justify-center space-x-3 pt-3 lg:pt-5">

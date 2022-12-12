@@ -3,6 +3,7 @@ import RecoilProvider from './@Components/Layouts/Providers/RecoilProvider';
 import Drawer from './@Components/@Header/Drawer';
 import { Suspense } from 'react';
 import CircleLoading from './@Components/Animations/CircleLoading';
+import LoginModal from './@Components/Modals/LoginModal';
 
 export default function RootLayout({
     children,
