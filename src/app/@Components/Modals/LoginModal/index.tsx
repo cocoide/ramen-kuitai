@@ -49,8 +49,8 @@ const LoginButton = () => {
 }
 
 const LoginModal = ({ children, ...props }: Props) => {
-    let [isOpen, setIsOpen] = useRecoilState(isLoginModalOpen)
 
+    const [isOpen, setIsOpen] = useRecoilState(isLoginModalOpen)
     return (
         <>
             <button

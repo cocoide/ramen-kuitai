@@ -8,10 +8,10 @@ import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
 import AvaterMenu from '../UserView/AvaterMenu';
 import { UserPlusIcon } from '@heroicons/react/24/solid';
-import ModalButton from '../Modals/LoginModal';
 
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
+
     return (
         <header className="z-50 p-5 bg-[#FFAF19] flex justify-between place-items-center">
 
@@ -39,7 +39,7 @@ function Header() {
                         {/* <Link href={'/user/login'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
                         ><UserPlusIcon className='text-white w-5 mr-3' /> ログイン</Link> */}
 
-                        <ModalButton>ログイン</ModalButton>
+
                     </div>
                 </div>
                 <AvaterMenu />
