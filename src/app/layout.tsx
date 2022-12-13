@@ -1,9 +1,9 @@
 import Header from './@Components/@Header';
-import RecoilProvider from '../libs/client/Providers/RecoilProvider';
+import RecoilProvider from '../libs/client/providers/RecoilProvider';
+import NextAuthProvider from '../libs/client/providers/NextauthProvider';
+import CircleLoading from './@Components/Animations/CircleLoading';
 import Drawer from './@Components/@Header/Drawer';
 import { Suspense } from 'react';
-import CircleLoading from './@Components/Animations/CircleLoading';
-import NextAuthProvider from '../libs/client/Providers/NextauthProvider';
 
 export default function RootLayout({
     children,

@@ -1,9 +1,68 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, PencilSquareIcon, UserCircleIcon, UserIcon, UserMinusIcon } from '@heroicons/react/24/solid';
+import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, ReactNode } from 'react'
+import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import { useAuth } from '../../../utils/hooks/useAuth';
+
+const AvaterMenu = () => {
+    const { data: session, status } = useSession();
+    return (
+        <div>
+            <Menu as="div" className="relative z-30">
+                <Menu.Button className="w-17 h-17 justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2 p-1">
+                    <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
+                </Menu.Button>
+                <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                >
+                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-[#FFAF19]
+        rounded-md drop-shadow-xl focus:outline-none ring-none text-[#FFAF19]">
+                        <div className="p-1 border-b">
+                            {Links.map((link) => (
+                                <Menu.Item key={link.path}>
+                                    {({ active }) => (
+                                        <MenuLink href={link.path}>
+                                            <ListItem
+                                                icon={link.icon}
+                                                label={link.label}
+                                                active={active}
+                                            />
+                                        </MenuLink>
+                                    )}
+                                </Menu.Item>
+                            ))}
+                        </div>
+                        <div className="p-1">
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button onClick={Logout}
+                                        className="w-full">
+                                        <ListItem
+                                            icon={<UserMinusIcon />}
+                                            label="ログアウト"
+                                            active={active}
+                                        />
+                                    </button>
+                                )}
+                            </Menu.Item>
+                        </div>
+                    </Menu.Items>
+                </Transition>
+            </Menu>
+
+        </div>
+    )
+};
 
 const { Logout } = useAuth();
 const MenuLink = ({
@@ -76,59 +135,4 @@ const ListItem = ({
     );
 };
 
-const AvaterMenu = () => {
-    return (
-        <div>
-            <Menu as="div" className="relative z-30">
-                <Menu.Button className="inline-flex w-full justify-center rounded-full bg-white 
-                hover:opacity-70 px-7 py-7 focus:outline-none focus-visible:ring-2">
-
-                </Menu.Button>
-                <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                >
-                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-[#FFAF19]
-        rounded-md drop-shadow-xl focus:outline-none ring-none text-[#FFAF19]">
-                        <div className="p-1 border-b">
-                            {Links.map((link) => (
-                                <Menu.Item key={link.path}>
-                                    {({ active }) => (
-                                        <MenuLink href={link.path}>
-                                            <ListItem
-                                                icon={link.icon}
-                                                label={link.label}
-                                                active={active}
-                                            />
-                                        </MenuLink>
-                                    )}
-                                </Menu.Item>
-                            ))}
-                        </div>
-                        <div className="p-1">
-                            <Menu.Item>
-                                {({ active }) => (
-                                    <button onClick={Logout}
-                                        className="w-full">
-                                        <ListItem
-                                            icon={<UserMinusIcon />}
-                                            label="ログアウト"
-                                            active={active}
-                                        />
-                                    </button>
-                                )}
-                            </Menu.Item>
-                        </div>
-                    </Menu.Items>
-                </Transition>
-            </Menu>
-
-        </div>
-    )
-}
-export default AvaterMenu
+export default AvaterMenu;

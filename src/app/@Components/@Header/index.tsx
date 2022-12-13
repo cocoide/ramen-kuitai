@@ -9,12 +9,13 @@ import Image from 'next/image';
 import AvaterMenu from '../UserView/AvaterMenu';
 import { UserPlusIcon } from '@heroicons/react/24/solid';
 import LoginModal from '../Modals/LoginModal';
+import { useSession } from 'next-auth/react';
 
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
-
+    const { data: session } = useSession();
     return (
-        <header className="z-50 p-5 bg-[#FFAF19] flex justify-between place-items-center">
+        <header className="z-50 p-3 md:p-5 bg-[#FFAF19] flex justify-between place-items-center">
 
             {/* Humbergur Menu */}
             <button className="md:hidden inline-block rounded-full w-10">
@@ -35,16 +36,13 @@ function Header() {
 
                 <div className="hidden md:inline-block">
                     <div className="flex text-bold md:font-extrabold space-x-3">
-                        <Link href={'/ramens'} className="flex p-2 bg-white text-[#FFAF19] rounded-xl place-items-center"
+                        <Link href={'/ramens'} className="flex py-4 px-2 bg-white text-[#FFAF19] rounded-xl place-items-center h-15"
                         ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
                         {/* <Link href={'/user/login'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
                         ><UserPlusIcon className='text-white w-5 mr-3' /> ログイン</Link> */}
-                        <LoginModal children={""} />
-
                     </div>
                 </div>
-                <AvaterMenu />
-
+                {(!session) ? <LoginModal children={""} /> : <AvaterMenu />}
             </div>
 
         </header>

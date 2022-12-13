@@ -1,27 +1,24 @@
 import toast from 'react-hot-toast';
-import { signIn, signOut, useSession } from "next-auth/react";
-import { unstable_getServerSession } from 'next-auth';
+import { signIn, signOut } from "next-auth/react";
 
 const useAuth =()=>{
     
-    // const {data}= useSession()
-    // const {}=unstable_getServerSession();
-    // const {user}=data;
-    
     const signInWithGoogle = async() => {
-        // toast.loading("Googleアカウントでログイン中...");
+        const toastId =toast.loading("Googleアカウントでログイン中...");
         await signIn('google', {
           callbackUrl: "/user/profile",
           // window.location.href,
         });
-        toast.success("ログイン成功🎉");
+          toast.success("ログイン成功🎉",{
+          id: toastId,
+        });
       };
       
       const Logout = async() => {
         await signOut({
           callbackUrl: "/"
         })
-        toast('ログアウト完了', {
+          toast('ログアウト完了', {
           icon: '✅',
         })
       };

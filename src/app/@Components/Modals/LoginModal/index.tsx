@@ -1,4 +1,3 @@
-"use client"
 import { Dialog, Transition } from '@headlessui/react'
 import { UserPlusIcon } from '@heroicons/react/24/solid';
 import { signIn } from 'next-auth/react';
@@ -20,11 +19,11 @@ const LoginModal = ({ children, ...props }: Props) => {
             <button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className=" md:py-4 md:px-5 px-3 py-3 rounded-xl bg-[#db6459] hover:bg-[#ac544c]  
-        text-white disabled:cursor-default disabled:opacity-50"
+                className=" md:py-4 md:px-5 px-2 py-3 rounded-xl bg-white hover:bg-gray-50
+        text-[#FFAF19] hover:brightness-75 disabled:cursor-default disabled:opacity-50"
                 {...props}
             >
-                <div className="flex flex-row items-center gap-1">
+                <div className="flex flex-row items-center gap-1 font-bold">
                     <UserPlusIcon
                         height={20}
                         width={20}
