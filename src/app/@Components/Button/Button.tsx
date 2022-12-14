@@ -2,7 +2,6 @@
 import { redirect } from 'next/navigation';
 import { FC, ReactNode } from 'react'
 import { cn } from '../../../utils/cn'
-import { ROOT_URL } from '../../../libs/client/constants';
 
 type ButtonProps = {
     children?: ReactNode
@@ -24,7 +23,7 @@ const Button: FC<ButtonProps> = ({
     return (
         <button
             className={cn(`rounded-md p-1 ${classes.join(' ')}`)}
-            onClick={() => redirect(`${ROOT_URL}/${redirectURL}`)}
+            onClick={() => redirect(`localhost:3000/${redirectURL}`)}
         >
             {children}
             {text}

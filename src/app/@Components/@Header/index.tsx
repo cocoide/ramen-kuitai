@@ -36,7 +36,8 @@ function Header() {
 
                 <div className="hidden md:inline-block">
                     <div className="flex text-bold md:font-extrabold space-x-3">
-                        <Link href={'/ramens'} className="flex py-4 px-2 bg-white text-[#FFAF19] rounded-xl place-items-center h-15"
+                        <Link href={'/ramens'} className="flex py-4 px-2 bg-white text-[#FFAF19] rounded-xl place-items-center h-15
+                        hover:brightness-75"
                         ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
                         {/* <Link href={'/user/login'} className="flex p-2 bg-[#dc2626] text-white rounded-md"
                         ><UserPlusIcon className='text-white w-5 mr-3' /> ログイン</Link> */}

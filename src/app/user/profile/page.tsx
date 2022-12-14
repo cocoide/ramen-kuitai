@@ -1,23 +1,19 @@
 // https://github.com/shadcn/taxonomy/tree/main/lib
 import Image from 'next/image';
-import { getCurrentUser, getSession } from '../../../libs/server/session'
-import SimpleAvater from '../../@Components/UserView/SimpleAvater'
+import Link from 'next/link';
 
-
-const page = async () => {
-    const session = await getSession();
-    const user = await getCurrentUser()
+const ProfilePage = async () => {
 
     return (
-        <div className="bg-orange-50 h-screen">
-            <div className="flex justify-between p-10 space-x-7 bg-[#FFAF19]">
-                <SimpleAvater w={50} h={50} image={'/avaters/user2.jpeg'} />
-                <div className="bg-[#e0d8c7]  w-full rounded-xl"></div>
+        <div className="bg-orange-50 h-screen flex-col">
+
+            {/* Select Tab */}
+            <div className="flex justify-center p-3 space-x-5">
+                <Link href={"/user/profile"} className="font-bold  p-2 text-orange-700 border-b-2 border-orange-700">投稿したラーメン</Link>
+                <Link href={"/user/profile/good"} className="font-bold  p-2 text-orange-700">いいねした投稿</Link>
+                <Link href={"/user/profile/bookmark"} className="font-bold  p-2 text-orange-700">保存したお店</Link>
             </div>
-            {(session) ? <div>ログイン中</div> : <div>ログアウト中</div>}
-            <p>{user?.name}</p>
-            <Image src={user?.image} alt={user?.name} width={50} height={50} />
         </div>
     )
 }
-export default page
+export default ProfilePage

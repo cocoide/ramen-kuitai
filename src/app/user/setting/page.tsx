@@ -1,6 +1,8 @@
-const UserEdit = () => {
+
+
+const page = () => {
     return (
-        <div>setting</div>
+        <div>a</div>
     )
 }
-export default UserEdit
+export default page
