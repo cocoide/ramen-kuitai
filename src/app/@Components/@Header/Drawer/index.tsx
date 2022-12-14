@@ -1,7 +1,7 @@
 "use client"
 import { Dialog } from '@headlessui/react';
 import { MapPinIcon, XCircleIcon } from "@heroicons/react/24/outline"
-import { CursorArrowRaysIcon, MapIcon, TagIcon, UserPlusIcon } from '@heroicons/react/24/solid';
+import { CursorArrowRaysIcon, MapIcon, TagIcon, UserPlusIcon, UserMinusIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -15,8 +15,12 @@ import DrawerAnimation from './Animation';
 import { motion } from "framer-motion"
 import SimpleAvater from '../../UserView/SimpleAvater';
 import LoginModal from '../../Modals/LoginModal';
+import { signOut, useSession } from 'next-auth/react';
+import { useAuth } from '../../../../utils/hooks/useAuth';
 
 export const Drawer = () => {
+    const { data: session } = useSession()
+    const { Logout } = useAuth();
 
     const router = useRouter();
     const [open, setOpen] = useRecoilState(isDrawerOpen);
@@ -53,12 +57,11 @@ export const Drawer = () => {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
-                        <div className="flex justify-center p-5">
+                        <div className="flex justify-center place-items-center p-5">
 
-                            {/* User Dynamic View */}
-                            <SimpleAvater w={50} h={50} image={"/avaters/user2.jpeg"}
+                            {(session) ? <SimpleAvater w={50} h={50} image={"/avaters/user2.jpeg"}
                                 onClick={() => { router.push("/user/profile"); setOpen(false) }} />
-
+                                : <div className="mt-5 w-full"><LoginModal children={''} /></div>}
                         </div>
                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                             <div className="absolute inset-0 px-4 sm:px-6 space-y-5">
@@ -91,6 +94,14 @@ export const Drawer = () => {
                                     onClick={() => setOpen(false)}
                                 ><MapPinIcon className='text-white w-5 mr-3'
                                     /> 保存したお店</Link>
+
+
+                                {(session) && <button
+                                    className="flex justify-center place-items-center
+                                    p-2 bg-white rounded-md w-full text-gray-500 ring-2 ring-gray-200"
+                                    onClick={Logout}
+                                ><UserMinusIcon className='text-gray-500 w-5 mr-3'
+                                    />ログアウト</button>}
 
                             </div>
                         </div>

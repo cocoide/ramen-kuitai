@@ -19,14 +19,14 @@ const LoginModal = ({ children, ...props }: Props) => {
             <button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                className=" md:py-4 md:px-5 px-2 py-3 rounded-xl bg-white hover:bg-gray-50
-        text-[#FFAF19] hover:brightness-75 disabled:cursor-default disabled:opacity-50"
+                className="rounded-xl ring-2 ring-[#FFAF19] bg-orange-50 p-3 w-full flex justify-center
+        text-[#FFAF19] hover:brightness-90 hover:bg-[#FFAF19] hover:text-white disabled:cursor-default disabled:opacity-50 font-bold"
                 {...props}
             >
                 <div className="flex flex-row items-center gap-1 font-bold">
                     <UserPlusIcon
-                        height={20}
-                        width={20}
+                        height={25}
+                        width={25}
                     /><h3>ログイン</h3>
 
                 </div>
