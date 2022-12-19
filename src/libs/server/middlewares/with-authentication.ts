@@ -7,7 +7,7 @@ export function withAuthentication(handler: NextApiHandler) {
     const session = await unstable_getServerSession(req, res, authOptions)
 
     if (!session) {
-      return res.status(403).end()
+      return res.status(403).json({error: "You are not authenticated"})
     }
     return handler(req, res)
   }

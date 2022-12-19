@@ -4,6 +4,7 @@ import NextAuthProvider from './@Components/Providers/NextauthProvider';
 import CircleLoading from './@Components/Animations/CircleLoading';
 import Drawer from './@Components/@Header/Drawer';
 import { Suspense } from 'react';
+import FooterNavi from './@Components/Button/FooterNavi';
 
 export default function RootLayout({
     children,
@@ -26,6 +27,9 @@ export default function RootLayout({
                             <div className='flex space-x-10'>
                             </div>
                             {children}
+                            <div className="inline-block md:hidden">
+                                <FooterNavi />
+                            </div>
                         </RecoilProvider>
                     </Suspense>
                 </NextAuthProvider>

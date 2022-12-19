@@ -2,7 +2,11 @@
 import { RecoilRoot } from 'recoil';
 
 const RecoilProvider = ({ children }) => {
-    return <RecoilRoot>{children}</RecoilRoot>;
+    return (
+        <>
+            <RecoilRoot>{children}</RecoilRoot>
+        </>
+    );
 };
 
 export default RecoilProvider;

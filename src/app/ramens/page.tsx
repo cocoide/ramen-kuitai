@@ -23,8 +23,9 @@ export default function Page() {
                             <div>{ramen.shop_name}</div>
 
                             <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
-                                className={cn("rounded-xl h-auto",
-                                    onLoading ? "blur-sm" : "blur-0")}
+                                className={cn("rounded-xl h-auto aspect-square",)
+                                    // onLoading ? "blur-sm" : "blur-0")
+                                }
                                 onLoadingComplete={() => setCompleted(false)} />
                         </Link>
                     </div>);
@@ -36,12 +37,14 @@ export default function Page() {
                             <div>{ramen.shop_name}</div>
 
                             <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
-                                className={cn("rounded-xl h-auto",
-                                    onLoading ? "blur-sm" : "blur-0")}
+                                className={cn("rounded-xl h-auto aspect-square",)
+                                    // onLoading ? "blur-sm" : "blur-0")
+                                }
                                 onLoadingComplete={() => setCompleted(false)} />
                         </Link>
                     </div>);
             })}
+
         </div>
     );
 }

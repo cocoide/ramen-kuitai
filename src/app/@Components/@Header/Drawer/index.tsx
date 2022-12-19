@@ -28,14 +28,14 @@ export const Drawer = () => {
         <div className='z-50'>
             <DrawerAnimation open={open} setOpen={setOpen}>
 
-                <div className="flex h-full flex-col overflow-y-scroll bg-orange-50 py-6 shadow-xl">
+                <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                         <Dialog.Title className="flex justify-between place-items-center text-[#FFAF19]">
                             <Image src="/ramen-orange.svg" alt="ramen" width={33} height={33} className="mb-2" />
 
-                            <h2 className='z-20 w-auto font-bold text-2xl sm:text-3xl'
+                            <div className='z-20 w-auto font-bold text-2xl sm:text-3xl'
                             >RAMEN KUITAI
-                            </h2>
+                            </div>
 
                             <button
                                 type="button"
@@ -61,7 +61,7 @@ export const Drawer = () => {
 
                             {(session) ? <SimpleAvater w={50} h={50} image={"/avaters/user2.jpeg"}
                                 onClick={() => { router.push("/user/profile"); setOpen(false) }} />
-                                : <div className="mt-5 w-full"><LoginModal children={''} /></div>}
+                                : <div className="mt-5 w-full"><LoginModal /></div>}
                         </div>
                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                             <div className="absolute inset-0 px-4 sm:px-6 space-y-5">
@@ -73,19 +73,19 @@ export const Drawer = () => {
                                     router.push("/")
                                 }}
                                     className="bg-[#FFAF19] h-10 w-full rounded-md text-white flex justify-center items-center"
-                                ><CursorArrowRaysIcon className='text-white w-5 mr-3' />ラーメンを開拓する</button>
+                                ><CursorArrowRaysIcon className='text-white w-5 mr-3' /><h3>ラーメンを開拓する</h3></button>
 
                                 {/* Set type to children later */}
                                 <DrawerDisclosure panelChildren={<Contents contents={RamenCity} />}>
                                     <button
                                         className="z-50 bg-[#FFAF19] h-10 w-full rounded-md text-white flex justify-center items-center"
-                                    ><MapIcon className='text-white w-5 mr-3' />エリア</button>
+                                    ><MapIcon className='text-white w-5 mr-3' /><h3>エリア</h3></button>
                                 </DrawerDisclosure>
 
                                 <DrawerDisclosure panelChildren={<Contents contents={RamenCateory} />}>
                                     <button
                                         className="z-50 bg-[#FFAF19] h-10 w-full rounded-md text-white flex justify-center items-center"
-                                    ><TagIcon className='text-white w-5 mr-3' />ラーメンの種類</button>
+                                    ><TagIcon className='text-white w-5 mr-3' /><h3>ラーメンの種類</h3></button>
                                 </DrawerDisclosure>
 
                                 <Link href={'/ramens'}

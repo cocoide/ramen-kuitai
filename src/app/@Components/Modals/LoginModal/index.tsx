@@ -6,12 +6,12 @@ import { useRecoilState } from 'recoil';
 import { isLoginModalOpen } from '../../../../@types/models/Modal';
 import { useAuth } from '../../../../utils/hooks/useAuth';
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
-    children: ReactNode;
-};
+// type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+//     children: ReactNode;
+// };
 const { signInWithGoogle } = useAuth();
 
-const LoginModal = ({ children, ...props }: Props) => {
+const LoginModal = () => {
 
     const [isOpen, setIsOpen] = useRecoilState(isLoginModalOpen)
     return (
@@ -21,7 +21,7 @@ const LoginModal = ({ children, ...props }: Props) => {
                 onClick={() => setIsOpen(true)}
                 className="rounded-xl ring-2 ring-[#FFAF19] bg-orange-50 p-3 w-full flex justify-center
         text-[#FFAF19] hover:brightness-90 hover:bg-[#FFAF19] hover:text-white disabled:cursor-default disabled:opacity-50 font-bold"
-                {...props}
+                // {...props}
             >
                 <div className="flex flex-row items-center gap-1 font-bold">
                     <UserPlusIcon

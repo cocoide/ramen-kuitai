@@ -28,8 +28,8 @@ export default async function MyPageLayout({
                     >プロフィールを編集</Link>
                 </div>
                 <div>{children}</div>
-                <button className="md:hidden inline-block rounded-full bg-[#FFAF19]  p-2 w-13 h-13 drop-shadow-xl fixed bottom-5 right-5 ">
-                    <PlusSmallIcon className="h-10 w-10 text-white" /></button>
+                <Link href={"/review"} className="md:hidden inline-block rounded-full bg-[#FFAF19]  p-2 w-13 h-13 drop-shadow-xl fixed bottom-30 right-5 ">
+                    <PlusSmallIcon className="h-10 w-10 text-white" /></Link>
             </Suspense>
         </>
     );

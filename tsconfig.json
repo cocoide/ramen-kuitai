@@ -25,7 +25,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/Components/User"
+    "src/app/Components/User",
+    "src/pages/.gitkeep"
   ],
   "exclude": ["node_modules"]
 }

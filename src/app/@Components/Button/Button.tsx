@@ -21,6 +21,7 @@ const Button: FC<ButtonProps> = ({
     className && classes.push(className)
 
     return (
+        <>
         <button
             className={cn(`rounded-md p-1 ${classes.join(' ')}`)}
             onClick={() => redirect(`localhost:3000/${redirectURL}`)}
@@ -28,6 +29,7 @@ const Button: FC<ButtonProps> = ({
             {children}
             {text}
         </button>
+        </>
     )
 }
 export default Button;

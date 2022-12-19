@@ -2,12 +2,13 @@
 import Link from "next/link";
 import React from "react";
 import "/styles/globals.css";
-import { Bars4Icon, MapPinIcon } from '@heroicons/react/24/outline'
+import { Bars4Icon, MapPinIcon, PlusSmallIcon } from '@heroicons/react/24/outline'
 import { useSetRecoilState } from 'recoil';
 import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
 import AvaterMenu from '../UserView/AvaterMenu';
 import { useSession } from 'next-auth/react';
+import LoginModal from '../Modals/LoginModal';
 
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
@@ -25,12 +26,16 @@ function Header() {
             <div className="md:flex-1"></div>
 
             <div className="flex justify-end space-x-3 place-items-center">
-
                 <div className="hidden md:inline-block">
-                    <div className="flex text-bold md:font-extrabold space-x-3">
+                    <div className="flex text-bold md:font-extrabold space-x-3 place-items-center">
+                        <Link href={"/review"} className="flex rounded-full bg-white text-[#FFAF19]  p-2 w-13 h-13 drop-shadow-md
+                        hover:brightness-75 hover:drop-shadow-none">
+                            <PlusSmallIcon className="h-10 w-10" /></Link>
+
                         <Link href={'/ramens'} className="flex py-4 px-2 bg-white text-[#FFAF19] rounded-xl place-items-center h-15
                         hover:brightness-75"
                         ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
+                        {(!session) && <div className="place-items-center"><LoginModal /></div>}
                         {(session) && <AvaterMenu />}
                     </div>
                 </div>

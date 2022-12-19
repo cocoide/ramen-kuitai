@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
+  name       String?
   bio    String?
   email         String?   @unique
   emailVerified DateTime?
@@ -25,31 +25,31 @@ model User {
 }
 
 model Review {
-  id         Int                @id @default(autoincrement())
-  title      String
+  id         String            @id @default(cuid())
+  title      String            
   image  String?
   content   String?
   rating     Int?
-  author   User @relation(fields: [authorId], references: [id])
-  authorId String
-  shop RamenShop @relation(fields: [shopId], references: [id])
-  shopId Int
+  authorId String?
+  author  User? @relation(fields: [authorId], references: [email])
+  shopId String?
+  shop RamenShop? @relation(fields: [shopId], references: [id])
   createdAt DateTime @default(now())
 }
 
 model RamenShop {
-  id Int  @id @default(autoincrement())
+  id String  @id @default(cuid())
   name String @unique
   image  String?
-  address String?
+  address String[]
   reviews Review[]
   bookmarkedBy User[]
-  category Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
+  category Category[]
+  rating Int?
 }
 
 model Category{
-  id Int @id @default(autoincrement())
+  id String @id @default(cuid())
   name String @unique
   shops RamenShop[]
 }
@@ -61,6 +61,7 @@ enum Role {
 
 model Account {
   id                 String  @id @default(cuid())
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId             String
   type               String
   provider           String
@@ -74,8 +75,6 @@ model Account {
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
