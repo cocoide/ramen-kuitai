@@ -29,7 +29,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
          const query = await schema.parse(req.query)
           const review = await prisma.review.findUnique({
             where: {
-              id: query.reviewId,
+              id: query.reviewId ,
             },
           })
           const body = reviewPatchSchema.parse(req.body)
@@ -57,7 +57,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 createdAt: true,
               },
               where: {
-                id: req.query.reviewId as string,
+                id: req.query.reviewId,
               },
             })
       
