@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import prisma from '../../../libs/client/prisma'
 import { withMethods } from '../../../libs/server/middlewares/with-methods';
-import { withReview } from '../../../libs/server/middlewares/with-review';
+// import { withReview } from '../../../libs/server/middlewares/with-review';
 import { reviewPatchSchema } from '../../../libs/server/validations/review';
 import * as z from "zod"
 // https://qiita.com/kurab/items/efce37b19f4484ae39bcs
@@ -73,4 +73,4 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
        
 }
 
-export default withMethods(["DELETE", "PATCH"], withReview(handler))
+export default withMethods(["DELETE", "PATCH"], handler)

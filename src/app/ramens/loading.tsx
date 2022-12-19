@@ -1,4 +1,3 @@
-import SkeletonLoader from '../@Components/Animations/SkeltonLoader'
 
 const Loading = () => {
     return (
