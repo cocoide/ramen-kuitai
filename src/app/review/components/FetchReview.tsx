@@ -19,9 +19,11 @@ async function fetchYourReview() {
 }
 
 const FetchReview = () => {
-
+    const session = unstable_getServerSession(authOptions);
     const review = use(fetchYourReview())
+
     return (
+        session ?
         <div>
             {review.map(review => {
                 return (
@@ -42,6 +44,10 @@ const FetchReview = () => {
                 )
             })}
         </div>
+            :
+            (<div>
+                <div>あなたは何も投稿していません </div>
+            </div>)
     )
 }
 export default FetchReview
