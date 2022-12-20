@@ -43,9 +43,9 @@ const CreateReview = () => {
 
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-10 bg-white p-5">
-                <input {...register('title')} className="h-10 w-30 p-1 rounded-md shadow-inner ring-2 ring-gray-300" />
-                <input {...register('content')} className="h-10 w-30 p-1 rounded-md shadow-inner ring-2 ring-gray-300" />
-                <input {...register('image')} className="h-10 w-30 p-1 rounded-md shadow-inner ring-2 ring-gray-300" />
+                <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-300" />
+                <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-300" />
+                <input {...register('image')} className="h-10 w-30 p-1 rounded-md bg-gray-300" />
                 <div className="flex justify-center">
                     {/* https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6 */}
                     {[...Array(5)].map((star, index) => {

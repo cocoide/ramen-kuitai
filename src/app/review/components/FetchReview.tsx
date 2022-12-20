@@ -9,20 +9,20 @@ import { cn } from '../../../utils/cn';
 https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 async function fetchYourReview() {
-    const session = await unstable_getServerSession(authOptions);
+    // const session = await unstable_getServerSession(authOptions);
     const data = await prisma.review.findMany({
-        where: {
-            authorId: session?.user.email
-        }
+        // where: {
+        //     authorId: session?.user.email
+        // }
     });
     return data
 }
 
 const FetchReview = () => {
-    const session = unstable_getServerSession(authOptions);
+    // const session = unstable_getServerSession(authOptions);
     const review = use(fetchYourReview())
     return (
-        session ?
+        // session ?
         <div>
             {review.map(review => {
                 return (
@@ -43,10 +43,10 @@ const FetchReview = () => {
                 )
             })}
         </div>
-            :
-            (<div>
-                <div>あなたは何も投稿していません </div>
-            </div>)
+            // :
+            // (<div>
+            //     <div>あなたは何も投稿していません </div>
+            // </div>)
     )
 }
 export default FetchReview
