@@ -10,11 +10,13 @@ https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 async function fetchYourReview() {
     // const session = await unstable_getServerSession(authOptions);
-    const data = await prisma.review.findMany({
+    const data = await prisma.review.findMany(
+        // {
         // where: {
         //     authorId: session?.user.email
         // }
-    });
+        // }
+    );
     return data
 }
 

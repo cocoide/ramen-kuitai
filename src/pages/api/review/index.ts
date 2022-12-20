@@ -19,11 +19,11 @@ import { reviewCreateSchema } from '../../../libs/server/validations/review';
       
       if (req.method === "GET") {
         try {
-          const posts = await prisma.review.findMany(
-            // where: {
-            //   authorId: session.user.email,
-            // },
-          )
+          const posts = await prisma.review.findMany({
+            where: {
+              authorId: session.user.email,
+            },
+        })
         return res.json(posts)
         } 
         catch (error) {
