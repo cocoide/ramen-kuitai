@@ -5,12 +5,12 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter';
 export const authOptions={
     providers: [
         GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID || "",
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET||"",
+            clientId: process.env.GOOGLE_CLIENT_ID || "502700156715-i34ihric09g0futb1dcrhfckilv0b3md.apps.googleusercontent.com",
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET||"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",
         }),
     ],
     adapter: PrismaAdapter(prisma),
-    secret: process.env.NEXT_PUBLIC_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     
     // callbacks: {
     //     async session({ token, session }) {
