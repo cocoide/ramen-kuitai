@@ -21,7 +21,6 @@ async function fetchYourReview() {
 const FetchReview = () => {
     const session = unstable_getServerSession(authOptions);
     const review = use(fetchYourReview())
-
     return (
         session ?
         <div>
