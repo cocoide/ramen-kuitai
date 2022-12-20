@@ -2,7 +2,7 @@ const user = { comment: "あの味を求めて今日も街へ繰り出した", y
 
 const UserBio = () => {
     return (
-        <div className="flex flex-col m-5 font-bold text-white space-y-3">
+        <div className="flex flex-col m-5 font-medium text-gray-600 space-y-3">
             <div> {user.comment}</div>
             <div className="">
                 <div>🍜今年のラーメン：{user.year_ramen}杯</div>

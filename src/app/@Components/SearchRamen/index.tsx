@@ -1,8 +1,8 @@
-import { CheckIcon, ChevronUpDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 const SearchRamen = () => {
     return (
         <>
-            <form className='flex bg-white rounded-full drop-shadow-md z-50 p-1 w-auto ring-2 ring-gray-200'>
+            <form className='flex bg-white rounded-full shadow-inner z-50 p-1 w-auto'>
             <input className="focus:ring-0 border-none
              flex justify-center
             rounded-full  w-[350px] md:w-[600px] lg:w-[800px]  h-15 lg:h-17 p-2 text-center"

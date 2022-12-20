@@ -15,7 +15,7 @@ export default function Page() {
     const [onLoading, setCompleted] = useState<boolean>(true)
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 place-items-center bg-orange-50">
+        <div className="grid grid-cols-2 md:grid-cols-3 place-items-center">
             {ramens.map((ramen) => {
                 return (
                     <div key={ramen.shop_name} className="p-2">

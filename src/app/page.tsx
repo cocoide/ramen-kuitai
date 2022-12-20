@@ -7,7 +7,7 @@ import SearchRamen from './@Components/SearchRamen';
 function Home() {
     return (
         <>
-            <div className="flex justify-center  bg-[#FFAF19]">
+            <div className="flex justify-center">
                 <div className="flex-col">
 
                     <motion.div

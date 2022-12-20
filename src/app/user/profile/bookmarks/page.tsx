@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const BookmarkPage = () => {
     return (
-        <div className="bg-orange-50 h-screen flex-col">
+        <div className="flex flex-col">
 
             {/* Select Tab */}
             <div className="flex justify-center p-3 space-x-5">

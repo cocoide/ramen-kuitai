@@ -17,8 +17,8 @@ export default function RootLayout({
             <title>Ramen Review</title>
             <meta content="width=device-width, initial-scale=1" name="viewport" />
             <link rel="icon" href="/ramen-orange.svg" />
-            <body className='bg-[#FFAF19]'>
-
+            <body className='bg-gray-100'>
+                {/* bg-[#e4e2df] */}
                 <NextAuthProvider>
                     <Suspense fallback={<CircleLoading />}>
                         <RecoilProvider>
@@ -27,7 +27,7 @@ export default function RootLayout({
                             <div className='flex space-x-10'>
                             </div>
                             {children}
-                            <div className="inline-block md:hidden">
+                            <div className="inline-block md">
                                 <FooterNavi />
                             </div>
                         </RecoilProvider>

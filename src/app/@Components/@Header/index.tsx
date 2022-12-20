@@ -14,13 +14,13 @@ function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
     const { data: session } = useSession();
     return (
-        <header className="z-50 p-3 md:p-5 bg-[#FFAF19] flex justify-between md:justify-start
-        place-items-center">
+        <header className="z-50 p-3 md:p-5 bg-white flex justify-between md:justify-start
+        place-items-center border-[#FFAF19]">
 
-            <Image src="/ramen-white.svg" alt="ramen" width={30} height={30} className="my-2 mx-4"
-            /> <Link href="/" className="flex justify-center
-            items-center font-bold text-3xl text-white m-2"
-            >RAMEN KUITAI
+            <Link href="/" className="flex justify-center
+            items-center font-bold text-3xl text-[#FFAF19] m-2"
+            > RAMEN KUITAI<Image src="/ramen-orange.svg" alt="ramen" width={30} height={30} className="mx-4"
+                />
             </Link>
 
             <div className="md:flex-1"></div>
@@ -28,12 +28,12 @@ function Header() {
             <div className="flex justify-end space-x-3 place-items-center">
                 <div className="hidden md:inline-block">
                     <div className="flex text-bold md:font-extrabold space-x-3 place-items-center">
-                        <Link href={"/review"} className="flex rounded-full bg-white text-[#FFAF19]  p-2 w-13 h-13 drop-shadow-md
-                        hover:brightness-75 hover:drop-shadow-none">
+                        <Link href={"/review"} className="flex rounded-full bg-white text-[#FFAF19]  p-2 w-13 h-13 
+                        hover:brightness-75  ring-1 ring-[#FFAF19]">
                             <PlusSmallIcon className="h-10 w-10" /></Link>
 
                         <Link href={'/ramens'} className="flex py-4 px-2 bg-white text-[#FFAF19] rounded-xl place-items-center h-15
-                        hover:brightness-75"
+                        hover:brightness-75 ring-1 ring-[#FFAF19]"
                         ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
                         {(!session) && <div className="place-items-center"><LoginModal /></div>}
                         {(session) && <AvaterMenu />}
@@ -43,7 +43,7 @@ function Header() {
 
                 <button className="rounded-full w-8 inline-block md:hidden">
                     <Bars4Icon
-                        className='h-10 w-10 text-white'
+                        className='h-10 w-10 text-[#FFAF19]'
                         onClick={() => OpenDrawer(true)}
                     /></button>
 
