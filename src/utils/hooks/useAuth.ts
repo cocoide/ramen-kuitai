@@ -4,12 +4,9 @@ import { signIn, signOut } from "next-auth/react";
 const useAuth =()=>{
     
     const signInWithGoogle = async() => {
-        const toastId =toast.loading("Googleアカウントでログイン中...");
+      toast.loading("Googleアカウントでログイン中...");
         await signIn('google', {
           callbackUrl: window.location.href,
-        });
-          toast.success("ログイン成功🎉",{
-          id: toastId,
         });
       };
       

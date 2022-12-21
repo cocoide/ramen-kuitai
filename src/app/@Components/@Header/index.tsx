@@ -14,7 +14,10 @@ import { isLoginModalOpen } from '../../../@types/models/Modal';
 function Header() {
     const OpenDrawer = useSetRecoilState(isDrawerOpen)
     const OpenLoginModal = useSetRecoilState(isLoginModalOpen)
-    const { data: session } = useSession();
+    const { data: session, status } = useSession();
+    const isLoadingUser = status === 'loading';
+    const user = session?.user;
+
     return (
         <header className="z-50 p-3 md:p-5 bg-white flex justify-between md:justify-start
         place-items-center border-[#FFAF19]">
@@ -45,9 +48,18 @@ function Header() {
                         ><MapPinIcon className='text-[#FFAF19] w-5 mr-2' /> 保存したお店</Link>
                         {(!session) && <div className="place-items-center"><LoginModal /></div>}
                     </div> */}
-                    {(session) ? <AvaterMenu /> :
+
+                    {/* {(session) ? <AvaterMenu /> :
                         <button onClick={() => OpenLoginModal(true)} className='text-[#FFAF19] rounded-full'
-                        ><UserCircleIcon className="h-10" /></button>}
+                        ><UserCircleIcon className="h-10" /></button>} */}
+
+                    {(isLoadingUser) ? <div className="w-12 h-12 bg-gray-300 animate-pulse rounded-full" />
+                        : user ? <AvaterMenu />
+                            : <button onClick={() => OpenLoginModal(true)} className='text-[#FFAF19] ring-none'
+                            ><UserCircleIcon className="h-12" /></button>}
+
+
+
                     <LoginModal />
                 </div>
 

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ramens } from '../@types/models/Ramen';
 import Link from 'next/link';
 import { cn } from '../utils/cn';
+import RamenCarousel from './@Components/Animations/RamenCarousel';
 
 function Home() {
     return (
@@ -23,15 +24,15 @@ function Home() {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
-                        <div className="flex justify-center overflow-x-hidden">
-                            {/* <RamenSlider /> */}
+                        <div className="flex justify-center">
+                            {/* <RamenCarousel /> */}
+
                             {ramens.map((ramen) => {
                                 return (
                                     <div key={ramen.shop_name} className="p-2">
                                         <Link href={`/ramens/${ramen.id}`}>
                                             <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
                                                 className={cn("rounded-xl w-50 aspect-square",)
-                                                    // onLoading ? "blur-sm" : "blur-0")
                                                 } />
                                         </Link>
                                     </div>);

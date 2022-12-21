@@ -1,10 +1,9 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, PencilSquareIcon, UserCircleIcon, UserIcon, UserMinusIcon } from '@heroicons/react/24/solid';
+import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, UserIcon, UserMinusIcon } from '@heroicons/react/24/solid';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, ReactNode } from 'react'
-import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import { useAuth } from '../../../utils/hooks/useAuth';
 
@@ -14,11 +13,10 @@ const AvaterMenu = () => {
     return (
         <div>
             <Menu as="div" className="relative z-50">
-                <Menu.Button className="w-12 h-12  md:w-15 md:w-15 lg:w-17 lg:w-17  justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2">
-                    {(status === "loading") ?
-                        <div className='rounded-full w-full h-full bg-gray-200 animate-pulse' />
-                        : <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
-                    }
+                <Menu.Button className="w-12 h-12  md:w-15 md:w-15  justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2">
+
+                    <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
+
                 </Menu.Button>
                 <Transition
                     as={Fragment}
@@ -29,9 +27,9 @@ const AvaterMenu = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-[#FFAF19]
-        rounded-md drop-shadow-xl focus:outline-none ring-none text-[#FFAF19]">
-                        <div className="p-1 border-b">
+                    <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-200
+        rounded-md focus:outline-none ring-1 ring-gray-200 text-[#FFAF19] duration-300 drop-shadow-xl">
+                        <div className="p-1 font-medium">
                             {Links.map((link) => (
                                 <Menu.Item key={link.path}>
                                     {({ active }) => (
@@ -46,7 +44,7 @@ const AvaterMenu = () => {
                                 </Menu.Item>
                             ))}
                         </div>
-                        <div className="p-1">
+                        <div className="p-1 font-medium">
                             <Menu.Item>
                                 {({ active }) => (
                                     <button onClick={Logout}
@@ -88,7 +86,7 @@ const MenuLink = ({
 
 const Links = [
     {
-        label: 'MYプロフィール',
+        label: 'プロフィール',
         icon: <UserIcon />,
         path: '/user/profile',
     },
@@ -129,7 +127,7 @@ const ListItem = ({
             <span
                 className={cn(
                     'w-5 h-5',
-                    active ? 'text-white' : 'text-[#FFAF19]'
+                    active ? 'text-white duaration-500' : 'text-[#FFAF19]'
                 )}
             >
                 {icon}

@@ -20,6 +20,7 @@ specifiers:
   postcss: ^8.4.18
   prisma: ^4.7.1
   react: 18.2.0
+  react-alice-carousel: ^2.7.0
   react-dom: 18.2.0
   react-hook-form: ^7.40.0
   react-hot-toast: ^2.4.0
@@ -41,6 +42,7 @@ dependencies:
   next: 13.0.6_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.18.5_6jx7hpii6hgsrmhxgqrmo3277u
   react: 18.2.0
+  react-alice-carousel: 2.7.0_react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.40.0_react@18.2.0
   react-hot-toast: 2.4.0_owo25xnefcwdq3zjgtohz6dbju
@@ -1160,6 +1162,15 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /react-alice-carousel/2.7.0_react@18.2.0:
+    resolution: {integrity: sha512-0QeqmBiGisvOk2UNCJoXQurX9beguhX2BbYwS540WxL7pbBzEXWV2tS7Al2tkWJyS4u6YTlQdwAV81Fk/PaTSg==}
+    peerDependencies:
+      react: '>=15.4'
+    dependencies:
+      react: 18.2.0
+      vanilla-swipe: 2.4.1
+    dev: false
+
   /react-dom/18.2.0_react@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -1392,6 +1403,10 @@ packages:
   /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+    dev: false
+
+  /vanilla-swipe/2.4.1:
+    resolution: {integrity: sha512-o6pfI0dipet88ZnPLV4Jx04Ia+U3xANh14vhROW2TOe/mrwk2JGG68+Z0BPoD1YUcQQEnK4SZBXkqFe+K1l7/w==}
     dev: false
 
   /webidl-conversions/3.0.1:
