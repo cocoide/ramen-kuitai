@@ -1,3 +1,4 @@
+"use client"
 import { Dialog, Transition } from '@headlessui/react'
 import { UserPlusIcon } from '@heroicons/react/24/solid';
 import { signIn } from 'next-auth/react';

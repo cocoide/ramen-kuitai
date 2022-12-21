@@ -19,14 +19,15 @@ function Header() {
         <header className="z-50 p-3 md:p-5 bg-white flex justify-between md:justify-start
         place-items-center border-[#FFAF19]">
 
-            <button className="rounded-full w-8 inline-block md:hidden mx-5">
+            <button className="w-8 inline-block md:hidden mx-5">
                 <Bars4Icon
                     className='h-10 w-10 text-[#FFAF19]'
                     onClick={() => OpenDrawer(true)}
                 /></button>
+
             <Link href="/" className="flex justify-center
             items-center font-bold text-3xl text-[#FFAF19] m-2"
-            > <Image src="/logos/ramen-kuitai.svg" alt="ramen-kuitai" width={150} height={70} className=""
+            > <Image src="/logos/ramen-kuitai.svg" alt="ramen-kuitai" width={170} height={100} className=""
                 />
             </Link>
 

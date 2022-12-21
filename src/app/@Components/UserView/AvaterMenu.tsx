@@ -10,11 +10,15 @@ import { useAuth } from '../../../utils/hooks/useAuth';
 
 const AvaterMenu = () => {
     const { data: session, status } = useSession();
+    const { } = status
     return (
         <div>
             <Menu as="div" className="relative z-50">
-                <Menu.Button className="w-17 h-17 justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2 p-1">
-                    <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
+                <Menu.Button className="w-12 h-12  md:w-15 md:w-15 lg:w-17 lg:w-17  justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2">
+                    {(status === "loading") ?
+                        <div className='rounded-full w-full h-full bg-gray-200 animate-pulse' />
+                        : <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
+                    }
                 </Menu.Button>
                 <Transition
                     as={Fragment}
