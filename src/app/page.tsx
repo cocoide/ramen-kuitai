@@ -3,11 +3,15 @@ import React from "react";
 import "/styles/globals.css";
 import { motion } from "framer-motion"
 import SearchRamen from './@Components/SearchRamen';
+import Image from 'next/image';
+import { ramens } from '../@types/models/Ramen';
+import Link from 'next/link';
+import { cn } from '../utils/cn';
 
 function Home() {
     return (
         <>
-            <div className="flex justify-center">
+            <div className="flex justify-center bg-white">
                 <div className="flex-col">
 
                     <motion.div
@@ -19,25 +23,26 @@ function Home() {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
-                        <div className="mt-[30px] mb-[20px]">
+                        <div className="flex justify-center overflow-x-hidden">
                             {/* <RamenSlider /> */}
+                            {ramens.map((ramen) => {
+                                return (
+                                    <div key={ramen.shop_name} className="p-2">
+                                        <Link href={`/ramens/${ramen.id}`}>
+                                            <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
+                                                className={cn("rounded-xl w-50 aspect-square",)
+                                                    // onLoading ? "blur-sm" : "blur-0")
+                                                } />
+                                        </Link>
+                                    </div>);
+                            })}
+                        </div>
+                        <div className="flex justify-center m-5">
                             <SearchRamen />
-                            {/* <div className="flex justify-center space-x-3 pt-3 lg:pt-5">
-                                <RamenListbox ramen={RamenCateory} />
-                                <RamenListbox ramen={RamenCity} />
 
-                                <div className="hidden md:inline-block w-[33%]">
-                                    <button className="flex justify-center w-full p-2 bg-[#808080] text-white rounded-md place-items-center">
-                                        <FunnelIcon className='flex text-white w-5 h-7 mr-2'
-                                        /> この条件で探す</button>
-                                </div>
-                            </div>
-                            <button className="mt-4 md:hidden flex justify-center w-full p-2
-                            bg-[#808080] text-white rounded-md place-items-center">
-                                <FunnelIcon className='flex text-white w-5 h-7 mr-2'
-                                /> この条件で探す</button>*/}
+                        </div>
 
-                        </div> 
+
                     </motion.div>
                 </div>
             </div>

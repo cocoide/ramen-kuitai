@@ -5,7 +5,7 @@ import { CursorArrowRaysIcon, MapIcon, TagIcon, UserPlusIcon, UserMinusIcon } fr
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { RamenCity } from '../../../../@types/models/City';
 import { isDrawerOpen } from '../../../../@types/models/Drawer';
 import { RamenCateory } from '../../../../@types/models/Ramen';
@@ -17,6 +17,7 @@ import SimpleAvater from '../../UserView/SimpleAvater';
 import LoginModal from '../../Modals/LoginModal';
 import { signOut, useSession } from 'next-auth/react';
 import { useAuth } from '../../../../utils/hooks/useAuth';
+import { isLoginModalOpen } from '../../../../@types/models/Modal';
 
 export const Drawer = () => {
     const { data: session } = useSession()
@@ -24,6 +25,7 @@ export const Drawer = () => {
 
     const router = useRouter();
     const [open, setOpen] = useRecoilState(isDrawerOpen);
+    const OpenLoginModal = useSetRecoilState(isLoginModalOpen)
     return (
         <div className='z-50'>
             <DrawerAnimation open={open} setOpen={setOpen}>
@@ -61,7 +63,20 @@ export const Drawer = () => {
 
                             {(session) ? <SimpleAvater w={50} h={50} image={"/avaters/user2.jpeg"}
                                 onClick={() => { router.push("/user/profile"); setOpen(false) }} />
-                                : <div className="mt-5 w-full"><LoginModal /></div>}
+                                : <div className="mt-5 w-full"><button
+                                    type="button"
+                                    onClick={() => OpenLoginModal(true)}
+                                    className="rounded-xl ring-2 ring-[#FFAF19] bg-orange-50 p-3 w-full flex justify-center
+                text-[#FFAF19] hover:brightness-90 hover:bg-[#FFAF19] hover:text-white disabled:cursor-default disabled:opacity-50 font-bold"
+                                >
+                                    <div className="flex flex-row items-center gap-1 font-bold">
+                                        <UserPlusIcon
+                                            height={25}
+                                            width={25}
+                                        /><h3>ログイン</h3>
+
+                                    </div>
+                                </button></div>}
                         </div>
                         <div className="relative mt-6 flex-1 px-4 sm:px-6">
                             <div className="absolute inset-0 px-4 sm:px-6 space-y-5">

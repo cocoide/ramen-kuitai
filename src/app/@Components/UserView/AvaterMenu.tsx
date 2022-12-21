@@ -12,7 +12,7 @@ const AvaterMenu = () => {
     const { data: session, status } = useSession();
     return (
         <div>
-            <Menu as="div" className="relative z-30">
+            <Menu as="div" className="relative z-50">
                 <Menu.Button className="w-17 h-17 justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2 p-1">
                     <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
                 </Menu.Button>

@@ -16,21 +16,6 @@ const LoginModal = () => {
     const [isOpen, setIsOpen] = useRecoilState(isLoginModalOpen)
     return (
         <>
-            <button
-                type="button"
-                onClick={() => setIsOpen(true)}
-                className="rounded-xl ring-2 ring-[#FFAF19] bg-orange-50 p-3 w-full flex justify-center
-        text-[#FFAF19] hover:brightness-90 hover:bg-[#FFAF19] hover:text-white disabled:cursor-default disabled:opacity-50 font-bold"
-                // {...props}
-            >
-                <div className="flex flex-row items-center gap-1 font-bold">
-                    <UserPlusIcon
-                        height={25}
-                        width={25}
-                    /><h3>ログイン</h3>
-
-                </div>
-            </button>
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-50" onClose={() => setIsOpen(false)}>
