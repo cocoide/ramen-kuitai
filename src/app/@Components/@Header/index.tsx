@@ -26,7 +26,7 @@ function Header() {
                 /></button>
             <Link href="/" className="flex justify-center
             items-center font-bold text-3xl text-[#FFAF19] m-2"
-            > RAMEN KUITAI<Image src="/ramen-orange.svg" alt="ramen" width={30} height={30} className="mx-4"
+            > <Image src="/logos/ramen-kuitai.svg" alt="ramen-kuitai" width={150} height={70} className=""
                 />
             </Link>
 
