@@ -11,7 +11,7 @@ const page = () => {
     return (
         <div className='bg-white'>
             <CreateReview />
-            <FetchReview />
+            {/* <FetchReview /> */}
         </div>
     )
 }
