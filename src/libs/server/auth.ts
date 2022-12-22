@@ -12,14 +12,14 @@ export const authOptions: NextAuthOptions={
     ],
     adapter: PrismaAdapter(prisma),
     secret: process.env.NEXT_PUBLIC_SECRET,
-    // session: {
-    //   strategy: "jwt",
-    //   maxAge: 30 * 24 * 60 * 60,
-    // },
+    session: {
+      strategy: "jwt",
+      maxAge: 30 * 24 * 60 * 60,
+    },
     callbacks: {
         async session({ token, session }) {
           if (token) {
-            // session.user.id = token.id
+            session.user.id = token.id
             session.user.name = token.name
             session.user.email = token.email
             session.user.image = token.picture
@@ -27,24 +27,24 @@ export const authOptions: NextAuthOptions={
 
           return session
         },
-        // async jwt({ token, user }) {
-        //   const prismaUser = await prisma.user.findFirst({
-        //     where: {
-        //       email: token.email,
-        //     },
-          // })
+        async jwt({ token, user }) {
+          const prismaUser = await prisma.user.findFirst({
+            where: {
+              email: token.email,
+            },
+          })
     
-          // if (!prismaUser) {
-          //   token.id = user.id
-          //   return token
-          // }
+          if (!prismaUser) {
+            token.id = user.id
+            return token
+          }
     
-          // return {
-          //   id: prismaUser.id,
-          //   name: prismaUser.name,
-          //   email: prismaUser.email,
-          //   picture: prismaUser.image,
-          // }
-        // },
+          return {
+            id: prismaUser.id,
+            name: prismaUser.name,
+            email: prismaUser.email,
+            picture: prismaUser.image,
+          }
+        },
     },
 }
