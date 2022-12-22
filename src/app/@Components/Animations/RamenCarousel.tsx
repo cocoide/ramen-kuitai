@@ -1,48 +1,53 @@
-
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
-import AliceCarousel from 'react-alice-carousel'
 import { ramens } from '../../../@types/models/Ramen';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
 import { cn } from '../../../utils/cn';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination'; 
 
-// https://codesandbox.io/s/crypto-tracker-6dw9n?file=/src/components/Banner/Carousel.js:1976-1984
+// https://codesandbox.io/s/bkpw8m?file=/src/App.jsx:413-1148
 const RamenCarousel = () => {
 
-  // const items = 
-  const responsive = {
-    0: { items: 2, },
-    512: { items: 3, },
-    1024: { items: 4 },
-  };
-
   return (
-    <div>
-      <AliceCarousel
-        mouseTracking
-        infinite
-        autoPlayInterval={1000}
-        animationDuration={1500}
-        disableDotsControls
-        disableButtonsControls
-        responsive={responsive}
-        // items={items}
-        autoPlay>
+    <div className="flex justify-center bg-white">
+      <Swiper
 
-        {/* //       {ramens.map((ramen) => {
-  //         return (
-  //           <div key={ramen.shop_name} className="p-2">
-  //             <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
-  //               className={cn("rounded-xl w-50 aspect-square",)
-  //               } />
-  //           </div>
-  //         );
-  //       })} */}
-          <Image src={"/ramens/0.jpeg"} alt={""} width={300} height={200} />
-          <Image src={"/ramens/1.jpeg"} alt={""} width={300} height={200} />
-          <Image src={"/ramens/2.jpeg"} alt={""} width={300} height={200} />
+        slidesPerView={3.5}
+        spaceBetween={5}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Autoplay, Pagination, Navigation]}
+        loop={true}
+        effect={"fade"}
+      >
 
-      </AliceCarousel>
+        {ramens.map((src) => {
+          return (
+            <SwiperSlide key={src.shop_name}>
+              <div className="p-2">
+                <Link href={`/ramens/${src.id}`}>
+                  <Image src={src.image} alt={src.shop_name} width={300} height={200}
+                    className={cn("rounded-xl w-50 aspect-square",)
+                    } />
+                </Link>
+              </div>
+            </SwiperSlide>
+          )
+        })}
+
+      </Swiper>
     </div>
   )
 }
+
 export default RamenCarousel
