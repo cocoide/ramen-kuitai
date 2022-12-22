@@ -12,10 +12,9 @@ import RamenCarousel from './@Components/Animations/RamenCarousel';
 function Home() {
     return (
         <>
-                    <RamenCarousel />
-            <div className="flex justify-center bg-white">
                 <div className="flex-col">
 
+                <div className="flex justify-center bg-white">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -25,7 +24,7 @@ function Home() {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
-                        <div className="flex justify-center m-5">
+                        <div className="flex justify-center mb-5">
                             <SearchRamen />
 
                         </div>
@@ -33,6 +32,7 @@ function Home() {
 
                     </motion.div>
                 </div>
+                <RamenCarousel />
             </div>
         </>
     );

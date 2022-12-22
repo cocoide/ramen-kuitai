@@ -7,7 +7,7 @@ const SearchRamen = () => {
                     <MagnifyingGlassIcon className="h-6 w-6 text-gray-400 mx-2" />
                 </button>
                 <input type="search" className="focus:ring-transparent ring-none border-none bg-gray-100
-            rounded-xl  w-[350px] md:w-[600px] lg:w-[800px]  h-15 lg:h-17 p-2"
+            rounded-xl  w-[320px] md:w-[600px] lg:w-[800px]  h-15 lg:h-17 p-2"
                     placeholder="検索" />
         </form>
         </>
