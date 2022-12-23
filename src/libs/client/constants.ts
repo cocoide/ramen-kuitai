@@ -1,1 +1,1 @@
-export const API_URL = 'https://ramen-kuitai:3000/api'
+export const API_URL = 'https://ramen-kuitai.vercel.app/api'
