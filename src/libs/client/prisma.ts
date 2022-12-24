@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-『npx prisma generate』でPrismaClientをインスタンス化
+// 『npx prisma generate』でPrismaClientをインスタンス化
 
 let prisma: PrismaClient
 
