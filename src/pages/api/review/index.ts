@@ -51,11 +51,11 @@ import prisma from '../../../libs/client/prisma';
         return res.status(201).json({})
         
     }catch(e){
-        if (e instanceof z.ZodError) {
-            return res.status(422).json(e.issues)
+          if (e instanceof z.ZodError) {
+              return res.status(422).json(e.issues)
+          }
+          return res.status(500).json({e});
         }
-            }
-            return res.status(500).json({error: "Server error"});
-        }
+  }
     }
     // export default withMethods(["GET", "POST"], handler)
