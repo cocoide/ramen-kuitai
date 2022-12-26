@@ -44,8 +44,8 @@ import prisma from '../../../libs/client/prisma';
           title,
           rating,
           content,
-          // authorId: session.user.email,
-          shopId,
+          authorId: session.user.email,
+          // shopId,
         },
       })
         return res.status(201).json({review})
