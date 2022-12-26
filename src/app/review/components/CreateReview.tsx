@@ -25,15 +25,15 @@ const CreateReview = () => {
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
         const toastId = toast.loading("投稿作成中...");
         try {
-            const body = reviewCreateSchema.parse(data);
-            await axios.post(`${API_URL}/review`, body)
+            // const body = reviewCreateSchema.parse(data);
+            await axios.post(`${API_URL}/review`, data)
             toast.success("投稿の作成に成功🎉", {
                 id: toastId,
             });
             router.refresh()
             reset()
         } catch (error) {
-            // console.log(error)
+            console.log(error)
             toast.error("投稿の作成に失敗", {
                 id: toastId,
             });
