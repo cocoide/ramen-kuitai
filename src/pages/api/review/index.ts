@@ -22,10 +22,10 @@ import prisma from '../../../libs/client/prisma';
         try {
           const posts = await prisma.review.findMany({
             where: {
-              authorId: session.user.email,
+              authorId: session?.user.email,
             },
         })
-        return res.json(posts)
+        return res.json(posts);
         } 
         catch (error) {
           return res.status(500).end();

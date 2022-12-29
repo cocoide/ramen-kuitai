@@ -1,4 +1,5 @@
 import { StarIcon } from '@heroicons/react/20/solid';
+import axios from 'axios';
 import { unstable_getServerSession } from 'next-auth';
 import { use, useState } from 'react'
 import prisma from '../../../libs/client/prisma'
@@ -10,23 +11,18 @@ https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 async function fetchYourReview() {
     const session = await unstable_getServerSession(authOptions);
-    const data = await prisma.review.findMany(
-        {
-            where: {
-                authorId: session?.user.email
-            }
-        }
-    );
-    return data
+    const data = await axios.get('/review')
+    console.log(data)
 }
 
 const FetchReview = () => {
     const review = use(fetchYourReview())
+    console.log(review)
     const session = unstable_getServerSession(authOptions);
     return (
         session ?
         <div>
-            {review.map(review => {
+                {/* {review.map(review => {
                 return (
                     <div key={review.id} className="flex justify-between p-2">
                         <h2>{review.title}</h2>
@@ -43,7 +39,7 @@ const FetchReview = () => {
                         </div>
                     </div>
                 )
-            })}
+            })} */}
         </div>
             :
             (<div>
