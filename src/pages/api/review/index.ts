@@ -36,7 +36,7 @@ import prisma from '../../../libs/client/prisma';
         try{
    
       // const reviews = reviewCreateSchema.parse(req.body)
-      const { image, title, rating, content, shopId} =req.body;
+      const { image, title, rating, content} =req.body;
         
         const review= await prisma.review.create({
         data: {
@@ -48,7 +48,7 @@ import prisma from '../../../libs/client/prisma';
           // shopId: "1",
         },
       })
-        return res.status(201).json({})
+        return res.status(201).json(review)
         
     }catch(e){
           if (e instanceof z.ZodError) {
