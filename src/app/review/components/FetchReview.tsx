@@ -2,6 +2,7 @@ import { StarIcon } from '@heroicons/react/20/solid';
 import axios from 'axios';
 import { unstable_getServerSession } from 'next-auth';
 import { use, useState } from 'react'
+import { API_URL } from '../../../libs/client/constants';
 import prisma from '../../../libs/client/prisma'
 import { authOptions } from '../../../libs/server/auth';
 import { cn } from '../../../utils/cn';
@@ -10,17 +11,16 @@ import { cn } from '../../../utils/cn';
 https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 async function fetchYourReview() {
-    const session = await unstable_getServerSession(authOptions);
-    const data = await axios.get('/review')
+    const data = await axios.get(`${API_URL}/review`)
     console.log(data)
 }
 
 const FetchReview = () => {
     const review = use(fetchYourReview())
     console.log(review)
-    const session = unstable_getServerSession(authOptions);
+    // const session = unstable_getServerSession(authOptions);
     return (
-        session ?
+        // session ?
         <div>
                 {/* {review.map(review => {
                 return (
@@ -41,10 +41,10 @@ const FetchReview = () => {
                 )
             })} */}
         </div>
-            :
-            (<div>
-                <div>あなたは何も投稿していません </div>
-            </div>)
+        //     :
+        //     (<div>
+            //     <div>あなたは何も投稿していません </div>
+            // </div>)
     )
 }
 export default FetchReview
