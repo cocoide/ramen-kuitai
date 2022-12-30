@@ -13,7 +13,8 @@ const AvaterMenu = () => {
     return (
         <div>
             <Menu as="div" className="relative z-50">
-                <Menu.Button className="w-12 h-12  md:w-15 md:w-15  justify-center rounded-full bg-white focus:outline-none focus-visible:ring-2">
+                <Menu.Button className="w-10 h-10  justify-center rounded-full 
+                bg-[#e0d5c1]  focus:outline-none p-1">
 
                     <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
 

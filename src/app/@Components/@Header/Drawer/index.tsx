@@ -30,23 +30,15 @@ export const Drawer = () => {
             <DrawerAnimation open={open} setOpen={setOpen}>
 
                 <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                    <div className="px-4 sm:px-6">
-                        <Dialog.Title className="flex justify-between place-items-center text-[#FFAF19]">
-                            <Image src="/ramen-orange.svg" alt="ramen" width={33} height={33} className="mb-2" />
 
-                            <div className='z-20 w-auto font-bold text-2xl sm:text-3xl'
-                            >RAMEN KUITAI
-                            </div>
-
+                        <Dialog.Title className="flex justify-end place-items-center text-[#FFAF19]">
                             <button
                                 type="button"
                                 onClick={() => setOpen(false)}
-                                className="z-30 h-10 w-10 rounded-full"
+                                className="z-30 h-10 w-10 rounded-full mr-3"
                             ><XCircleIcon />
                             </button>
-
                         </Dialog.Title>
-                    </div>
 
                     {/* Contents start here */}
                     <motion.div
@@ -60,9 +52,7 @@ export const Drawer = () => {
                     >
                         <div className="flex justify-center place-items-center p-5">
 
-                            {(session) ? <SimpleAvater w={50} h={50} image={"/avaters/user2.jpeg"}
-                                onClick={() => { router.push("/user/profile"); setOpen(false) }} />
-                                : <div className="mt-5 w-full"><button
+                            {(!session)&&<div className="mt-5 w-full"><button
                                     type="button"
                                     onClick={() => OpenLoginModal(true)}
                                     className="rounded-xl ring-2 ring-[#FFAF19] bg-orange-50 p-3 w-full flex justify-center

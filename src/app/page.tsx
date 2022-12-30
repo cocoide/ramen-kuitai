@@ -24,15 +24,8 @@ function Home() {
                             ease: [0, 0.71, 0.2, 1.01]
                         }}
                     >
-                        <div className="flex justify-center mb-5">
-                            <SearchRamen />
-
-                        </div>
-
-
                     </motion.div>
                 </div>
-                <RamenCarousel />
             </div>
         </>
     );
