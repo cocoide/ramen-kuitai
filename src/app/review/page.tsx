@@ -14,10 +14,10 @@ async function fetchYourReview() {
     return data
 };
 
-const page = () => {
+const page = async () => {
+    const session = await unstable_getServerSession(authOptions);
     const review = use(fetchYourReview())
     console.log(review)
-    const session = unstable_getServerSession(authOptions);
     return (
         <div className='bg-white'>
             <CreateReview />
