@@ -12,7 +12,6 @@ import { RamenCateory } from '../../../../@types/models/Ramen';
 import Contents from './Disclosure/Contents';
 import DrawerDisclosure from './Disclosure/DrawerDisclosure';
 import DrawerAnimation from './Animation';
-import { motion } from "framer-motion"
 import SimpleAvater from '../../UserView/SimpleAvater';
 import { useSession } from 'next-auth/react';
 import { useAuth } from '../../../../utils/hooks/useAuth';
@@ -41,15 +40,6 @@ export const Drawer = () => {
                         </Dialog.Title>
 
                     {/* Contents start here */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                            duration: 1,
-                            delay: 0,
-                            ease: [0, 0.71, 0.2, 1.01]
-                        }}
-                    >
                         <div className="flex justify-center place-items-center p-5">
 
                             {(!session)&&<div className="mt-5 w-full"><button
@@ -109,7 +99,6 @@ export const Drawer = () => {
 
                             </div>
                         </div>
-                    </motion.div>
                 </div>
             </DrawerAnimation>
         </div>
