@@ -1,25 +1,12 @@
 import { StarIcon } from '@heroicons/react/20/solid';
-import axios from 'axios';
-import { unstable_getServerSession } from 'next-auth';
-import { use, useState } from 'react'
-import { API_URL } from '../../../libs/client/constants';
-import prisma from '../../../libs/client/prisma'
-import { authOptions } from '../../../libs/server/auth';
+import { Review } from '../../../@types/models/Review';
 import { cn } from '../../../utils/cn';
 
 {/* <use hooks>に関する注意点
 https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
-async function fetchYourReview() {
-    const body = await axios.get(`${API_URL}/review`)
-    const { data } = body
-    return data
-}
 
-const FetchReview = () => {
-    const review = use(fetchYourReview())
-    console.log(review)
-    const session = unstable_getServerSession(authOptions);
+const FetchReview = ({ review, session }: { review: Review[], session: any }) => {
     return (
         session ?
         <div>
