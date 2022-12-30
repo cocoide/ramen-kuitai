@@ -11,18 +11,19 @@ import { cn } from '../../../utils/cn';
 https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 async function fetchYourReview() {
-    const data = await axios.get(`${API_URL}/review`)
-    console.log(data)
+    const body = await axios.get(`${API_URL}/review`)
+    const { data } = body
+    return data
 }
 
 const FetchReview = () => {
     const review = use(fetchYourReview())
     console.log(review)
-    // const session = unstable_getServerSession(authOptions);
+    const session = unstable_getServerSession(authOptions);
     return (
-        // session ?
+        session ?
         <div>
-                {/* {review.map(review => {
+                {review.map(review => {
                 return (
                     <div key={review.id} className="flex justify-between p-2">
                         <h2>{review.title}</h2>
@@ -39,12 +40,13 @@ const FetchReview = () => {
                         </div>
                     </div>
                 )
-            })} */}
+            })}
+
         </div>
-        //     :
-        //     (<div>
-            //     <div>あなたは何も投稿していません </div>
-            // </div>)
+            :
+            (<div>
+                <div>あなたは何も投稿していません </div>
+            </div>)
     )
 }
 export default FetchReview

@@ -14,9 +14,9 @@ import prisma from '../../../libs/client/prisma';
  export default async function handler(req: NextApiRequest, res: NextApiResponse) {
    
     const session = await unstable_getServerSession( req, res, authOptions);
-    if (!session) {
-        return res.status(403).json({error: "You are not authenticated"})
-      };
+    // if (!session) {
+    //     return res.status(403).json({error: "You are not authenticated"})
+    //   };
       
       if (req.method === "GET") {
         try {
