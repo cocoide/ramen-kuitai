@@ -12,6 +12,9 @@ export const authOptions: NextAuthOptions={
     ],
     adapter: PrismaAdapter(prisma),
     secret: process.env.NEXT_PUBLIC_SECRET,
+    pages: {
+      signIn: "/login",
+    },
     session: {
       strategy: "jwt",
       maxAge: 30 * 24 * 60 * 60,

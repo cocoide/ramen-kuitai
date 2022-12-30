@@ -14,8 +14,7 @@ import DrawerDisclosure from './Disclosure/DrawerDisclosure';
 import DrawerAnimation from './Animation';
 import { motion } from "framer-motion"
 import SimpleAvater from '../../UserView/SimpleAvater';
-import LoginModal from '../../Modals/LoginModal';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useAuth } from '../../../../utils/hooks/useAuth';
 import { isLoginModalOpen } from '../../../../@types/models/Modal';
 
@@ -105,7 +104,7 @@ export const Drawer = () => {
 
                                 <Link href={'/ramens'}
                                     className="flex justify-center place-items-center
-                                    p-2 bg-[#dc2626] text-white rounded-md"
+                                    p-2 bg-[#FFAF19] text-white rounded-md"
                                     onClick={() => setOpen(false)}
                                 ><MapPinIcon className='text-white w-5 mr-3'
                                     /> 保存したお店</Link>

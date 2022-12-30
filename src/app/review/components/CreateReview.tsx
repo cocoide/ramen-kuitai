@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 import { reviewCreateSchema } from '../../../libs/server/validations/review';
+import Image from 'next/image';
 
 type FormData = z.infer<typeof reviewCreateSchema>
 
@@ -44,28 +45,36 @@ const CreateReview = () => {
 
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-10 bg-white p-5">
-                <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-200" />
-                <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-200" />
-                <input {...register('image')} className="h-10 w-30 p-1 rounded-md bg-gray-200" />
+                <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
+                {/* Title */}
                 <div className="flex justify-center">
-                    {/* https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6 */}
                     {[...Array(5)].map((star, index) => {
                         index += 1;
                         return (
                             <button type="button" key={index}
-                                className={cn(index <= rating ? "text-yellow-400" : "text-gray-200", "hover:scale-110 duration-200")}
+                                className={cn(index <= rating ? "text-yellow-300" : "text-gray-200", "hover:scale-110 duration-200")}
                                 onClick={() => {
                                     setRating(index)
                                     setValue("rating", index)
-                                }}><StarIcon className="h-10 w-10" />
+                                }}><StarIcon className="h-8 w-8" />
                             </button>
                         )
                     })}
-                    <button type="submit" className="bg-[#FFAF19] text-white rounded-md p-2 font-bold ml-5">
-                        Submit
+                </div>
+                {/* Rating */}
+
+                <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
+                {/* <input {...register('image')} className="h-10 w-30 p-1 rounded-md bg-gray-200" /> */}
+
+                <div className="flex justify-center">
+                    {/* https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6 */}
+                    <button type="submit" className="bg-[#FFAF19] text-white rounded-md p-2 ml-5 flex space-x-1
+                font-medium">
+                        <Image src={"/ramen-white.svg"} alt="submit-image" width={20} height={20} />
+                        <div>SUBMIT</div>
                     </button>
                 </div>
-
+                {/* Submit button */}
             </form>
         </div>
     )

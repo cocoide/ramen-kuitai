@@ -11,12 +11,6 @@ import prisma from '../../libs/client/prisma';
 import { getCurrentUser, getSession } from '../../libs/server/session';
 import { redirect } from 'next/navigation';
 
-// async function fetchYourReview() {
-//     const body = await axios.get(`${API_URL}/review`)
-//     const { data } = body
-//     return data
-// };
-
 // Now userId is email
 const getReviewForUser = cache(async (userId: User["email"]) => {
     return await prisma.review.findMany({
@@ -26,6 +20,7 @@ const getReviewForUser = cache(async (userId: User["email"]) => {
         select: {
             id: true,
             title: true,
+            image: true,
             rating: true,
         },
     })
@@ -38,12 +33,13 @@ export default async function ReviewPage() {
     }
     const reviews = await getReviewForUser(user.email);
     const session = await getSession();
-    console.log(reviews)
 
     return (
+        <>
         <div className='bg-white'>
             <CreateReview />
+            </div>
             <FetchReview review={reviews} session={session} />
-        </div>
+        </>
     )
 }
