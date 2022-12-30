@@ -21,7 +21,7 @@ const page = async () => {
     return (
         <div className='bg-white'>
             <CreateReview />
-            <FetchReview review={review} session={session} />
+            {/* <FetchReview review={review} session={session} /> */}
         </div>
     )
 }
