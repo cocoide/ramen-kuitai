@@ -35,17 +35,10 @@ function Header() {
                 <Link href={"/search"}><MagnifyingGlassIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 mr-2' /></Link>
                 {/* Search button */}
 
+                {user && <Link href={"/notifications"}><BellIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300 mr-2' /></Link>
+                }{/* Notice button */}
 
 
-                <div className="place-items-center space-x-2 hidden lg:inline-flex">
-
-                    <Link href={"/notice"}><BellIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300' /></Link>
-                    {/* Notice button */}
-
-                    <Link href={"/review"}><PlusCircleIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300 mr-2' /></Link>
-                    {/* Review button */}
-
-                </div>
 
                 {(isLoadingUser) ? <div className="w-10 h-10 bg-[#D8CEBA] animate-pulse rounded-full" />
                         : user ? <AvaterMenu />
@@ -54,11 +47,11 @@ function Header() {
                 {/* User menu */}
 
                         
-                <button className="w-8 mx-2">
+                {/* <button className="w-8 mx-2">
                     <Bars4Icon
                         className='h-10 w-10 text-[#D8CEBA]'
                         onClick={() => OpenDrawer(true)}
-                    /></button>
+                    /></button> */}
                 {/* Menu button */}
 
 

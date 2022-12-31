@@ -1,5 +1,5 @@
 import { Menu, Transition } from '@headlessui/react'
-import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, UserIcon, UserMinusIcon } from '@heroicons/react/24/solid';
+import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, PencilSquareIcon, UserIcon, UserMinusIcon } from '@heroicons/react/24/solid';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -95,6 +95,11 @@ const Links = [
         label: '保存したお店',
         icon: <MapPinIcon />,
         path: '/ramens',
+    },
+    {
+        label: 'らあ活を投稿',
+        icon: <PencilSquareIcon />,
+        path: '/review',
     },
     {
         label: 'いいねした投稿',
