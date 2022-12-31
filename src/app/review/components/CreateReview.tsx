@@ -71,7 +71,7 @@ const CreateReview = () => {
                     <button type="submit" className="bg-[#FFAF19] text-white rounded-md p-2 ml-5 flex space-x-1
                 font-medium">
                         <Image src={"/ramen-white.svg"} alt="submit-image" width={20} height={20} />
-                        <div>SUBMIT</div>
+                        <div>らあ活</div>
                     </button>
                 </div>
                 {/* Submit button */}

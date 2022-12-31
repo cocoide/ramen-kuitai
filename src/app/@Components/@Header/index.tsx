@@ -24,39 +24,39 @@ function Header() {
 
 
             <Link href="/" className="flex justify-center
-            items-center font-bold text-3xl text-[#e0d5c1] m-2"
-            > <Image src="/ramen-kuitai-logo.svg" alt="ramen-kuitai" width={110} height={60} className=""
+            items-center font-bold text-3xl text-[#D8CEBA] m-2"
+            > <Image src="/header-logo.svg" alt="ramen-kuitai" width={110} height={60} className=""
                 /></Link>
             {/* Logo */}
 
             <div className="flex place-items-center">
 
 
-                <Link href={"/search"}><MagnifyingGlassIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300' /></Link>
+                <Link href={"/search"}><MagnifyingGlassIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 mr-2' /></Link>
                 {/* Search button */}
 
-                <Link href={"/notice"}><BellIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 ml-3' /></Link>
-                {/* Notice button */}
 
 
-                <div className="place-items-center space-x-3 hidden lg:inline-flex">
+                <div className="place-items-center space-x-2 hidden lg:inline-flex">
 
+                    <Link href={"/notice"}><BellIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300' /></Link>
+                    {/* Notice button */}
 
-                    <Link href={"/review"}><PlusCircleIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 ml-3' /></Link>
+                    <Link href={"/review"}><PlusCircleIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300 mr-2' /></Link>
                     {/* Review button */}
 
-                {(isLoadingUser) ? <div className="w-10 h-10 bg-gray-300 animate-pulse rounded-full" />
-                        : user ? <AvaterMenu />
-                        : <button onClick={() => OpenLoginModal(true)} className='text-[#FFAF19] ring-none'
-                        ><UserCircleIcon className="h-10" /></button>}
-                {/* User menu */}
                 </div>
 
+                {(isLoadingUser) ? <div className="w-10 h-10 bg-[#D8CEBA] animate-pulse rounded-full" />
+                        : user ? <AvaterMenu />
+                        : <button onClick={() => OpenLoginModal(true)} className='text-[#D8CEBA] ring-none'
+                        ><UserCircleIcon className="h-10" /></button>}
+                {/* User menu */}
 
                         
-                <button className="w-8 mx-3">
+                <button className="w-8 mx-2">
                     <Bars4Icon
-                        className='h-10 w-10 text-[#e0d5c1]'
+                        className='h-10 w-10 text-[#D8CEBA]'
                         onClick={() => OpenDrawer(true)}
                     /></button>
                 {/* Menu button */}

@@ -28,7 +28,7 @@ export default function RootLayout({
                             </div>
                             {children}
                             <div className="inline-block md">
-                                <FooterNavi />
+                                {/* <FooterNavi /> */}
                             </div>
                         </RecoilProvider>
                     </Suspense>

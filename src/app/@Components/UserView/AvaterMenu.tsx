@@ -29,7 +29,7 @@ const AvaterMenu = () => {
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items className="absolute right-0 w-56 mt-2 origin-top-right bg-white divide-y divide-gray-200
-        rounded-md focus:outline-none ring-1 ring-gray-200 text-[#FFAF19] duration-300 drop-shadow-xl">
+        rounded-md focus:outline-none ring-1 ring-gray-200 text-[#D8CEBA] duration-300 drop-shadow-xl">
                         <div className="p-1 font-medium">
                             {Links.map((link) => (
                                 <Menu.Item key={link.path}>
@@ -122,13 +122,13 @@ const ListItem = ({
         <span
             className={cn(
                 'flex items-center space-x-2 p-2 rounded text-xl text-left',
-                active && 'text-white bg-[#FFAF19]'
+                active && 'text-white bg-[#D8CEBA]'
             )}
         >
             <span
                 className={cn(
                     'w-5 h-5',
-                    active ? 'text-white duaration-500' : 'text-[#FFAF19]'
+                    active ? 'text-white duaration-500' : 'text-[#D8CEBA]'
                 )}
             >
                 {icon}
