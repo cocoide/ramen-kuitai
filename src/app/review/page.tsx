@@ -1,10 +1,7 @@
 
 import FetchReview from './components/FetchReview'
 import CreateReview from './components/CreateReview';
-import axios from 'axios';
-import { API_URL } from '../../libs/client/constants';
 import { cache, use } from 'react';
-import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../../libs/server/auth';
 import { User } from '@prisma/client';
 import prisma from '../../libs/client/prisma';
@@ -33,7 +30,6 @@ export default async function ReviewPage() {
     }
     const reviews = await getReviewForUser(user.email);
     const session = await getSession();
-
     return (
         <>
         <div className='bg-white'>

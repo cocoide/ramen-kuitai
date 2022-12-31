@@ -23,7 +23,7 @@ function Header() {
         place-items-center">
 
 
-            <Link href="/" className="flex justify-center
+            <Link href="/ramens" className="flex justify-center
             items-center font-bold text-3xl text-[#D8CEBA] m-2"
             > <Image src="/header-logo.svg" alt="ramen-kuitai" width={110} height={60} className=""
                 /></Link>

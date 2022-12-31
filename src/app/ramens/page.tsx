@@ -1,50 +1,30 @@
-"use client"
+import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { Ramen, ramens } from '../../@types/models/Ramen';
+import { use } from 'react';
+import prisma from '../../libs/client/prisma';
 import { cn } from '../../utils/cn';
-// async function getRamenAll() {
-//     const res = await fetch(`${ROOT_URL}/api/ramen`);
-//     return res.json();
 
+async function getAllRamen() {
+    return await prisma.ramenShop.findMany()
+}
 
-
-export default function Page() {
-    // const ramens: Ramen[] = use(getRamenAll())
-    const [onLoading, setCompleted] = useState<boolean>(true)
+export default async function RamenPage() {
+    const ramens = await getAllRamen()
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 place-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg place-items-center">
             {ramens.map((ramen) => {
                 return (
-                    <div key={ramen.shop_name} className="p-2">
+                    <div key={ramen.id} className="p-2">
                         <Link href={`/ramens/${ramen.id}`}>
-                            <div>{ramen.shop_name}</div>
+                            <div>{ramen.name}</div>
 
-                            <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
-                                className={cn("rounded-xl h-auto aspect-square",)
-                                    // onLoading ? "blur-sm" : "blur-0")
-                                }
-                                onLoadingComplete={() => setCompleted(false)} />
+                            <Image src={ramen.image} alt={ramen.name} width={300} height={200}
+                                className={cn("rounded-xl h-auto aspect-square",)} />
                         </Link>
                     </div>);
             })}
-            {ramens.map((ramen) => {
-                return (
-                    <div key={ramen.shop_name} className="p-2">
-                        <Link href={`/ramens/${ramen.id}`}>
-                            <div>{ramen.shop_name}</div>
-
-                            <Image src={ramen.image} alt={ramen.shop_name} width={300} height={200}
-                                className={cn("rounded-xl h-auto aspect-square",)
-                                    // onLoading ? "blur-sm" : "blur-0")
-                                }
-                                onLoadingComplete={() => setCompleted(false)} />
-                        </Link>
-                    </div>);
-            })}
-
         </div>
     );
 }
