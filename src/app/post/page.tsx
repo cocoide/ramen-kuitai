@@ -23,7 +23,7 @@ const getReviewForUser = cache(async (userId: User["email"]) => {
     })
 });
 
-export default async function ReviewPage() {
+export default async function PostReviewPage() {
     const user = await getCurrentUser()
     if (!user) {
         redirect(authOptions.pages.signIn)
@@ -32,8 +32,8 @@ export default async function ReviewPage() {
     const session = await getSession();
     return (
         <>
-        <div className='bg-white'>
-            <CreateReview />
+            <div className='bg-white'>
+                <CreateReview />
             </div>
             <FetchReview review={reviews} session={session} />
         </>

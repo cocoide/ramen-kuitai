@@ -99,7 +99,7 @@ const Links = [
     {
         label: 'らあ活を投稿',
         icon: <PencilSquareIcon />,
-        path: '/review',
+        path: '/post',
     },
     {
         label: 'いいねした投稿',

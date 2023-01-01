@@ -4,7 +4,7 @@ import React from "react";
 import "/styles/globals.css";
 import { Bars4Icon, MagnifyingGlassIcon, PlusCircleIcon, UserCircleIcon, BellIcon } from '@heroicons/react/24/outline'
 import { useSetRecoilState } from 'recoil';
-import { isDrawerOpen } from '../../../@types/models/Drawer';
+// import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
 import AvaterMenu from '../UserView/AvaterMenu';
 import { useSession } from 'next-auth/react';
@@ -12,7 +12,7 @@ import LoginModal from '../Modals/LoginModal';
 import { isLoginModalOpen } from '../../../@types/models/Modal';
 
 function Header() {
-    const OpenDrawer = useSetRecoilState(isDrawerOpen)
+    // const OpenDrawer = useSetRecoilState(isDrawerOpen)
     const OpenLoginModal = useSetRecoilState(isLoginModalOpen)
     const { data: session, status } = useSession();
     const isLoadingUser = status === 'loading';
@@ -32,7 +32,7 @@ function Header() {
             <div className="flex place-items-center">
 
 
-                <Link href={"/search"}><MagnifyingGlassIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 mr-2' /></Link>
+                <Link href={"/explore"}><MagnifyingGlassIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 mr-2' /></Link>
                 {/* Search button */}
 
                 {user && <Link href={"/notifications"}><BellIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300 mr-2' /></Link>
@@ -55,7 +55,7 @@ function Header() {
                 {/* Menu button */}
 
 
-                    <LoginModal />
+                <LoginModal />
                 {/* Modal */}
 
 

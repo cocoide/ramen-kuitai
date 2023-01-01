@@ -10,9 +10,6 @@ export default function ReviewDetailLayout({
 }) {
     return (
         <>
-            <div className="bg-white h-10 border-t-2 border-[#f3f0eb] place-items-center">
-                <Link href="/ramens"><ChevronLeftIcon className="h-8 w-8 text-[#D8CEBA]" /></Link>
-            </div>
             <Suspense fallback={<div><CircleLoading /></div>}>
                 <div>{children}</div>
             </Suspense>
