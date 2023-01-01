@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import prisma from '../../../libs/client/prisma';
 import { cn } from '../../../utils/cn';
-import BackButton from '../components/BackButton';
+import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
 async function getRamenDetail(shopId: RamenShop["id"]) {
