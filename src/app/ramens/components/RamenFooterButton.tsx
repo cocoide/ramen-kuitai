@@ -12,12 +12,12 @@ const RamenFooterButton = () => {
             >
                 {/* <Image src="/ramen-footer/ramen.svg" alt="" width={30} height={30} className="h-auto aspect-square mr-2"
                 /> */}
-                <HandThumbUpIcon className="mr-2 w-8 h-8 text-[#c3b9a8]" />
+                <HandThumbUpIcon className="mr-2 w-7 h-7 text-[#c3b9a8]" />
                 クイタイ</button>
 
             <button className="flex justify-center place-items-center
             rounded-xl bg-[#c3b9a8]  text-white w-[50%] m-3 p-2 font-bold"
-            ><Image src="/ramen-footer/pen.svg" alt="" width={30} height={30} className="h-auto aspect-square mr-2"
+            ><Image src="/ramen-footer/pen.svg" alt="" width={28} height={28} className="h-auto aspect-square mr-2"
                 />らあ活を投稿</button>
         </div>
     )

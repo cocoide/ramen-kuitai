@@ -1,5 +1,3 @@
-import { ChevronLeftIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
 import { Suspense } from 'react';
 import CircleLoading from '../../@Components/Animations/CircleLoading';
 
