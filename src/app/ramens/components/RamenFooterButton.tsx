@@ -7,12 +7,12 @@ const RamenFooterButton = () => {
     return (
         <div className="inline-flex justify-center md:hidden w-full">
 
-            <button className="flex justify-center place-items-center
-            outline outline-[#c3b9a8] rounded-xl w-[50%] ml-3 my-3 p-2 bg-white text-[#c3b9a8] font-bold"
+            <button className="flex justify-center place-items-center rounded-xl
+            ring-2 ring-[#c3b9a8] w-[50%] ml-3 my-3 p-2 bg-white text-[#c3b9a8] font-bold"
             >
-                <Image src="/ramen-footer/ramen.svg" alt="" width={30} height={30} className="h-auto aspect-square mr-2"
-                />
-                {/* <HandThumbUpIcon className="mr-2 w-8 h-8 text-[#c3b9a8]" /> */}
+                {/* <Image src="/ramen-footer/ramen.svg" alt="" width={30} height={30} className="h-auto aspect-square mr-2"
+                /> */}
+                <HandThumbUpIcon className="mr-2 w-8 h-8 text-[#c3b9a8]" />
                 クイタイ</button>
 
             <button className="flex justify-center place-items-center
