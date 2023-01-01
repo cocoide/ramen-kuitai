@@ -15,7 +15,7 @@ async function getRamenDetail(shopId: RamenShop["id"]) {
         },
         include: {
             category: true,
-        },
+        }
     })
 };
 
