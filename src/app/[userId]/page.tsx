@@ -15,7 +15,7 @@ const getUserData = cache(async (userId: User["id"]) => {
 interface UserProps {
     params: { userId: string }
 };
-export default async function UserMyPage({ params }: UserProps) {
+export default async function UserPage({ params }: UserProps) {
     const user = await getUserData(params.userId)
     if (!user) {
         notFound();

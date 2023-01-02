@@ -2,7 +2,7 @@ import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
-export default function Loading() {
+export default function RamenLoading() {
     return (
         <div className="flex flex-col">
             <div className="flex flex-col justify-center place-items-center">

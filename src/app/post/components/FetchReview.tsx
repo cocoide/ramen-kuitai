@@ -1,20 +1,30 @@
+"use client"
 import { StarIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Review } from '../../../@types/models/Review';
+import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 
 {/* <use hooks>に関する注意点
 https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 
+async function deleteReview(reviewId: string) {
+    return await fetch(`${API_URL}/review/${reviewId}`, {
+        method: 'DELETE',
+    })
+};
+
 const FetchReview = ({ review, session }: { review: Review[], session: any }) => {
+    const router = useRouter();
     return (
         session ?
             <div className="overflow-auto">
                 {review.map(review => {
                 return (
-                    <div key={review.id} className="flex space-x-3 p-3 mx-10 my-5 bg-white rounded-md
+                    <div key={review.id} className="flex justify-between space-x-3 p-3 mx-10 my-5 bg-white rounded-md
                      h-50">
 
                         {(review.image) ?
@@ -35,6 +45,7 @@ const FetchReview = ({ review, session }: { review: Review[], session: any }) =>
                         <div className="flex flex-col">
 
                         <h2>{review.title}</h2>
+                            <h3>{review.content}</h3>
 
                         <div className="flex">
                             {[...Array(5)].map((star, index) => {
@@ -48,8 +59,11 @@ const FetchReview = ({ review, session }: { review: Review[], session: any }) =>
                             })}
                         </div>
 
-
                         </div>
+                        <button onClick={async () => {
+                            deleteReview(review.id);
+                            router.refresh();
+                        }}>✖️</button>
                     </div>
                 )
             })}

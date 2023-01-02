@@ -13,6 +13,7 @@ import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 import { reviewCreateSchema } from '../../../libs/server/validations/review';
 import Image from 'next/image';
+import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
 
 type FormData = z.infer<typeof reviewCreateSchema>
 
@@ -70,8 +71,8 @@ const CreateReview = () => {
                     {/* https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6 */}
                     <button type="submit" className="bg-[#FFAF19] text-white rounded-md p-2 ml-5 flex space-x-1
                 font-medium">
-                        <Image src={"/ramen-white.svg"} alt="submit-image" width={20} height={20} />
-                        <div>らあ活</div>
+                        <PaperAirplaneIcon className="text-white w-5 h-5" />
+                        <div>送信</div>
                     </button>
                 </div>
                 {/* Submit button */}
