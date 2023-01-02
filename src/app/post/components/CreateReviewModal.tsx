@@ -15,7 +15,7 @@ export default function CreateReviewModal() {
                 <button
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    className="rounded-full bg-[#c3b9a8] hover:brightness-95"
+                    className="rounded-full bg-[#c3b9a8] hover:brightness-95 shadow-sm"
                 >
                     <PencilIcon className=" text-white p-3 h-12 w-12" />
                 </button>

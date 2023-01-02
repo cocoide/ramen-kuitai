@@ -20,8 +20,9 @@ function Header() {
     const user = session?.user;
 
     return (
-        <header className="z-50 p-2 bg-white flex justify-between
-        place-items-center">
+        <header className="z-50 p-2 bg-white md:flex justify-between
+        place-items-center 
+        hidden">
 
 
             <Link href="/ramens" className="flex justify-center

@@ -1,25 +1,20 @@
 "use clinet"
 
-import { HandThumbUpIcon, PencilSquareIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { HandThumbUpIcon, PencilIcon } from '@heroicons/react/24/outline'
 
 const RamenFooterButton = () => {
     return (
-        <div className="inline-flex justify-center md:hidden w-full">
+        <div className="flex justify-between md:hidden w-full">
 
-            <button className="flex justify-center place-items-center rounded-xl
-            ring-2 ring-[#c3b9a8] w-[50%] m-3 p-2 bg-white text-[#c3b9a8] font-bold"
-            ><HandThumbUpIcon className="mr-2 w-7 h-7 text-[#c3b9a8]" />
-                保存</button>
+            <button className="flex justify-center place-items-center rounded-full
+            ring-1 ring-[#e0d5c1] m-3 p-2 bg-white text-[#e0d5c1]  shadow-sm"
+            ><HandThumbUpIcon className="w-8 h-8 text-[#e0d5c1]" />
+            </button>
 
-            <button className="flex justify-center place-items-center rounded-xl
-            ring-2 ring-[#c3b9a8] w-[50%] my-3 p-2 bg-white text-[#c3b9a8] font-bold"
-            ><PencilSquareIcon className="mr-2 w-7 h-7 text-[#c3b9a8]" />
-                投稿</button>
-
-            <button className="flex justify-center place-items-center rounded-xl
-            ring-2 ring-[#c3b9a8] w-[50%] m-3 p-2 bg-white text-[#c3b9a8] font-bold"
-            ><ShareIcon className="mr-2 w-7 h-7 text-[#c3b9a8]" />
-                共有</button>
+            <button className="flex justify-center place-items-center rounded-full
+            ring-1 ring-[#e0d5c1]  m-3 p-2 text-white bg-[#e0d5c1] shadow-sm"
+            ><PencilIcon className="w-8 h-8 text-white" />
+            </button>
         </div>
     )
 }

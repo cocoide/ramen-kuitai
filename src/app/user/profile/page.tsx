@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ramens } from '../../../@types/models/Ramen';
 import { cn } from '../../../utils/cn';
+import CreateReviewModal from '../../post/components/CreateReviewModal';
 
 const ProfilePage = async () => {
 
@@ -49,6 +50,7 @@ const ProfilePage = async () => {
                         </div>);
                 })}
             </div>
+            <CreateReviewModal />
         </div>
     )
 }
