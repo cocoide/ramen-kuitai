@@ -64,6 +64,8 @@ const FetchReview = ({ review, session }: { review: Review[], session: any }) =>
                             deleteReview(review.id);
                             router.refresh();
                         }}>✖️</button>
+                        {/* Delete button  */}
+
                     </div>
                 )
             })}

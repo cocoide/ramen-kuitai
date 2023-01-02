@@ -33,10 +33,10 @@ function Header() {
             <div className="flex place-items-center">
 
 
-                <Link href={"/explore"}><MagnifyingGlassIcon className='h-10 text-[#e0d5c1]  hover:scale-95 duration-300 mr-2' /></Link>
+                <Link href={"/explore"}><MagnifyingGlassIcon className='h-10 w-10 text-[#e0d5c1]  hover:scale-95 duration-300 mr-2' /></Link>
                 {/* Search button */}
 
-                {user && <Link href={"/notifications"}><BellIcon className='h-10 text-[#D8CEBA]  hover:scale-95 duration-300 mr-2' /></Link>
+                {user && <Link href={"/notifications"}><BellIcon className='h-10 w-10 text-[#D8CEBA]  hover:scale-95 duration-300 mr-2' /></Link>
                 }{/* Notice button */}
 
 

@@ -1,4 +1,3 @@
-
 import FetchReview from './components/FetchReview'
 import CreateReview from './components/CreateReview';
 import { cache, use } from 'react';
@@ -7,6 +6,8 @@ import { User } from '@prisma/client';
 import prisma from '../../libs/client/prisma';
 import { getCurrentUser, getSession } from '../../libs/server/session';
 import { redirect } from 'next/navigation';
+import CreateReviewModal from './components/CreateReviewModal';
+// import CreateModal from './components/CreateModal';
 
 // Now userId is email
 const getReviewForUser = cache(async (userId: User["email"]) => {
@@ -32,11 +33,16 @@ export default async function PostReviewPage() {
     const reviews = await getReviewForUser(user.email);
     const session = await getSession();
     return (
-        <>
-            <div className='bg-white'>
-                <CreateReview />
-            </div>
+        <div className="">
+            <h2 className="flex justify-center mt-3">📔投稿一覧</h2>
+            <div className="h-screen">
             <FetchReview review={reviews} session={session} />
-        </>
+            </div>
+
+            <div className="">
+                <CreateReviewModal />
+            </div>
+
+        </div>
     )
 }

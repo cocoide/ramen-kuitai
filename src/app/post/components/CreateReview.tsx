@@ -7,13 +7,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from 'next/navigation';
-import { StarIcon } from '@heroicons/react/24/solid'
+import { FlagIcon, StarIcon } from '@heroicons/react/24/solid'
 import { useState } from 'react';
 import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 import { reviewCreateSchema } from '../../../libs/server/validations/review';
-import Image from 'next/image';
-import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
+import { useSetRecoilState } from 'recoil';
+import { isReviewModalOpen } from '../../../@types/models/Modal';
 
 type FormData = z.infer<typeof reviewCreateSchema>
 
@@ -22,9 +22,13 @@ const CreateReview = () => {
     const { register, handleSubmit, reset, setValue } = useForm<FormData>({
         resolver: zodResolver(reviewCreateSchema),
     });
+    const openReviewModal = useSetRecoilState(isReviewModalOpen);
+    const [isLoading, setLoading] = useState(false)
 
 
     const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+        setLoading(true);
+        // onSubmit後にボタンを非活性にすることで二重送信を防止
         const toastId = toast.loading("投稿作成中...");
         try {
             const body = reviewCreateSchema.parse(data);
@@ -32,13 +36,17 @@ const CreateReview = () => {
             toast.success("投稿の作成に成功🎉", {
                 id: toastId,
             });
+            openReviewModal(false);
+            setLoading(false)
             router.refresh()
-            reset()
+            // reset()
+            // Modalを閉じたらリセットされるので必要ないかもしれない
         } catch (error) {
             console.log(error)
             toast.error("投稿の作成に失敗", {
                 id: toastId,
             });
+            setLoading(false)
         }
     };
     const [rating, setRating] = useState(0)
@@ -69,10 +77,12 @@ const CreateReview = () => {
 
                 <div className="flex justify-center">
                     {/* https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6 */}
-                    <button type="submit" className="bg-[#FFAF19] text-white rounded-md p-2 ml-5 flex space-x-1
-                font-medium">
-                        <PaperAirplaneIcon className="text-white w-5 h-5" />
-                        <div>送信</div>
+
+                    <button type="submit" className={cn("bg-[#c3b9a8] text-white rounded-md p-2 ml-5 flex space-x-1 font-medium justify-center place-items-center",
+                        (isLoading) ? "disabled:" : ""
+                    )}>
+                        <FlagIcon className="text-white w-7 h-7 p-1" />
+                        <div>作成</div>
                     </button>
                 </div>
                 {/* Submit button */}
