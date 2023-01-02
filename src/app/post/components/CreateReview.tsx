@@ -53,7 +53,7 @@ const CreateReview = () => {
     return (
 
         <div className="">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-10 bg-white p-5">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-5 bg-white p-5">
                 <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
                 {/* Title */}
                 <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
@@ -79,7 +79,7 @@ const CreateReview = () => {
                 <div className="flex justify-center">
                     {/* https://dev.to/michaelburrows/create-a-custom-react-star-rating-component-5o6 */}
 
-                    <button type="submit" className={cn("bg-[#c3b9a8] text-white rounded-md p-2 ml-5 flex space-x-1 font-medium justify-center place-items-center",
+                    <button type="submit" className={cn("bg-[#c3b9a8] text-white rounded-md p-2 mt-5 flex space-x-1 font-medium justify-center place-items-center",
                         (isLoading) ? "disabled:" : ""
                     )}>
                         <FlagIcon className="text-white w-7 h-7 p-1" />
