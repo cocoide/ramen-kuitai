@@ -1,16 +1,14 @@
 "use client"
 import { Dialog, Transition } from '@headlessui/react'
-import { PlusIcon } from '@heroicons/react/20/solid'
-import { XCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { XCircleIcon } from '@heroicons/react/24/outline'
 import { PencilIcon } from '@heroicons/react/24/solid'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import CreateReview from './CreateReview'
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { isReviewModalOpen } from '../../../@types/models/Modal'
 
 export default function CreateReviewModal() {
     const [isOpen, setIsOpen] = useRecoilState(isReviewModalOpen)
-    const closeModal = useSetRecoilState(isReviewModalOpen)
     return (
         <>
             <div className="fixed bottom-3 right-3 flex items-center justify-center">

@@ -15,7 +15,7 @@ export default function RootLayout({
     return (
         <html lang='ja'>
             <title>Ramen Review</title>
-            <meta content="width=device-width, initial-scale=1" name="viewport" />
+            <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" name="viewport" />
             <link rel="icon" href="/ramen-orange.svg" />
             <body className='bg-gray-100'>
                 {/* bg-[#e4e2df] */}
