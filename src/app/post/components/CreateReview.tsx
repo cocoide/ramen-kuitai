@@ -56,6 +56,8 @@ const CreateReview = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-10 bg-white p-5">
                 <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
                 {/* Title */}
+                <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
+                {/* Content  */}
                 <div className="flex justify-center">
                     {[...Array(5)].map((star, index) => {
                         index += 1;
@@ -72,7 +74,6 @@ const CreateReview = () => {
                 </div>
                 {/* Rating */}
 
-                <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
                 {/* <input {...register('image')} className="h-10 w-30 p-1 rounded-md bg-gray-200" /> */}
 
                 <div className="flex justify-center">
