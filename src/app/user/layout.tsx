@@ -2,8 +2,8 @@ import { PlusSmallIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { getCurrentUser } from '../../libs/server/session';
-import CircleLoading from '../@Components/Animations/CircleLoading';
-import SimpleAvater from '../@Components/UserView/SimpleAvater';
+import CircleLoading from '../@components/Animations/CircleLoading';
+import SimpleAvater from '../@components/UserView/SimpleAvater';
 import UserBio from './components/UserBio';
 
 export default async function MyPageLayout({

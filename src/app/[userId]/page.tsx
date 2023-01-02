@@ -1,15 +1,16 @@
 import { User } from '@prisma/client'
 import { notFound } from 'next/navigation'
+import { cache } from 'react'
 import prisma from '../../libs/client/prisma'
 
 
-async function getUserData(userId: User["id"]) {
+const getUserData = cache(async (userId: User["id"]) => {
     return await prisma.user.findUnique({
         where: {
             id: userId,
         }
     })
-};
+});
 
 interface UserProps {
     params: { userId: string }

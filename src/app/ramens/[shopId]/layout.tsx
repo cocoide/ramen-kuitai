@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import CircleLoading from '../../@Components/Animations/CircleLoading';
+import CircleLoading from '../../@components/Animations/CircleLoading';
 
 export default function ReviewDetailLayout({
     children,
@@ -8,9 +8,9 @@ export default function ReviewDetailLayout({
 }) {
     return (
         <>
-            <Suspense fallback={<div><CircleLoading /></div>}>
+            {/* <Suspense fallback={<div><CircleLoading /></div>}> */}
                 <div>{children}</div>
-            </Suspense>
+            {/* </Suspense> */}
         </>
     );
 }

@@ -3,12 +3,13 @@ import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 import prisma from '../../../libs/client/prisma';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
-async function getRamenDetail(shopId: RamenShop["id"]) {
+const getRamenDetail = cache(async (shopId: RamenShop["id"]) => {
     return await prisma.ramenShop.findUnique({
         where: {
             id: shopId,
@@ -17,7 +18,7 @@ async function getRamenDetail(shopId: RamenShop["id"]) {
             category: true,
         }
     })
-};
+});
 
 interface RamenDetailProps {
     params: { shopId: string }

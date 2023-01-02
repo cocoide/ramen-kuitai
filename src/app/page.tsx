@@ -2,12 +2,12 @@
 import React from "react";
 import "/styles/globals.css";
 import { motion } from "framer-motion"
-import SearchRamen from './@Components/SearchRamen';
+import SearchRamen from './@components/SearchRamen';
 import Image from 'next/image';
 import { ramens } from '../@types/models/Ramen';
 import Link from 'next/link';
 import { cn } from '../utils/cn';
-import RamenCarousel from './@Components/Animations/RamenCarousel';
+import RamenCarousel from './@components/Animations/RamenCarousel';
 
 function Home() {
     return (

@@ -6,10 +6,10 @@ import { Bars4Icon, MagnifyingGlassIcon, PlusCircleIcon, UserCircleIcon, BellIco
 import { useSetRecoilState } from 'recoil';
 // import { isDrawerOpen } from '../../../@types/models/Drawer';
 import Image from 'next/image';
-import AvaterMenu from '../UserView/AvaterMenu';
 import { useSession } from 'next-auth/react';
-import LoginModal from '../Modals/LoginModal';
 import { isLoginModalOpen } from '../../../@types/models/Modal';
+import AvaterMenu from '../UserView/AvaterMenu';
+import LoginModal from '../Modals/LoginModal';
 
 function Header() {
     // const OpenDrawer = useSetRecoilState(isDrawerOpen)
