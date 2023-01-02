@@ -1,4 +1,4 @@
-import SearchRamen from '../@components/SearchRamen';
+import SearchRamen from '../@Components/SearchRamen';
 
 export default function SearchPage() {
     return (

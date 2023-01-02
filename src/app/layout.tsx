@@ -1,10 +1,10 @@
-import Header from './@components/@Header';
-import RecoilProvider from './@components/Providers/RecoilProvider';
-import NextAuthProvider from './@components/Providers/NextauthProvider';
-import CircleLoading from './@components/Animations/CircleLoading';
-import Drawer from './@components/@Header/Drawer';
+import Header from './@Components/@Header';
+import RecoilProvider from './@Components/Providers/RecoilProvider';
+import NextAuthProvider from './@Components/Providers/NextauthProvider';
+import CircleLoading from './@Components/Animations/CircleLoading';
+import Drawer from './@Components/@Header/Drawer';
 import { Suspense } from 'react';
-import FooterNavi from './@components/Button/FooterNavi';
+import FooterNavi from './@Components/Button/FooterNavi';
 
 export default function RootLayout({
     children,

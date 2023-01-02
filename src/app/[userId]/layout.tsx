@@ -1,6 +1,12 @@
-const UserLayout = () => {
+
+export default function UserLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
-        <div>UserLayout</div>
-    )
+        <div>
+            <div>{children}</div>
+        </div>
+    );
 }
-export default UserLayout

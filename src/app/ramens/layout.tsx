@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import CircleLoading from '../@components/Animations/CircleLoading';
+import CircleLoading from '../@Components/Animations/CircleLoading';
 
 export default function DashboardLayout({
     children,
