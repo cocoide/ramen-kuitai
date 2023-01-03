@@ -13,30 +13,30 @@ const FooterNavi = () => {
          p-3 w-auto md:hidden  rounded-3xl  
         ">
             <button onClick={() => router.push("/ramens")}
-            ><HomeIcon className="h-7 text-secondary hover:scale-95 duration-300 mr-2" /></button>
+            ><HomeIcon className="h-8 text-secondary hover:scale-95 duration-300 mr-2" /></button>
 
             <button onClick={() => router.push("/explore")}
-            ><MagnifyingGlassIcon className="h-7 text-secondary hover:scale-95 duration-300 mx-2" /></button>
+            ><MagnifyingGlassIcon className="h-8 text-secondary hover:scale-95 duration-300 mx-2" /></button>
 
             <button onClick={() => router.push("/notifications")}
-            ><BellIcon className='h-7 text-secondary hover:scale-95 duration-300 mx-2' /></button>
+            ><BellIcon className='h-8 text-secondary hover:scale-95 duration-300 mx-2' /></button>
             {(session?.status === "authenticated") ?
 
-                <button className="w-7 h-7  justify-center rounded-full 
+                <button className="w-8 h-8  justify-center rounded-full 
                 bg-secondary  focus:outline-none  ml-2"
                     onClick={() => { router.push("/user/profile") }}
-                > <Image src={session.data.user.image} alt={session.data.user.name} height={30} width={30} className="rounded-full w-7 h-7" />
+                > <Image src={session.data.user.image} alt={session.data.user.name} height={30} width={30} className="rounded-full w-8 h-8" />
                 </button>
                 :
                 (session?.status === "loading") ?
                     <button>
-                        <div className="w-7 h-7 bg-secondary animate-pulse rounded-full ml-2" />
+                        <div className="w-8 h-8 bg-secondary animate-pulse rounded-full ml-2" />
                     </button>
 
                     : <button onClick={() => {
                         router.push("/user/profile")
                     }}>
-                        <UserIcon className='h-7 text-secondary hover:scale-95 duration-300 ml-2' /></button>
+                        <UserIcon className='h-8 text-secondary hover:scale-95 duration-300 ml-2' /></button>
             }
         </div>
     )

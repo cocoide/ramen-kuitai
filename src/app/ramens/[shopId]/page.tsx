@@ -70,7 +70,7 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
                 </div>
                 {/* Article Section  */}
 
-                <div className="fixed bottom-0 w-full">
+                <div className="fixed bottom-1 w-full">
                     <RamenFooterButton />
                 </div>
             </div>

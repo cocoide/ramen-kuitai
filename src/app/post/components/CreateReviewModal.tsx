@@ -1,6 +1,6 @@
 "use client"
 import { Dialog, Transition } from '@headlessui/react'
-import { PlusSmallIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import { PencilIcon, PlusSmallIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import { Fragment } from 'react'
 import CreateReview from './CreateReview'
 import { useRecoilState } from 'recoil';
@@ -10,17 +10,18 @@ export default function CreateReviewModal() {
     const [isOpen, setIsOpen] = useRecoilState(isReviewModalOpen)
     return (
         <>
+            {/* 表示される部分 */}
             <div className="fixed bottom-0 right-0 place-center">
                 <button
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    className="rounded-full bg-primary hover:brightness-90 ring-1 ring-white shadow-natural
-                    p-2 m-3"
+                    className="rounded-full bg-white hover:brightness-90 ring-1 ring-secondary shadow-natural
+                    p-2 m-4"
                 >
-                    <PlusSmallIcon className=" text-white h-8 w-8" />
+                    <PencilIcon className=" text-secondary h-8 w-8" />
                 </button>
-                {/* 表示される部分 */}
             </div>
+            {/* ここまで */}
 
             <Transition appear show={isOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
