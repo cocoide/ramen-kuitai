@@ -1,4 +1,5 @@
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
+import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,15 +13,13 @@ async function getShopDetail(shopId: string) {
     const res = await fetch(URL, { next: { revalidate: 10 } })
     return res.json();
 }
-// SSG 
-
 
 interface RamenDetailProps {
     params: { shopId: string }
 };
 
 export default async function Page({ params }: RamenDetailProps) {
-    const shop = await getShopDetail(params.shopId)
+    const shop: RamenShop = await getShopDetail(params.shopId)
     if (!shop) {
         notFound();
     };

@@ -1,5 +1,6 @@
 import { HandThumbUpIcon, MapIcon, TagIcon } from '@heroicons/react/24/outline';
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid';
+import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { API_URL } from '../../libs/client/constants';
@@ -12,7 +13,7 @@ async function getAllRamen() {
 };
 
 export default async function Page() {
-    const ramens = await getAllRamen()
+    const ramens: RamenShop[] = await getAllRamen()
     return (
         <div className="">
             <div className="place-center w-screen space-x-5
