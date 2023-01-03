@@ -12,7 +12,7 @@ async function getAllRamen() {
 };
 // ISR updated on seconds
 
-export default async function RamenPage() {
+export default async function Page() {
     const ramens = await getAllRamen()
 
     return (

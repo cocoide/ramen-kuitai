@@ -19,7 +19,7 @@ interface RamenDetailProps {
     params: { shopId: string }
 };
 
-export default async function RamenDetailPage({ params }: RamenDetailProps) {
+export default async function Page({ params }: RamenDetailProps) {
     const shop = await getShopDetail(params.shopId)
     if (!shop) {
         notFound();
