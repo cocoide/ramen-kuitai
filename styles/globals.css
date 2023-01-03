@@ -10,3 +10,15 @@
     opacity: .3;
   }
 }
+
+@layer components {
+  .shadow-natural {
+    @apply shadow-[0_3px_10px_rgb(0,0,0,0.2)];
+  }
+}
+  
+@layer components {
+  .place-center {
+    @apply flex justify-center items-center;
+    }
+}

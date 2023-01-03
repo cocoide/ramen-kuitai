@@ -6,7 +6,14 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#c3b9a8",
+        secondary: "#e0d5c1",
+        neutral: "#EBECF0",
+      },
+      //extendの配下でないとデフォルトのcssが使用不可になるので注意
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

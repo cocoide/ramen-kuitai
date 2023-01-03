@@ -10,9 +10,7 @@ const RamenFooterButton = () => {
     return (
         <div className="flex justify-between md:hidden w-full">
 
-            <button className="flex justify-center place-items-center rounded-full
-            shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]
-
+            <button className="place-center rounded-full shadow-natural
             ring-1 ring-[#e0d5c1] m-3 p-2 bg-white text-[#e0d5c1]"
                 onClick={() => setGood(!isGood)}
             >{(isGood) ?
@@ -21,10 +19,8 @@ const RamenFooterButton = () => {
                 : <HandThumbUpIcon className="w-8 h-8 text-[#e0d5c1]" />
                 }</button>
 
-            <button className="flex justify-center place-items-center rounded-full
-            shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]
-
-            ring-1 ring-white  m-3 p-2 text-white bg-[#c3b9a8]"
+            <button className="place-center rounded-full
+            ring-1 ring-white  m-3 p-2 text-white bg-[#c3b9a8] shadow-natural"
             ><PlusSmallIcon className="w-8 h-8 text-white" />
             </button>
         </div>

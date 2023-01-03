@@ -1,5 +1,5 @@
-import { HandThumbUpIcon, MagnifyingGlassIcon, MapIcon, TagIcon } from '@heroicons/react/24/outline';
-import { RamenShop } from '@prisma/client';
+import { HandThumbUpIcon, MapIcon, TagIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cache, use } from 'react';
@@ -8,9 +8,11 @@ import { cn } from '../../utils/cn';
 
 const getAllRamenShop = cache(async () => {
     return await prisma.ramenShop.findMany({
-        include: {
-            category: true,
-        }
+        select: {
+            id: true,
+            name: true,
+            image: true,
+        },
     })
 });
 
@@ -19,34 +21,36 @@ export default async function RamenPage() {
 
     return (
         <div className="">
-            <div className="flex justify-center place-items-center w-full overflow-x-hidden space-x-5
-                sticky top-0  backdrop-blur-sm bg-white/95 md:border-t border-[#f5ead4] font-medium text-[#c3b9a8]">
-                <h3 className="border-b-2 border-[#c3b9a8] py-3
-                flex justify-center place-items-center">
-                    <HandThumbUpIcon className="h-7 w-7 text-[#c3b9a8]" />
+            <div className="place-center w-screen space-x-5
+                sticky top-0  backdrop-blur-sm bg-white/95 md:border-t font-medium">
+
+                <h3 className="border-b-2 border-primary  py-3 place-center text-primary">
+                    <HandThumbUpIcon className="h-7 w-7" />
                     おすすめ</h3>
-                <h3 className="flex justify-center place-items-center py-3">
-                    <TagIcon className="h-7 w-7 text-[#c3b9a8]" />
+
+                <h3 className="place-center py-3 text-secondary">
+                    <TagIcon className="h-7 w-7" />
                     カテゴリ</h3>
-                <h3 className="flex justify-center place-items-center py-3">
-                    <MapIcon className="h-7 w-7 text-[#c3b9a8] mr-2" />
+
+                <h3 className="place-center py-3 text-secondary">
+                    <MapIcon className="h-7 w-7 mr-2" />
                     エリア</h3>
             </div>
             {/* Ramen Header  */}
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg place-items-center overflow-auto gap-4 p-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-4 p-4">
             {ramens.map((ramen) => {
                 return (
-                    <div key={ramen.id} className="">
-                        <Link href={`/ramens/${ramen.id}`} className="flex flex-col">
-
-                            <h2>{ramen.name}</h2>
-
-
+                    <div key={ramen.id} className="flex flex-col">
+                        <Link href={`/ramens/${ramen.id}`} className="">
                             <Image src={ramen.image} alt={ramen.name} width={500} height={500}
                                 className={cn("rounded-xl h-auto aspect-square",)} />
-
                         </Link>
+
+                        <div className="flex justify-between items-center text-primary mx-3">
+                            <h2>{ramen.name}</h2>
+                            <EllipsisHorizontalIcon className="h-5 w-5" />
+                        </div>
                     </div>);
             })}
         </div>

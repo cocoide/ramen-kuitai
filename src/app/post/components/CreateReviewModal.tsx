@@ -1,7 +1,6 @@
 "use client"
 import { Dialog, Transition } from '@headlessui/react'
 import { PlusSmallIcon, XCircleIcon } from '@heroicons/react/24/outline'
-import { PencilIcon } from '@heroicons/react/24/solid'
 import { Fragment } from 'react'
 import CreateReview from './CreateReview'
 import { useRecoilState } from 'recoil';
@@ -11,14 +10,14 @@ export default function CreateReviewModal() {
     const [isOpen, setIsOpen] = useRecoilState(isReviewModalOpen)
     return (
         <>
-            <div className="fixed bottom-3 right-3 flex items-center justify-center">
+            <div className="fixed bottom-0 right-0 place-center">
                 <button
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    className="rounded-full bg-[#c3b9a8] hover:brightness-95 ring-1 ring-white
-                    shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
+                    className="rounded-full bg-primary hover:brightness-90 ring-1 ring-white shadow-natural
+                    p-2 m-3"
                 >
-                    <PlusSmallIcon className=" text-white p-2 h-12 w-12" />
+                    <PlusSmallIcon className=" text-white h-8 w-8" />
                 </button>
                 {/* 表示される部分 */}
             </div>
@@ -38,7 +37,7 @@ export default function CreateReviewModal() {
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
-                        <div className="flex min-h-full items-center justify-center p-4 text-center">
+                        <div className="place-center min-h-full p-4 text-center">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-out duration-300"
@@ -48,21 +47,19 @@ export default function CreateReviewModal() {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white p-6 text-left align-middle 
-                                shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white p-6 text-left 
+                                align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h3"
-                                        className="text-lg font-medium leading-6 text-gray-900"
+                                        className="text-lg font-medium leading-6 text-primary place-cener"
                                     >
                                         投稿を作成
                                     </Dialog.Title>
                                     <div className="mt-2">
                                         <p className="text-sm text-gray-500">
 
-
-
                                             <CreateReview />
-
+                                            {/* Input form  */}
 
                                         </p>
                                     </div>
@@ -72,7 +69,7 @@ export default function CreateReviewModal() {
                                             type="button"
                                             className="inline-flex "
                                             onClick={() => setIsOpen(false)}
-                                        ><XCircleIcon className="text-[#c3b9a8]  h-10 w-10"></XCircleIcon>
+                                        ><XCircleIcon className="text-primary  h-10 w-10"></XCircleIcon>
                                         </button>
                                     </div>
                                 </Dialog.Panel>

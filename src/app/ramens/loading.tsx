@@ -9,7 +9,7 @@ export default function Loading() {
                 <div className="bg-gray-200 rounded-xl h-7  w-[20%] animate-pulse"></div>
             </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg place-items-center overflow-auto gap-4 p-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-4 p-4">
 
                 <div className="bg-gray-200 aspect-square w-full animate-pulse rounded-xl"></div>
                 <div className="bg-gray-200 aspect-square w-full animate-pulse rounded-xl"></div>

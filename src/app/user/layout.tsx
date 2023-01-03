@@ -23,7 +23,7 @@ export default async function MyPageLayout({
                         <UserBio />
                     </div>
 
-                    <Link href="/user/setting" className="flex justify-center bg-gray-100 mx-10 mb-3 rounded-full text-gray-600 hover:brightness-80 p-1"
+                    <Link href="/user/setting" className="place-center bg-gray-100 mx-10 mb-3 rounded-full text-gray-600 hover:brightness-80 p-1"
                     >プロフィールを編集</Link>
                 </div>
                 <div>{children}</div>

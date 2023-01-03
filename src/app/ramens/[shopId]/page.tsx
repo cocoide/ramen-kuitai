@@ -14,9 +14,12 @@ const getRamenDetail = cache(async (shopId: RamenShop["id"]) => {
         where: {
             id: shopId,
         },
-        include: {
+        select: {
+            id: true,
             category: true,
-        }
+            name: true,
+            image: true,
+        },
     })
 });
 

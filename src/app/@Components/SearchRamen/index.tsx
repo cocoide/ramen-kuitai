@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 const SearchRamen = () => {
     return (
         <>
-            <form className='flex rounded-md shadow-inner p-1 w-auto bg-gray-100 z-20'>
+            <form className='flex rounded-full shadow-inner p-1 w-auto bg-gray-100 z-20'>
                 <button className="focus:ring-0 border-none">
                     <MagnifyingGlassIcon className="h-6 w-6 text-gray-400 mx-2" />
                 </button>
