@@ -13,7 +13,6 @@ async function getAllRamen() {
 
 export default async function Page() {
     const ramens = await getAllRamen()
-    console.log(ramens)
     return (
         <div className="">
             <div className="place-center w-screen space-x-5

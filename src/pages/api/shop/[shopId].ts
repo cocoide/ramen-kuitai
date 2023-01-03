@@ -20,8 +20,8 @@ export const querySchema = z.object({
                 id: true,
                 name: true,
                 image: true,
-                address: true,
-                category: true,
+                // address: true,
+                // category: true,
                 rating: true,
             }
           })

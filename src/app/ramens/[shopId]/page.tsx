@@ -9,8 +9,8 @@ import RamenFooterButton from '../components/RamenFooterButton';
 
 async function getShopDetail(shopId: string) {
     const URL = `${API_URL}/shop/${shopId}`
-    const res = await fetch(URL)
-    return res.json()
+    const res = await fetch(URL, { next: { revalidate: 10 } })
+    return res.json();
 }
 // SSG 
 
@@ -49,11 +49,11 @@ export default async function Page({ params }: RamenDetailProps) {
 
                 <div className="p-3 w-full h-screen bg-white md:w-[748px] md:rounded-xl">
                     <div className="flex space-x-3 text-primary m-3">
-                        {shop.category.map((category) => {
+                        {/* {shop.category.map((category) => {
                             return (<div key={category.id} >
-                                <div className="p-2 border border-secondary bg-white rounded-full text-sm">{category.name}</div> 
+                                <div className="p-2 border border-secondary bg-white rounded-full text-sm">{category.name}</div>
                             </div>)
-                        })}
+                        })} */}
                     </div>
                     {/* Ramen Category */}
 
