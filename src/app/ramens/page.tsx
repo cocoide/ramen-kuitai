@@ -15,7 +15,8 @@ import { cn } from '../../utils/cn';
 //     const ramens: RamenShop[] = await res.json();
 //     return ramens;
 // };
-export const revalidate = 60;
+
+// export const revalidate = 60;
 
 async function getAllShop() {
     return await prisma.ramenShop.findMany({
