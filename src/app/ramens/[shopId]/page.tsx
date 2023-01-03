@@ -4,14 +4,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { API_URL } from '../../../libs/client/constants';
+import prisma from '../../../libs/client/prisma';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
+// async function getShopDetail(shopId: string) {
+//     const URL = `${API_URL}/shop/${shopId}`
+//     const res = await fetch(URL)
+//     if (!res.ok) throw new Error('getShopDetailでエラーが発生');
+//     return res.json() as Promise<RamenShop>;
+// }
+
 async function getShopDetail(shopId: string) {
-    const URL = `${API_URL}/shop/${shopId}`
-    const res = await fetch(URL, { next: { revalidate: 10 } })
-    return res.json();
+    const shopDetail = await prisma.ramenShop.findUnique({
+        where: {
+            id: shopId,
+        },
+        select: { id: true, name: true, image: true },
+    })
+    return shopDetail;
 }
 
 interface RamenDetailProps {
@@ -19,7 +31,8 @@ interface RamenDetailProps {
 };
 
 export default async function Page({ params }: RamenDetailProps) {
-    const shop: RamenShop = await getShopDetail(params.shopId)
+    const shop = await getShopDetail(params.shopId)
+    console.log(shop)
     if (!shop) {
         notFound();
     };
@@ -59,7 +72,6 @@ export default async function Page({ params }: RamenDetailProps) {
 
                 </div>
                 {/* Article Section  */}
-                {shop.rating}
 
                 <div className="fixed bottom-1 w-full">
                     <RamenFooterButton />
@@ -68,3 +80,12 @@ export default async function Page({ params }: RamenDetailProps) {
         </div>
     )
 };
+
+// export async function generateStaticParams() {
+//     const ramens = await prisma.ramenShop.findMany({
+//         select: { id: true }
+//     })
+//     return ramens.map((ramen) => ({
+//         id: ramen.id.toString(),
+//     }));
+// }

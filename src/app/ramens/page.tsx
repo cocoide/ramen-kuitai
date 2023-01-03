@@ -4,16 +4,28 @@ import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { API_URL } from '../../libs/client/constants';
+import prisma from '../../libs/client/prisma';
 import { cn } from '../../utils/cn';
 
-async function getAllRamen() {
-    const URL = `${API_URL}/shop`
-    const res = await fetch(URL)
-    return res.json();
-};
+
+// async function getAllShop() {
+//     const URL = `${API_URL}/shop`
+//     const res = await fetch(URL)
+//     if (!res.ok) throw new Error('getAllShopでエラーが発生');
+//     const ramens: RamenShop[] = await res.json();
+//     return ramens;
+// };
+
+async function getAllShop() {
+    return await prisma.ramenShop.findMany({
+        select: { id: true, name: true, image: true },
+    })
+}
 
 export default async function Page() {
-    const ramens: RamenShop[] = await getAllRamen()
+
+    const ramens = await getAllShop()
+    console.log(ramens)
     return (
         <div className="">
             <div className="place-center w-screen space-x-5
