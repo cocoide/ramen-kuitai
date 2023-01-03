@@ -24,7 +24,7 @@ async function getShopDetail(shopId: string) {
         select: { id: true, name: true, image: true },
     })
     return shopDetail;
-}
+};
 
 interface RamenDetailProps {
     params: { shopId: string }
@@ -32,7 +32,6 @@ interface RamenDetailProps {
 
 export default async function Page({ params }: RamenDetailProps) {
     const shop = await getShopDetail(params.shopId)
-    console.log(shop)
     if (!shop) {
         notFound();
     };
@@ -81,11 +80,12 @@ export default async function Page({ params }: RamenDetailProps) {
     )
 };
 
-// export async function generateStaticParams() {
-//     const ramens = await prisma.ramenShop.findMany({
-//         select: { id: true }
-//     })
-//     return ramens.map((ramen) => ({
-//         id: ramen.id.toString(),
-//     }));
-// }
+
+export async function generateStaticParams() {
+    const ramens = await prisma.ramenShop.findMany({
+        select: { id: true }
+    })
+    return ramens.map((ramen) => ({
+        shopId: ramen.id
+    }));
+}
