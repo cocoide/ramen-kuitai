@@ -24,7 +24,6 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
     if (!shop) {
         notFound();
     };
-    console.log(shop)
     return (
         <div className="">
             {/* <Link href={"/ramens"} className="absolute m-3 z-30"><ChevronLeftIcon className="h-8 w-8 text-[#e0d5c1]" /></Link> */}
@@ -49,11 +48,10 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
 
 
                 <div className="p-3 w-full h-screen bg-white md:w-[748px] md:rounded-xl">
-                    <div className="flex space-x-3 text-[#bab1a3] m-3">
+                    <div className="flex space-x-3 text-primary m-3">
                         {shop.category.map((category) => {
-                            return (<div key={category.id}>
-                                <Link href={`/ramens/category/${category.id}`}
-                                    className="p-2 border border-[#e0d5c1] bg-white rounded-full text-sm"># {category.name}</Link>
+                            return (<div key={category.id} >
+                                <div className="p-2 border border-secondary bg-white rounded-full text-sm">{category.name}</div> 
                             </div>)
                         })}
                     </div>
