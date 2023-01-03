@@ -7,14 +7,13 @@ import { cn } from '../../utils/cn';
 
 async function getAllRamen() {
     const URL = `${API_URL}/shop`
-    const res = await fetch(URL, { next: { revalidate: 300 } })
+    const res = await fetch(URL)
     return res.json();
 };
-// ISR updated on seconds
 
 export default async function Page() {
     const ramens = await getAllRamen()
-
+    console.log(ramens)
     return (
         <div className="">
             <div className="place-center w-screen space-x-5

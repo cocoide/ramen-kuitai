@@ -22,13 +22,13 @@ const Button: FC<ButtonProps> = ({
 
     return (
         <>
-        <button
-            className={cn(`rounded-md p-1 ${classes.join(' ')}`)}
-            onClick={() => redirect(`localhost:3000/${redirectURL}`)}
-        >
-            {children}
-            {text}
-        </button>
+            <button
+                className={cn(`rounded-md p-1 ${classes.join(' ')}`)}
+                onClick={() => redirect(`localhost:3000/${redirectURL}`)}
+            >
+                {children}
+                {text}
+            </button>
         </>
     )
 }
