@@ -2,22 +2,18 @@ import { HandThumbUpIcon, MapIcon, TagIcon } from '@heroicons/react/24/outline';
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cache, use } from 'react';
-import prisma from '../../libs/client/prisma';
+import { API_URL } from '../../libs/client/constants';
 import { cn } from '../../utils/cn';
 
-const getAllRamenShop = cache(async () => {
-    return await prisma.ramenShop.findMany({
-        select: {
-            id: true,
-            name: true,
-            image: true,
-        },
-    })
-});
+async function getAllRamen() {
+    const URL = `${API_URL}/shop`
+    const res = await fetch(URL, { next: { revalidate: 300 } })
+    return res.json();
+};
+// ISR updated on seconds
 
 export default async function RamenPage() {
-    const ramens = await getAllRamenShop()
+    const ramens = await getAllRamen()
 
     return (
         <div className="">

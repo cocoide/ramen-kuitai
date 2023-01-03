@@ -28,8 +28,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         })
         return res.json(posts);
         } 
-        catch (error) {
-          return res.status(500).end();
+        catch (e) {
+          return res.status(500).end(e);
         }
       };
       

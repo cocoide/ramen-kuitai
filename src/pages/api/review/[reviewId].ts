@@ -47,7 +47,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
               rating: body.rating,
             },
           })
-          return res.end()
+          return res.end();
         }catch(e){
           return res.status(500).json({e});
         }

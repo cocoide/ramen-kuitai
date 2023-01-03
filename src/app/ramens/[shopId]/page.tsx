@@ -1,37 +1,30 @@
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
-import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { cache } from 'react';
-import prisma from '../../../libs/client/prisma';
+import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
-const getRamenDetail = cache(async (shopId: RamenShop["id"]) => {
-    return await prisma.ramenShop.findUnique({
-        where: {
-            id: shopId,
-        },
-        select: {
-            id: true,
-            category: true,
-            name: true,
-            image: true,
-        },
-    })
-});
+async function getShopDetail(shopId: string) {
+    const URL = `${API_URL}/shop/${shopId}`
+    const res = await fetch(URL)
+    return res.json()
+}
+// SSG 
+
 
 interface RamenDetailProps {
     params: { shopId: string }
 };
 
 export default async function RamenDetailPage({ params }: RamenDetailProps) {
-    const ramen = await getRamenDetail(params.shopId)
-    if (!ramen) {
+    const shop = await getShopDetail(params.shopId)
+    if (!shop) {
         notFound();
     };
+    console.log(shop)
     return (
         <div className="">
             {/* <Link href={"/ramens"} className="absolute m-3 z-30"><ChevronLeftIcon className="h-8 w-8 text-[#e0d5c1]" /></Link> */}
@@ -42,13 +35,13 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
                 sticky top-0  backdrop-blur-sm bg-white/90 md:border-t border-[#f5ead4]">
                     {/* <Link href={"/ramens"}><ChevronLeftIcon className="h-8 w-8 text-[#e0d5c1]" /></Link> */}
                     <BackButton />
-                    <h2 className="font-medium text-xl text-gray-600">{ramen.name}</h2>
+                    <h2 className="font-medium text-xl text-gray-600">{shop.name}</h2>
                     {/* Ramen shop title */}
                     <EllipsisHorizontalIcon className="h-8 w-8 text-[#c3b9a8]" />
                 </div>
                 {/* Header  */}
 
-                <Image src={ramen.image} alt={ramen.name} width={300} height={200}
+                <Image src={shop.image} alt={shop.name} width={300} height={200}
                     className={cn("rounded-xl h-auto aspect-square m-5")} />
                 {/* Thumnail  */}
 
@@ -57,7 +50,7 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
 
                 <div className="p-3 w-full h-screen bg-white md:w-[748px] md:rounded-xl">
                     <div className="flex space-x-3 text-[#bab1a3] m-3">
-                        {ramen.category.map((category) => {
+                        {shop.category.map((category) => {
                             return (<div key={category.id}>
                                 <Link href={`/ramens/category/${category.id}`}
                                     className="p-2 border border-[#e0d5c1] bg-white rounded-full text-sm"># {category.name}</Link>
@@ -69,6 +62,7 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
 
                 </div>
                 {/* Article Section  */}
+                {shop.rating}
 
                 <div className="fixed bottom-1 w-full">
                     <RamenFooterButton />
