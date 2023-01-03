@@ -35,8 +35,8 @@ export default async function RamenDetailPage({ params }: RamenDetailProps) {
             <div className="flex flex-col justify-center place-items-center">
 
 
-                <div className="flex justify-between place-items-center p-3 w-full
-                sticky top-0  backdrop-blur-sm bg-white/90 border-t border-[#f5ead4]">
+                <div className="flex justify-between place-items-center p-2 w-full
+                sticky top-0  backdrop-blur-sm bg-white/90 md:border-t border-[#f5ead4]">
                     {/* <Link href={"/ramens"}><ChevronLeftIcon className="h-8 w-8 text-[#e0d5c1]" /></Link> */}
                     <BackButton />
                     <h2 className="font-medium text-xl text-gray-600">{ramen.name}</h2>

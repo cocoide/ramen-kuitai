@@ -23,13 +23,13 @@ export default async function RamenPage() {
                 sticky top-0  backdrop-blur-sm bg-white/95 md:border-t border-[#f5ead4] font-medium text-[#c3b9a8]">
                 <h3 className="border-b-2 border-[#c3b9a8] py-3
                 flex justify-center place-items-center">
-                    <HandThumbUpIcon className="h-6 w-6 text-[#c3b9a8]" />
+                    <HandThumbUpIcon className="h-7 w-7 text-[#c3b9a8]" />
                     おすすめ</h3>
-                <h3 className="flex justify-center place-items-center">
-                    <TagIcon className="h-6 w-6 text-[#c3b9a8]" />
+                <h3 className="flex justify-center place-items-center py-3">
+                    <TagIcon className="h-7 w-7 text-[#c3b9a8]" />
                     カテゴリ</h3>
-                <h3 className="flex justify-center place-items-center">
-                    <MapIcon className="h-6 w-6 text-[#c3b9a8] mr-2" />
+                <h3 className="flex justify-center place-items-center py-3">
+                    <MapIcon className="h-7 w-7 text-[#c3b9a8] mr-2" />
                     エリア</h3>
             </div>
             {/* Ramen Header  */}

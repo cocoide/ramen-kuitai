@@ -1,6 +1,6 @@
 "use client"
 import { Dialog, Transition } from '@headlessui/react'
-import { XCircleIcon } from '@heroicons/react/24/outline'
+import { PlusSmallIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import { PencilIcon } from '@heroicons/react/24/solid'
 import { Fragment } from 'react'
 import CreateReview from './CreateReview'
@@ -15,9 +15,10 @@ export default function CreateReviewModal() {
                 <button
                     type="button"
                     onClick={() => setIsOpen(true)}
-                    className="rounded-full bg-[#c3b9a8] hover:brightness-95 shadow-sm"
+                    className="rounded-full bg-[#c3b9a8] hover:brightness-95 ring-1 ring-white
+                    shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]"
                 >
-                    <PencilIcon className=" text-white p-3 h-12 w-12" />
+                    <PlusSmallIcon className=" text-white p-2 h-12 w-12" />
                 </button>
                 {/* 表示される部分 */}
             </div>
@@ -33,7 +34,7 @@ export default function CreateReviewModal() {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <div className="fixed inset-0 bg-black bg-opacity-25" />
+                        <div className="fixed inset-0  backdrop-blur-sm bg-black/25" />
                     </Transition.Child>
 
                     <div className="fixed inset-0 overflow-y-auto">
