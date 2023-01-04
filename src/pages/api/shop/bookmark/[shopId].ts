@@ -15,7 +15,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 id: session?.user.id
             },
             data: {
-                favorite: {
+                bookmark: {
                     connect: {
                         id: query.shopId
                     }
