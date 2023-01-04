@@ -18,7 +18,7 @@ const getReviewForUser = cache(async (userId: User["email"]) => {
         select: {
             id: true,
             title: true,
-            description: true,
+            // description: true,
             image: true,
             valuation: true,
         },
