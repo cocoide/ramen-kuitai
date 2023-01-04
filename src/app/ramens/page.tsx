@@ -27,7 +27,6 @@ async function getAllShop() {
 export default async function Page() {
 
     const ramens = await getAllShop()
-    console.log(ramens)
     return (
         <div className="">
             <div className="place-center w-screen space-x-5
