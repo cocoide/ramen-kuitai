@@ -3,7 +3,6 @@ import { User } from '@prisma/client';
 import { cache } from 'react';
 import prisma from '../../../libs/client/prisma';
 
-
 const getReviewForUser = cache(async (userId: User["id"]) => {
   return await prisma.review.findMany({
     where: {
@@ -12,9 +11,7 @@ const getReviewForUser = cache(async (userId: User["id"]) => {
     select: {
       id: true,
       title: true,
-      description: true,
       image: true,
-      valuation: true,
     },
   })
 });
