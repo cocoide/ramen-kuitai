@@ -34,8 +34,8 @@ model Review {
   id         String            @id @default(cuid())
   title      String            
   image  String?
-  description  String?
-  valuation    Int?
+  rating    Int?
+  content  String?
   category Category[]
   
   shopId String?

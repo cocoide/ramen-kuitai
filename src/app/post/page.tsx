@@ -10,7 +10,7 @@ import CreateReviewModal from './components/CreateReviewModal';
 // import CreateModal from './components/CreateModal';
 
 // Now userId is email
-const getReviewForUser = cache(async (userId: User["email"]) => {
+const getReviewForUser = cache(async (userId: User["id"]) => {
     return await prisma.review.findMany({
         where: {
             authorId: userId,
@@ -18,9 +18,9 @@ const getReviewForUser = cache(async (userId: User["email"]) => {
         select: {
             id: true,
             title: true,
-            // description: true,
+            content: true,
             image: true,
-            valuation: true,
+            rating: true,
         },
     })
 });

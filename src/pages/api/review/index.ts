@@ -37,14 +37,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         try{
    
       const reviews = reviewCreateSchema.parse(req.body)
-      const { image, title, description, valuation, shopId} =reviews;
+      const { image, title, content, rating, shopId} =reviews;
         
         const review= await prisma.review.create({
         data: {
           image,
           title,
-          valuation,
-          // description,
+          rating,
+          content,
           authorId: session.user.id,
           shopId,
         },

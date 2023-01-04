@@ -12,6 +12,7 @@ const getReviewForUser = cache(async (userId: User["id"]) => {
       id: true,
       title: true,
       image: true,
+      rating: true,
     },
   })
 });
