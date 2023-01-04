@@ -25,18 +25,17 @@ const getReviewForUser = cache(async (userId: User["email"]) => {
     })
 });
 
-export default async function PostReviewPage() {
+export default async function Page() {
     const user = await getCurrentUser()
     if (!user) {
         redirect(authOptions.pages.signIn)
     }
     const reviews = await getReviewForUser(user.email);
-    const session = await getSession();
     return (
         <div className="">
             <h2 className="flex justify-center mt-3">📔投稿一覧</h2>
             <div className="h-screen">
-            <FetchReview review={reviews} session={session} />
+                <FetchReview review={reviews} user={user} />
             </div>
 
             <div className="">

@@ -33,7 +33,7 @@ function Header() {
                 }{/* Notice button */}
 
                 {(isLoadingUser) ? <div className="w-10 h-10 bg-secondary animate-pulse rounded-full" />
-                    : user ? <AvaterMenu />
+                    : user ? <AvaterMenu userId={`${user.id}`} />
                         : <button onClick={() => OpenLoginModal(true)} className='text-secondary ring-none'
                         ><UserCircleIcon className="h-10" /></button>}
             </div>

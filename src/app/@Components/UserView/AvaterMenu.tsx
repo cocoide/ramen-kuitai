@@ -1,5 +1,6 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Cog8ToothIcon, HandThumbUpIcon, MapPinIcon, PencilSquareIcon, UserIcon, UserMinusIcon } from '@heroicons/react/24/solid';
+import { User } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,9 +8,37 @@ import { Fragment, ReactNode } from 'react'
 import { cn } from '../../../utils/cn';
 import { useAuth } from '../../../utils/hooks/useAuth';
 
-const AvaterMenu = () => {
+const AvaterMenu = ({ userId }: { userId: User["id"] }) => {
+
     const { data: session, status } = useSession();
     const { } = status
+    const Links = [
+        {
+            label: 'プロフィール',
+            icon: <UserIcon />,
+            path: `/${userId}`,
+        },
+        {
+            label: '保存したお店',
+            icon: <MapPinIcon />,
+            path: '/ramens',
+        },
+        {
+            label: 'らあ活を投稿',
+            icon: <PencilSquareIcon />,
+            path: '/post',
+        },
+        {
+            label: 'いいねした投稿',
+            icon: <HandThumbUpIcon />,
+            path: '/ramens',
+        },
+        {
+            label: '設定',
+            icon: <Cog8ToothIcon />,
+            path: `/setting`,
+        },
+    ];
     return (
         <div>
             <Menu as="div" className="relative z-50">
@@ -85,33 +114,7 @@ const MenuLink = ({
     );
 };
 
-const Links = [
-    {
-        label: 'プロフィール',
-        icon: <UserIcon />,
-        path: '/user/profile',
-    },
-    {
-        label: '保存したお店',
-        icon: <MapPinIcon />,
-        path: '/ramens',
-    },
-    {
-        label: 'らあ活を投稿',
-        icon: <PencilSquareIcon />,
-        path: '/post',
-    },
-    {
-        label: 'いいねした投稿',
-        icon: <HandThumbUpIcon />,
-        path: '/ramens',
-    },
-    {
-        label: '設定',
-        icon: <Cog8ToothIcon />,
-        path: '/user/setting',
-    },
-];
+
 
 const ListItem = ({
     active,

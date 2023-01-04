@@ -16,8 +16,6 @@ import { cn } from '../../utils/cn';
 //     return ramens;
 // };
 
-// export const revalidate = 60;
-
 async function getAllShop() {
     return await prisma.ramenShop.findMany({
         select: { id: true, name: true, image: true },

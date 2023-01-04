@@ -17,10 +17,10 @@ async function deleteReview(reviewId: string) {
     })
 };
 
-const FetchReview = ({ review, session }: { review: Review[], session: any }) => {
+const FetchReview = ({ review, user }: { review: Review[], user: any }) => {
     const router = useRouter();
     return (
-        session ?
+        user ?
             <div className="overflow-auto">
                 {review.map(review => {
                 return (

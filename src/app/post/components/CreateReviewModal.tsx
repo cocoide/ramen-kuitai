@@ -9,7 +9,7 @@ import { isReviewModalOpen } from '../../../@types/models/Modal'
 export default function CreateReviewModal() {
     const [isOpen, setIsOpen] = useRecoilState(isReviewModalOpen)
     return (
-        <>
+        <div>
             {/* 表示される部分 */}
             <div className="fixed bottom-0 right-0 place-center">
                 <button
@@ -57,12 +57,12 @@ export default function CreateReviewModal() {
                                         投稿を作成
                                     </Dialog.Title>
                                     <div className="mt-2">
-                                        <p className="text-sm text-gray-500">
+                                        <div className="text-sm text-gray-500">
 
                                             <CreateReview />
                                             {/* Input form  */}
 
-                                        </p>
+                                        </div>
                                     </div>
 
                                     <div className="">
@@ -79,6 +79,6 @@ export default function CreateReviewModal() {
                     </div>
                 </Dialog>
             </Transition>
-        </>
+        </div>
     )
 }
