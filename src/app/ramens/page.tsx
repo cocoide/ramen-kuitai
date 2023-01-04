@@ -30,17 +30,13 @@ export default async function Page() {
             <div className="place-center w-screen space-x-5
                 sticky top-0  backdrop-blur-sm bg-white/95 md:border-t font-medium">
 
-                <h3 className="border-b-2 border-primary  py-3 place-center text-primary">
+                <h3 className="border-b-2 border-primary  p-3 place-center text-primary">
                     <HandThumbUpIcon className="h-7 w-7" />
-                    おすすめ</h3>
+                    人気なお店</h3>
 
-                <h3 className="place-center py-3 text-secondary">
+                <h3 className="place-center p-3 text-secondary">
                     <TagIcon className="h-7 w-7" />
-                    カテゴリ</h3>
-
-                <h3 className="place-center py-3 text-secondary">
-                    <MapIcon className="h-7 w-7 mr-2" />
-                    エリア</h3>
+                    らあ活を発見</h3>
             </div>
             {/* Ramen Header  */}
 

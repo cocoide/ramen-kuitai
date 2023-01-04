@@ -1,5 +1,15 @@
-export default function LoginPage() {
+import { getCurrentUser } from '../../libs/server/session';
+import LoginButton from './componets/LoginButton';
+import { redirect } from 'next/navigation';
+
+export default async function LoginPage() {
+    const user = await getCurrentUser();
+    if (user) {
+        redirect(`/${user.id}`)
+    };
     return (
-        <div>ログイン</div>
+        <div className="flex-center">
+            <LoginButton />
+        </div>
     )
-}
+};
