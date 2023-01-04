@@ -5,7 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { API_URL } from '../../libs/client/constants';
 import prisma from '../../libs/client/prisma';
+import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
+import FavoriteButton from './components/FavoriteButton';
 
 
 // async function getAllShop() {
@@ -23,7 +25,6 @@ async function getAllShop() {
 }
 
 export default async function Page() {
-
     const ramens = await getAllShop()
     return (
         <div className="">
@@ -51,6 +52,7 @@ export default async function Page() {
 
                         <div className="flex justify-between items-center text-primary mx-3">
                             <h2>{ramen.name}</h2>
+                            <FavoriteButton shopId={ramen.id} />
                             <EllipsisHorizontalIcon className="h-5 w-5" />
                         </div>
                     </div>);

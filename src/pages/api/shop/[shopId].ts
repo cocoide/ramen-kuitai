@@ -3,14 +3,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import * as z from "zod"
 import prisma from '../../../libs/client/prisma';
 import { withMethods } from '../../../libs/server/middlewares/with-methods';
-
-export const querySchema = z.object({
-    shopId: z.string(),
-  });
+import { shopQuerySchema } from '../../../libs/server/validations/index';
   
  async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "GET") {
-        const query = querySchema.parse(req.query)
+        const query = shopQuerySchema.parse(req.query)
         try {
           const shopDetail = await prisma.ramenShop.findUnique({
             where: {
@@ -20,8 +17,8 @@ export const querySchema = z.object({
                 id: true,
                 name: true,
                 image: true,
-                // address: true,
-                // category: true,
+                address: true,
+                category: true,
             }
           })
         return res.json(shopDetail);
