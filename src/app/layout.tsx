@@ -1,3 +1,4 @@
+import "/styles/globals.css";
 import Header from './@Components/@Header';
 import RecoilProvider from './@Components/Providers/RecoilProvider';
 import NextAuthProvider from './@Components/Providers/NextauthProvider';
@@ -10,8 +11,7 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
-}) {
-
+    }) {
     return (
         <html lang='ja'>
             <title>Ramen Review</title>
