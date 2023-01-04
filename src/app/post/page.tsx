@@ -30,7 +30,8 @@ export default async function Page() {
     if (!user) {
         redirect(authOptions.pages.signIn)
     }
-    const reviews = await getReviewForUser(user.email);
+    const reviews = await getReviewForUser(user.id);
+    console.log(reviews)
     return (
         <div className="">
             <h2 className="flex justify-center mt-3">📔投稿一覧</h2>

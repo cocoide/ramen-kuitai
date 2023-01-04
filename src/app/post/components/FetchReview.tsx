@@ -20,7 +20,6 @@ async function deleteReview(reviewId: string) {
 const FetchReview = ({ review, user }: { review: Review[], user: any }) => {
     const router = useRouter();
     return (
-        user ?
             <div className="overflow-auto">
                 {review.map(review => {
                 return (
@@ -71,10 +70,7 @@ const FetchReview = ({ review, user }: { review: Review[], user: any }) => {
             })}
 
         </div>
-            :
-            (<div>
-                <div>ログインしていません </div>
-            </div>)
+
     )
 }
 export default FetchReview
