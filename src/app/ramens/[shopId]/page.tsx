@@ -9,22 +9,22 @@ import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
-async function getShopDetail(shopId: string) {
-    const URL = `${API_URL}/shop/${shopId}`
-    const res = await fetch(URL, { next: { revalidate: 600 } })
-    if (!res.ok) throw new Error('getShopDetailでエラーが発生');
-    return res.json() as Promise<RamenShop>;
-}
+// async function getShopDetail(shopId: string) {
+//     const URL = `${API_URL}/shop/${shopId}`
+//     const res = await fetch(URL, { next: { revalidate: 600 } })
+//     if (!res.ok) throw new Error('getShopDetailでエラーが発生');
+//     return res.json() as Promise<RamenShop>;
+// }
 
-// async function getShopDetail(shopId: strinsg) {
-//     const shopDetail = await prisma.ramenShop.findUnique({
-//         where: {
-//             id: shopId,
-//         },
-//         select: { id: true, name: true, image: true },
-//     })
-//     return shopDetail;
-// };
+async function getShopDetail(shopId: string) {
+    const shopDetail = await prisma.ramenShop.findUnique({
+        where: {
+            id: shopId,
+        },
+        select: { id: true, name: true, image: true },
+    })
+    return shopDetail;
+};
 
 interface RamenDetailProps {
     params: { shopId: string }

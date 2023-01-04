@@ -23,7 +23,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         try {
           const posts = await prisma.review.findMany({
             where: {
-              authorId: session?.user.email,
+              authorId: session?.user.id,
             },
         })
         return res.json(posts);
@@ -37,15 +37,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         try{
    
       const reviews = reviewCreateSchema.parse(req.body)
-      const { image, title, rating, content, shopId} =reviews;
+      const { image, title, description, valuation, shopId} =reviews;
         
         const review= await prisma.review.create({
         data: {
           image,
           title,
-          rating,
-          content,
-          authorId: session.user.email,
+          valuation,
+          description,
+          authorId: session.user.id,
           shopId,
         },
       })

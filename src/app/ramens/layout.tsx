@@ -8,7 +8,9 @@ export default function DashboardLayout({
 }) {
     return (
         <>
+            <Suspense fallback={<CircleLoading />}>
             <div>{children}</div>
+            </Suspense>
         </>
     );
 }

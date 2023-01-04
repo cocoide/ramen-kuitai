@@ -22,7 +22,6 @@ export const querySchema = z.object({
                 image: true,
                 // address: true,
                 // category: true,
-                rating: true,
             }
           })
         return res.json(shopDetail);

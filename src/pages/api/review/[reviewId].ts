@@ -43,8 +43,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             },
             data: {
               title: body.title || review.title,
-              content: body.content,
-              rating: body.rating,
+              description: body.description,
+              valuation: body.valuation,
             },
           })
           return res.end();

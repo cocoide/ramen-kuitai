@@ -19,10 +19,10 @@ CREATE TABLE "Review" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "image" TEXT,
-    "content" TEXT,
-    "rating" INTEGER,
-    "authorId" TEXT,
+    "description" TEXT,
+    "valuation" INTEGER,
     "shopId" TEXT,
+    "authorId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Review_pkey" PRIMARY KEY ("id")
@@ -33,8 +33,7 @@ CREATE TABLE "RamenShop" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "image" TEXT,
-    "address" TEXT[],
-    "rating" INTEGER,
+    "address" TEXT,
 
     CONSTRAINT "RamenShop_pkey" PRIMARY KEY ("id")
 );
@@ -85,13 +84,31 @@ CREATE TABLE "Session" (
 );
 
 -- CreateTable
-CREATE TABLE "_RamenShopToUser" (
+CREATE TABLE "_UserFollows" (
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "_UserFavorites" (
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "_UserBookmarks" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL
 );
 
 -- CreateTable
 CREATE TABLE "_CategoryToRamenShop" (
+    "A" TEXT NOT NULL,
+    "B" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "_CategoryToReview" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL
 );
@@ -118,10 +135,22 @@ CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationTok
 CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_RamenShopToUser_AB_unique" ON "_RamenShopToUser"("A", "B");
+CREATE UNIQUE INDEX "_UserFollows_AB_unique" ON "_UserFollows"("A", "B");
 
 -- CreateIndex
-CREATE INDEX "_RamenShopToUser_B_index" ON "_RamenShopToUser"("B");
+CREATE INDEX "_UserFollows_B_index" ON "_UserFollows"("B");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_UserFavorites_AB_unique" ON "_UserFavorites"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_UserFavorites_B_index" ON "_UserFavorites"("B");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "_UserBookmarks_AB_unique" ON "_UserBookmarks"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_UserBookmarks_B_index" ON "_UserBookmarks"("B");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_CategoryToRamenShop_AB_unique" ON "_CategoryToRamenShop"("A", "B");
@@ -129,11 +158,17 @@ CREATE UNIQUE INDEX "_CategoryToRamenShop_AB_unique" ON "_CategoryToRamenShop"("
 -- CreateIndex
 CREATE INDEX "_CategoryToRamenShop_B_index" ON "_CategoryToRamenShop"("B");
 
--- AddForeignKey
-ALTER TABLE "Review" ADD CONSTRAINT "Review_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("email") ON DELETE SET NULL ON UPDATE CASCADE;
+-- CreateIndex
+CREATE UNIQUE INDEX "_CategoryToReview_AB_unique" ON "_CategoryToReview"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_CategoryToReview_B_index" ON "_CategoryToReview"("B");
 
 -- AddForeignKey
 ALTER TABLE "Review" ADD CONSTRAINT "Review_shopId_fkey" FOREIGN KEY ("shopId") REFERENCES "RamenShop"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Review" ADD CONSTRAINT "Review_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -142,13 +177,31 @@ ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId"
 ALTER TABLE "Session" ADD CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_RamenShopToUser" ADD CONSTRAINT "_RamenShopToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "RamenShop"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_UserFollows" ADD CONSTRAINT "_UserFollows_A_fkey" FOREIGN KEY ("A") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_RamenShopToUser" ADD CONSTRAINT "_RamenShopToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_UserFollows" ADD CONSTRAINT "_UserFollows_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_UserFavorites" ADD CONSTRAINT "_UserFavorites_A_fkey" FOREIGN KEY ("A") REFERENCES "Review"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_UserFavorites" ADD CONSTRAINT "_UserFavorites_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_UserBookmarks" ADD CONSTRAINT "_UserBookmarks_A_fkey" FOREIGN KEY ("A") REFERENCES "RamenShop"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_UserBookmarks" ADD CONSTRAINT "_UserBookmarks_B_fkey" FOREIGN KEY ("B") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_CategoryToRamenShop" ADD CONSTRAINT "_CategoryToRamenShop_A_fkey" FOREIGN KEY ("A") REFERENCES "Category"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_CategoryToRamenShop" ADD CONSTRAINT "_CategoryToRamenShop_B_fkey" FOREIGN KEY ("B") REFERENCES "RamenShop"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_CategoryToReview" ADD CONSTRAINT "_CategoryToReview_A_fkey" FOREIGN KEY ("A") REFERENCES "Category"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_CategoryToReview" ADD CONSTRAINT "_CategoryToReview_B_fkey" FOREIGN KEY ("B") REFERENCES "Review"("id") ON DELETE CASCADE ON UPDATE CASCADE;

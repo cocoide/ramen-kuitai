@@ -6,6 +6,7 @@ import { cache } from 'react'
 import prisma from '../../libs/client/prisma'
 import SimpleAvater from '../@Components/UserView/SimpleAvater';
 
+export const revalidate = 300; // revalidate this page every 300 seconds
 
 const getUserData = cache(async (userId: User["id"]) => {
     return await prisma.user.findUnique({
@@ -15,10 +16,10 @@ const getUserData = cache(async (userId: User["id"]) => {
     })
 });
 
-interface UserProps {
+type UserIdProps = {
     params: { userId: string }
 };
-export default async function UserPage({ params }: UserProps) {
+export default async function Page({ params }: UserIdProps) {
     const user = await getUserData(params.userId)
     if (!user) {
         notFound();
@@ -52,17 +53,26 @@ export default async function UserPage({ params }: UserProps) {
 
                 <h3 className="border-b-2 border-primary  py-3 place-center text-primary">
                     <Squares2X2Icon className="h-7 w-7" />
-                    あなたの投稿</h3>
+                    投稿</h3>
 
                 <h3 className="place-center py-3 text-secondary">
                     <BookmarkIcon className="h-7 w-7" />
-                    保存したお店</h3>
+                    保存 </h3>
 
                 <h3 className="place-center py-3 text-secondary">
                     <HandThumbUpIcon className="h-7 w-7" />
-                    いいねした投稿</h3>
+                    いいね</h3>
             </div>
             {/* <CreateReviewModal /> */}
         </div>
     )
 };
+
+export async function generateStaticParams() {
+    const users = await prisma.user.findMany({
+        select: { id: true }
+    })
+    return users.map((user) => ({
+        userId: user.id
+    }));
+}

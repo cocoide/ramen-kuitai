@@ -56,7 +56,7 @@ const CreateReview = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-5 bg-white p-5">
                 <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
                 {/* Title */}
-                <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
+                <input {...register('description')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
                 {/* Content  */}
                 <div className="flex justify-center">
                     {[...Array(5)].map((star, index) => {
@@ -66,7 +66,7 @@ const CreateReview = () => {
                                 className={cn(index <= rating ? "text-yellow-300" : "text-gray-200", "hover:scale-110 duration-200")}
                                 onClick={() => {
                                     setRating(index)
-                                    setValue("rating", index)
+                                    setValue("valuation", index)
                                 }}><StarIcon className="h-8 w-8" />
                             </button>
                         )

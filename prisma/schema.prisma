@@ -1,5 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// 1 対 1 の自己関係
+// https://www.prisma.io/docs/concepts/components/prisma-schema/relations/self-relations
 
 generator client {
   provider = "prisma-client-js"
@@ -20,20 +22,28 @@ model User {
   role              Role @default(USER)
   accounts      Account[]
   sessions      Session[]
-  postedReviews Review[]
-  bookmarkedShops RamenShop[]
+  bookmark RamenShop[] @relation("UserBookmarks")
+  favorite Review[] @relation("UserFavorites")
+  posts Review[]  @relation("UserPosts")
+  
+  followedBy User[] @relation("UserFollows")
+  following User[] @relation("UserFollows")
 }
 
 model Review {
   id         String            @id @default(cuid())
   title      String            
   image  String?
-  content   String?
-  rating     Int?
-  authorId String?
-  author  User? @relation(fields: [authorId], references: [email])
+  description  String?
+  valuation    Int?
+  category Category[]
+  
   shopId String?
   shop RamenShop? @relation(fields: [shopId], references: [id])
+  authorId String?
+  author  User? @relation("UserPosts",fields: [authorId], references: [id])
+  
+  favorited User[] @relation("UserFavorites")
   createdAt DateTime @default(now())
 }
 
@@ -41,17 +51,17 @@ model RamenShop {
   id String  @id @default(cuid())
   name String @unique
   image  String?
-  address String[]
+  address String?
   reviews Review[]
-  bookmarkedBy User[]
+  bookmarkedBy User[] @relation("UserBookmarks")
   category Category[]
-  rating Int?
 }
 
 model Category{
   id String @id @default(cuid())
   name String @unique
   shops RamenShop[]
+  reviews Review []
 }
 
 enum Role {
