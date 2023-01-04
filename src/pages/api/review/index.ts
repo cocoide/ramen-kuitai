@@ -44,7 +44,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           image,
           title,
           valuation,
-          description,
+          // description,
           authorId: session.user.id,
           shopId,
         },
