@@ -3,6 +3,7 @@ import { RamenShop } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { cache } from 'react';
 import { API_URL } from '../../../libs/client/constants';
 import prisma from '../../../libs/client/prisma';
 import { getCurrentUser } from '../../../libs/server/session';
@@ -27,7 +28,7 @@ async function getShopDetail(shopId: string) {
     return shopDetail;
 };
 
-async function getUserBookmarks(userId: string) {
+const getUserBookmarks = cache(async (userId: string) => {
     const res = await prisma.user.findUnique({
         where: {
             id: userId
@@ -41,7 +42,7 @@ async function getUserBookmarks(userId: string) {
         }
     })
     return res.bookmark
-};
+})
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)

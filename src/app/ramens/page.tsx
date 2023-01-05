@@ -3,6 +3,7 @@ import { User } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
 import { userAgent } from 'next/server';
+import { cache } from 'react';
 import prisma from '../../libs/client/prisma';
 import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
@@ -24,7 +25,7 @@ async function getRamenShops() {
         },
     })
 };
-async function getUserBookmarks(userId: string) {
+const getUserBookmarks = cache(async (userId: string) => {
     const res = await prisma.user.findUnique({
         where: {
             id: userId
@@ -38,8 +39,7 @@ async function getUserBookmarks(userId: string) {
         }
     })
     return res.bookmark
-};
-
+});
 
 export default async function Page() {
     const ramens = await getRamenShops();
