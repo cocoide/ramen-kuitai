@@ -6,6 +6,7 @@ import { cn } from '../../../utils/cn';
 
 export default function Usertab({ userId }: { userId: string }) {
     const pathName = usePathname();
+    // console.log(pathName)
     return (
         <div className="place-center w-screen space-x-5
         sticky top-0  backdrop-blur-sm bg-white/95 font-medium">

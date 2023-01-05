@@ -1,20 +1,35 @@
-"use cliet"
+"use client"
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation'
+import toast from 'react-hot-toast';
+import { API_URL } from '../../../libs/client/constants';
 
-export default function FollowButton({ userId }: { userId: string }) {
+async function patchFollow(id: string, name: string) {
+    toast.success(`『${name}』をフォロー完了`);
+    return await fetch(`${API_URL}/user/follow/${id}`, {
+        method: "PATCH"
+    })
+};
+async function deleteFollow(id: string, name: string) {
+    toast.success(`『${name}』のフォロー解除`);
+    return await fetch(`${API_URL}/user/follow/${id}`, {
+        method: "DELETE"
+    })
+};
+
+export default function FollowButton({ following, followed, name }: { following: string, followed: string, name: string }) {
     const pathName = usePathname();
     return (
         <div className="mx-10 mb-3">
-            {pathName == `/${userId}` || `/${userId}/bookmark` || `/${userId}/favorite` ?
+            {pathName == `/${following}` || pathName == `/${following}/bookmark` || pathName == `/${following}/favorite` ?
                 <Link href="/setting" className="place-center bg-gray-100 rounded-full text-gray-600 hover:brightness-80 p-1"
                 >プロフィールを編集</Link>
-                :
-                <button className="place-center bg-gray-100 rounded-full ring-1 ring-primary
-                text-primary hover:brightness-80 p-1"
+                : 
+                <button onClick={() => patchFollow(followed, name)}
+                    className="place-center rounded-full bg-gray-100 text-gray-600 hover:brightness-80 p-1 w-full"
                 >フォローする</button>
-            }
+            } 
         </div>
     )
 };

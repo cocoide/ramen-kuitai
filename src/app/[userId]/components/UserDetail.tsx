@@ -7,7 +7,7 @@ import Usertab from './UserTab';
 
 const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
     const user = await getUniqueUserAllData(userId);
-    const sessionUser = await getCurrentUser();
+    const nowUser = await getCurrentUser();
     return (
         <div className="flex flex-col">
             <div className="flex flex-col bg-white">
@@ -16,17 +16,14 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
                     <SimpleAvater w={30} h={30} image={user?.image} />
 
                     <div className="flex flex-col m-5 font-medium text-gray-600 space-y-3">
-                        <div> {user.bio}</div>
                         <div className="">
-                            <div className="text-bold">ユーザー名：{user.name}</div>
-                            <div className="text-bold">自己紹介：{user.bio}</div>
-                            <div>🍜投稿したらあ活：{user.id}杯</div>
+                            <div className="text-bold">ユーザー名：{user?.name}</div>
+                            <div className="text-bold">自己紹介：{user?.bio}</div>
+                            <div>🍜投稿したらあ活：{user?.id}杯</div>
                         </div>
                     </div>
                 </div>
-
-                <FollowButton userId={sessionUser.id} />
-
+                <FollowButton following={nowUser?.id} followed={userId} name={user?.name} />
             </div>
             <Usertab userId={userId} />
         </div>
