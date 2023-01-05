@@ -1,16 +1,14 @@
-import { HandThumbUpIcon, MapIcon, TagIcon } from '@heroicons/react/24/outline';
-import { User } from '@prisma/client';
+import { HandThumbUpIcon, PencilIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { userAgent } from 'next/server';
-import { cache } from 'react';
-import prisma from '../../libs/client/prisma';
+import { redirect } from 'next/navigation';
+import { getAllShops } from '../../libs/server/services/shop';
+import { getUserBookmarks } from '../../libs/server/services/user';
 import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
 import BookmarkButton from './components/BookmarkButton';
 
-
-// async function getAllShop() {
+// async function getAllShops() {
 //     const URL = `${API_URL}/shop`
 //     const res = await fetch(URL)
 //     if (!res.ok) throw new Error('getAllShopでエラーが発生');
@@ -18,32 +16,12 @@ import BookmarkButton from './components/BookmarkButton';
 //     return ramens;
 // };
 
-async function getRamenShops() {
-    return await prisma.ramenShop.findMany({
-        select: {
-            id: true, name: true, image: true, bookmarkedBy: true,
-        },
-    })
-};
-const getUserBookmarks = cache(async (userId: string) => {
-    const res = await prisma.user.findUnique({
-        where: {
-            id: userId
-        },
-        select: {
-            bookmark: {
-                select: {
-                    id: true,
-                }
-            }
-        }
-    })
-    return res.bookmark
-});
-
 export default async function Page() {
-    const ramens = await getRamenShops();
+    const ramens = await getAllShops();
     const user = await getCurrentUser();
+    if (!user) {
+        redirect("/")
+    }
     const bookmarks = await getUserBookmarks(user.id)
     const checkIsBookmarked = (ramenId: string): boolean => {
         return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
@@ -56,11 +34,11 @@ export default async function Page() {
 
                 <h3 className="border-b-2 border-primary  p-3 place-center text-primary">
                     <HandThumbUpIcon className="h-7 w-7" />
-                    お店を開拓</h3>
+                    おすすめのお店</h3>
 
                 <h3 className="place-center p-3 text-secondary">
-                    <TagIcon className="h-7 w-7" />
-                    らあ活を発見</h3>
+                    <PencilIcon className="h-7 w-7" />
+                    みんなの投稿</h3>
             </div>
             {/* Ramen Header  */}
 

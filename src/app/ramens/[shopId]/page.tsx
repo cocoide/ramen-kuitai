@@ -1,52 +1,27 @@
-import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
-import { RamenShop } from '@prisma/client';
+import { EllipsisHorizontalIcon, MapPinIcon, ShareIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import { cache } from 'react';
-import { API_URL } from '../../../libs/client/constants';
-import prisma from '../../../libs/client/prisma';
+import { notFound, redirect } from 'next/navigation';
+import { getShopDetail } from '../../../libs/server/services/shop';
+import { getUserBookmarks } from '../../../libs/server/services/user';
 import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
+import BookmarkButton from '../components/BookmarkButton';
 import RamenFooterButton from '../components/RamenFooterButton';
 
 // async function getShopDetail(shopId: string) {
 //     const URL = `${API_URL}/shop/${shopId}`
 //     const res = await fetch(URL, { next: { revalidate: 600 } })
-//     if (!res.ok) throw new Error('getShopDetailでエラーが発生');
 //     return res.json() as Promise<RamenShop>;
-// }
-
-async function getShopDetail(shopId: string) {
-    const shopDetail = await prisma.ramenShop.findUnique({
-        where: {
-            id: shopId,
-        },
-        select: { id: true, name: true, image: true },
-    })
-    return shopDetail;
-};
-
-const getUserBookmarks = cache(async (userId: string) => {
-    const res = await prisma.user.findUnique({
-        where: {
-            id: userId
-        },
-        select: {
-            bookmark: {
-                select: {
-                    id: true,
-                }
-            }
-        }
-    })
-    return res.bookmark
-})
+// };
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
     const user = await getCurrentUser();
+    if (!user) {
+        redirect("/")
+    };
     const bookmarks = await getUserBookmarks(user.id)
     const checkIsBookmarked = (ramenId: string): boolean => {
         return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
@@ -91,9 +66,11 @@ export default async function Page({ params }: { params: { shopId: string } }) {
                 </div>
                 {/* Article Section  */}
 
-                <div className="fixed bottom-0 w-full">
-                    <RamenFooterButton shopId={params.shopId} name={shop.id}
-                        checkIsBookmarked={checkIsBookmarked(params.shopId)} />
+                <div className="fixed bottom-0 w-full shadow-natural flex justify-center items-center space-x-3 p-1">
+                    <ShareIcon className="w-5 h-5 text-primary mx-2" />
+                    <MapPinIcon className="w-5 h-5 text-primary mx-2" />
+                    <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
+                    <Link href={"/post"} className="bg-white text-primary ring-1 ring-primary rounded-md py-1 px-10 flex-center">投稿</Link>
                 </div>
             </div>
         </div>
@@ -101,11 +78,11 @@ export default async function Page({ params }: { params: { shopId: string } }) {
 };
 
 
-export async function generateStaticParams() {
-    const ramens = await prisma.ramenShop.findMany({
-        select: { id: true }
-    })
-    return ramens.map((ramen) => ({
-        shopId: ramen.id
-    }));
-}
+// export async function generateStaticParams() {
+//     const ramens = await prisma.ramenShop.findMany({
+//         select: { id: true }
+//     })
+//     return ramens.map((ramen) => ({
+//         shopId: ramen.id
+//     }));
+// }
