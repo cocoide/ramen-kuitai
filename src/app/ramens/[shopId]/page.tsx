@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { API_URL } from '../../../libs/client/constants';
 import prisma from '../../../libs/client/prisma';
+import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import RamenFooterButton from '../components/RamenFooterButton';
@@ -26,12 +27,29 @@ async function getShopDetail(shopId: string) {
     return shopDetail;
 };
 
-interface RamenDetailProps {
-    params: { shopId: string }
+async function getUserBookmarks(userId: string) {
+    const res = await prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        select: {
+            bookmark: {
+                select: {
+                    id: true,
+                }
+            }
+        }
+    })
+    return res.bookmark
 };
 
-export default async function Page({ params }: RamenDetailProps) {
+export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
+    const user = await getCurrentUser();
+    const bookmarks = await getUserBookmarks(user.id)
+    const checkIsBookmarked = (ramenId: string): boolean => {
+        return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
+    };
     if (!shop) {
         notFound();
     };
@@ -72,8 +90,9 @@ export default async function Page({ params }: RamenDetailProps) {
                 </div>
                 {/* Article Section  */}
 
-                <div className="fixed bottom-1 w-full">
-                    <RamenFooterButton />
+                <div className="fixed bottom-0 w-full">
+                    <RamenFooterButton shopId={params.shopId} name={shop.id}
+                        checkIsBookmarked={checkIsBookmarked(params.shopId)} />
                 </div>
             </div>
         </div>
