@@ -10,20 +10,19 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const session = await unstable_getServerSession( req, res, authOptions);
     if (req.method === "PATCH") {
     try {
-        // await prisma.user.update({
-        //     where: {
-        //         id: "kazuki",
-        //         // session?.user.id
-        //     },
-        //     data: {
-        //         bookmark: {
-        //             connect: {
-        //                 id: query.shopId
-        //             }
-        //         }
-        //     }
-        // });
-        res.status(200).json({ success: true });
+        await prisma.user.update({
+            where: {
+                id: session?.user.id,
+            },
+            data: {
+                bookmark: {
+                    connect: {
+                        id: query.shopId
+                    }
+                }
+            }
+        });
+        res.status(200).json({ success: `${session?.user.id} bookmarked ${query.shopId}`  });
     }
     catch (e) {
         return res.status(500).end({e});

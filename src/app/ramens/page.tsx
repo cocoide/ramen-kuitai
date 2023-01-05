@@ -20,7 +20,7 @@ import FavoriteButton from './components/FavoriteButton';
 
 async function getAllShop() {
     return await prisma.ramenShop.findMany({
-        select: { id: true, name: true, image: true },
+        select: { id: true, name: true, image: true, bookmarkedBy: true },
     })
 }
 
@@ -52,8 +52,7 @@ export default async function Page() {
 
                         <div className="flex justify-between items-center text-primary mx-3">
                             <h2>{ramen.name}</h2>
-                            <FavoriteButton shopId={ramen.id} />
-                            <EllipsisHorizontalIcon className="h-5 w-5" />
+                            <FavoriteButton id={ramen.id} name={ramen.name} />
                         </div>
                     </div>);
             })}
