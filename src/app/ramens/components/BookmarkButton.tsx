@@ -36,7 +36,7 @@ export default function BookmarkButton({ id, name, Bookmarked }: { id: string, n
                     SubmitBookmark(id, name)
                     setIsBookmark(true)
                 }}
-                    className="bg-white rounded-full place-center p-2">
+                    className="bg-white rounded-full place-center">
                     <BookmarkIcon className="text-primary h-5 w-5" />
                 </button>
                 :
@@ -44,7 +44,7 @@ export default function BookmarkButton({ id, name, Bookmarked }: { id: string, n
                     DeleteBookmark(id, name)
                     setIsBookmark(false)
                 }}
-                    className="bg-white rounded-full place-center p-2">
+                    className="bg-white rounded-full place-center">
                     <Image src={"/solid-icons/bookmark.svg"} alt="bookmark" width={20} height={20}
                         className="text-primary h-5 w-5" />
                 </button>

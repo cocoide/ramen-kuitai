@@ -1,20 +1,21 @@
-import { EllipsisHorizontalIcon, MapPinIcon, ShareIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon, MapPinIcon, PencilIcon, ShareIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
+import prisma from '../../../libs/client/prisma';
 import { getShopDetail } from '../../../libs/server/services/shop';
 import { getUserBookmarks } from '../../../libs/server/services/user';
 import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import BookmarkButton from '../components/BookmarkButton';
-import RamenFooterButton from '../components/RamenFooterButton';
 
 // async function getShopDetail(shopId: string) {
 //     const URL = `${API_URL}/shop/${shopId}`
 //     const res = await fetch(URL, { next: { revalidate: 600 } })
 //     return res.json() as Promise<RamenShop>;
 // };
+export const revalidate = 600
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
@@ -66,23 +67,33 @@ export default async function Page({ params }: { params: { shopId: string } }) {
                 </div>
                 {/* Article Section  */}
 
-                <div className="fixed bottom-0 w-full shadow-natural flex justify-center items-center space-x-3 p-3 ring-1 ring-secondary">
-                    <ShareIcon className="w-5 h-5 text-primary mx-2" />
-                    <MapPinIcon className="w-5 h-5 text-primary mx-2" />
+                <div className="fixed bottom-0 w-full flex justify-center items-center p-3 space-x-5">
+                    <div className="bg-white text-primary ring-1 ring-primary rounded-md py-2 px-3 place-center">
+                        <ShareIcon className="w-5 h-5 text-primary" />
+                        共有
+                    </div>
+                    <div className="bg-white text-primary ring-1 ring-primary rounded-md  place-center py-2 px-3">
+
                     <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
-                    <Link href={"/post"} className="bg-white text-primary ring-1 ring-primary rounded-md py-1 px-10 flex-center">投稿</Link>
+                        保存
+                    </div>
+
+                    <Link href={"/post"} className="bg-white text-primary ring-1 ring-primary rounded-md py-2 px-3 place-center"
+                    ><PencilIcon className="w-5 h-5 text-primary" />
+                        投稿</Link>
                 </div>
             </div>
+            {/* Footer button  */}
         </div>
     )
 };
 
 
-// export async function generateStaticParams() {
-//     const ramens = await prisma.ramenShop.findMany({
-//         select: { id: true }
-//     })
-//     return ramens.map((ramen) => ({
-//         shopId: ramen.id
-//     }));
-// }
+export async function generateStaticParams() {
+    const ramens = await prisma.ramenShop.findMany({
+        select: { id: true }
+    })
+    return ramens.map((ramen) => ({
+        shopId: ramen.id
+    }));
+}

@@ -15,6 +15,7 @@ import BookmarkButton from './components/BookmarkButton';
 //     const ramens: RamenShop[] = await res.json();
 //     return ramens;
 // };
+export const revalidate = 300
 
 export default async function Page() {
     const ramens = await getAllShops();
@@ -51,7 +52,7 @@ export default async function Page() {
                                 className={cn("rounded-xl h-auto aspect-square",)} />
                         </Link>
 
-                        <div className="flex justify-between items-center text-primary mx-3">
+                        <div className="flex justify-between items-center text-primary mx-3 my-2">
                             <h2>{ramen.name}</h2>
                             <BookmarkButton id={ramen.id} name={ramen.name}
                                 Bookmarked={checkIsBookmarked(ramen.id)} />
