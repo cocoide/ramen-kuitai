@@ -1,9 +1,8 @@
 import { HandThumbUpIcon, MapIcon, TagIcon } from '@heroicons/react/24/outline';
-import { EllipsisHorizontalIcon } from '@heroicons/react/24/solid';
-import { RamenShop } from '@prisma/client';
+import { User } from '@prisma/client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { API_URL } from '../../libs/client/constants';
+import { userAgent } from 'next/server';
 import prisma from '../../libs/client/prisma';
 import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
@@ -18,14 +17,38 @@ import BookmarkButton from './components/BookmarkButton';
 //     return ramens;
 // };
 
-async function getAllShop() {
+async function getRamenShops() {
     return await prisma.ramenShop.findMany({
-        select: { id: true, name: true, image: true, bookmarkedBy: true },
+        select: {
+            id: true, name: true, image: true, bookmarkedBy: true,
+        },
     })
-}
+};
+async function getUserBookmarks(userId: string) {
+    const res = await prisma.user.findUnique({
+        where: {
+            id: userId
+        },
+        select: {
+            bookmark: {
+                select: {
+                    id: true,
+                }
+            }
+        }
+    })
+    return res.bookmark
+};
+
 
 export default async function Page() {
-    const ramens = await getAllShop()
+    const ramens = await getRamenShops();
+    const user = await getCurrentUser();
+    const bookmarks = await getUserBookmarks(user.id)
+    const checkIsBookmarked = (ramenId: string): boolean => {
+        return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
+    };
+
     return (
         <div className="">
             <div className="place-center w-screen space-x-5
@@ -52,7 +75,8 @@ export default async function Page() {
 
                         <div className="flex justify-between items-center text-primary mx-3">
                             <h2>{ramen.name}</h2>
-                            <BookmarkButton id={ramen.id} name={ramen.name} />
+                            <BookmarkButton id={ramen.id} name={ramen.name}
+                                Bookmarked={checkIsBookmarked(ramen.id)} />
                         </div>
                     </div>);
             })}

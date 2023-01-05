@@ -2,7 +2,7 @@
 import { BookmarkIcon } from '@heroicons/react/24/outline';
 import toast from 'react-hot-toast';
 import { API_URL } from '../../../libs/client/constants';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 async function SubmitBookmark(id: string, name: string) {
@@ -13,12 +13,9 @@ async function SubmitBookmark(id: string, name: string) {
 };
 
 async function DeleteBookmark(id: string, name: string) {
-    toast((t) => (
+    toast(() => (
         <span>
             『{name}』を削除しました
-            <button onClick={() => toast.dismiss(t.id)}>
-                Dismiss
-            </button>
         </span>
     ));
     return await fetch(`${API_URL}/shop/bookmark/${id}`, {
@@ -26,9 +23,11 @@ async function DeleteBookmark(id: string, name: string) {
     })
 };
 
-export default function BookmarkButton({ id, name }: { id: string, name: string }) {
+export default function BookmarkButton({ id, name, Bookmarked }: { id: string, name: string, Bookmarked: boolean }) {
     const [isBookmark, setIsBookmark] = useState<boolean>(false)
-    // 初期値をルートページで取得したい
+    useEffect(() => {
+        setIsBookmark(Bookmarked)
+    }, [])
     return (
         <div>
             {(!isBookmark) ?
