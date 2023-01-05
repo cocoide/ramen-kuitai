@@ -34,7 +34,7 @@ export default async function Page() {
 
                 <h3 className="border-b-2 border-primary  p-3 place-center text-primary">
                     <HandThumbUpIcon className="h-7 w-7" />
-                    おすすめのお店</h3>
+                    人気のお店</h3>
 
                 <h3 className="place-center p-3 text-secondary">
                     <PencilIcon className="h-7 w-7" />

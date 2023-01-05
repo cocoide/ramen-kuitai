@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: { shopId: string } }) {
                 </div>
                 {/* Article Section  */}
 
-                <div className="fixed bottom-0 w-full shadow-natural flex justify-center items-center space-x-3 p-1">
+                <div className="fixed bottom-0 w-full shadow-natural flex justify-center items-center space-x-3 p-3 ring-1 ring-secondary">
                     <ShareIcon className="w-5 h-5 text-primary mx-2" />
                     <MapPinIcon className="w-5 h-5 text-primary mx-2" />
                     <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
