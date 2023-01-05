@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { cache, Suspense } from 'react'
 import prisma from '../../libs/client/prisma'
 import { getUniqueUserAllData } from '../../libs/server/services/user';
+import ParcialLoading from '../@Components/Animations/ParciaLoading';
 import CreateReviewModal from '../post/components/CreateReviewModal';
 import PostedReview from './components/PostedReview';
 
@@ -14,13 +15,8 @@ export default async function Page({ params }: { params: { userId: string } }) {
         notFound();
     };
     return (
-        <div className="">
-            <Suspense fallback={<div className="p-3 grid-cols-1 lg:grid-cols-2 gap-5 w-screen h-full">
-                <div className="bg-gray animate-pulse p-3 rounded-xl h-15 w-[80%]"></div>
-                <div className="bg-gray animate-pulse p-3 rounded-xl h-15 w-[80%]"></div>
-                <div className="bg-gray animate-pulse p-3 rounded-xl h-15 w-[80%]"></div>
-                <div className="bg-gray animate-pulse p-3 rounded-xl h-15 w-[80%]"></div>
-            </div>}>
+        <div className="bg-gray-100 w-screen h-screen">
+            <Suspense fallback={<ParcialLoading />}>
                 <PostedReview userId={user.id} />
             </Suspense>
             <CreateReviewModal />

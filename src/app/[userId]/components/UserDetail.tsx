@@ -1,11 +1,13 @@
-import Link from 'next/link';
 import { asyncComponent } from '../../../../error/async-error';
 import { getUniqueUserAllData } from '../../../libs/server/services/user';
+import { getCurrentUser } from '../../../libs/server/session';
 import SimpleAvater from '../../@Components/UserView/SimpleAvater';
+import FollowButton from './FollowButton';
 import Usertab from './UserTab';
 
 const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
     const user = await getUniqueUserAllData(userId);
+    const sessionUser = await getCurrentUser();
     return (
         <div className="flex flex-col">
             <div className="flex flex-col bg-white">
@@ -22,8 +24,9 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
                         </div>
                     </div>
                 </div>
-                <Link href="/setting" className="place-center bg-gray-100 mx-10 mb-3 rounded-full text-gray-600 hover:brightness-80 p-1"
-                >プロフィールを編集</Link>
+
+                <FollowButton userId={sessionUser.id} />
+
             </div>
             <Usertab userId={userId} />
         </div>

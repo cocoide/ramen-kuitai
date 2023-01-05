@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import UserProfile from './components/UserDetail';
+import UserDetail from './components/UserDetail';
 
 export default function UserLayout({
     children, params
@@ -10,7 +10,7 @@ export default function UserLayout({
     return (
         <div>
             <Suspense fallback={<div>loading...</div>}>
-                <UserProfile userId={params.userId} />
+                <UserDetail userId={params.userId} />
             </Suspense>
             <div>{children}</div>
         </div>

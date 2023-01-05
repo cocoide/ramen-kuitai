@@ -22,7 +22,7 @@ const getReviewOnUser = cache(async (userId: User["id"]) => {
 const PostedReview = asyncComponent(async ({ userId }: { userId: string }) => {
   const reviews = await getReviewOnUser(userId);
   return (
-    <div className="p-3 grid-cols-1 lg:grid-cols-2 gap-5 w-screen screen-full bg-gray-100 space-y-3 overflow-y-auto">
+    <div className="p-3 grid-cols-1 lg:grid-cols-2 gap-5 w-screen screen-full space-y-3 overflow-y-auto">
       {reviews.map((review) => {
         return (
           <div className="shadow-natural rounded-md flex flex-col p-5 bg-white" key={review.id}>
