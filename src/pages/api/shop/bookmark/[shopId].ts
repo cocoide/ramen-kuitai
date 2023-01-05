@@ -28,5 +28,25 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         return res.status(500).end({e});
     }
     };
+    if (req.method === "DELETE") {
+    try {
+        await prisma.user.update({
+            where: {
+                id: session?.user.id,
+            },
+            data: {
+                bookmark: {
+                    disconnect: {
+                        id: query.shopId
+                    }
+                }
+            }
+        });
+        res.status(200).json({ success: `${session?.user.id} deleted ${query.shopId}`  });
+    }
+    catch (e) {
+        return res.status(500).end({e});
+    }
+    };
 };
 export default withMethods(["DELETE", "PATCH"], handler)

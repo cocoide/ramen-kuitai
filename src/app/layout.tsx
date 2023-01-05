@@ -4,7 +4,6 @@ import RecoilProvider from './@Components/Providers/RecoilProvider';
 import NextAuthProvider from './@Components/Providers/NextauthProvider';
 import CircleLoading from './@Components/Animations/CircleLoading';
 import { Suspense } from 'react';
-import FooterNavi from './@Components/Button/FooterNavi';
 import LoginModal from './@Components/Modals/LoginModal/index';
 
 export default function RootLayout({
@@ -24,9 +23,6 @@ export default function RootLayout({
                         <RecoilProvider>
                             <Header />
                             {children}
-                            <div className="inline-block md:hidden">
-                                <FooterNavi />
-                            </div>
                             <LoginModal />
                         </RecoilProvider>
                     </Suspense>

@@ -7,7 +7,7 @@ import { API_URL } from '../../libs/client/constants';
 import prisma from '../../libs/client/prisma';
 import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
-import FavoriteButton from './components/FavoriteButton';
+import BookmarkButton from './components/BookmarkButton';
 
 
 // async function getAllShop() {
@@ -33,7 +33,7 @@ export default async function Page() {
 
                 <h3 className="border-b-2 border-primary  p-3 place-center text-primary">
                     <HandThumbUpIcon className="h-7 w-7" />
-                    人気なお店</h3>
+                    お店を開拓</h3>
 
                 <h3 className="place-center p-3 text-secondary">
                     <TagIcon className="h-7 w-7" />
@@ -52,7 +52,7 @@ export default async function Page() {
 
                         <div className="flex justify-between items-center text-primary mx-3">
                             <h2>{ramen.name}</h2>
-                            <FavoriteButton id={ramen.id} name={ramen.name} />
+                            <BookmarkButton id={ramen.id} name={ramen.name} />
                         </div>
                     </div>);
             })}
