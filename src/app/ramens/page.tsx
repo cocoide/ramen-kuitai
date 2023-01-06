@@ -1,12 +1,12 @@
 import { HandThumbUpIcon, PencilIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 import { getAllShops } from '../../libs/server/services/shop';
-import { getUserBookmarks } from '../../libs/server/services/user';
 import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
-import BookmarkButton from './components/BookmarkButton';
+import DotsLoading from '../@Components/Animations/DotsLoading';
+import RamenHomeFooter from './RamenHomeFooter';
 
 // async function getAllShops() {
 //     const URL = `${API_URL}/shop`
@@ -15,18 +15,12 @@ import BookmarkButton from './components/BookmarkButton';
 //     const ramens: RamenShop[] = await res.json();
 //     return ramens;
 // };
-export const revalidate = 300
-
 export default async function Page() {
     const ramens = await getAllShops();
-    const user = await getCurrentUser();
-    if (!user) {
-        redirect("/")
-    }
-    const bookmarks = await getUserBookmarks(user.id)
-    const checkIsBookmarked = (ramenId: string): boolean => {
-        return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
-    };
+    // const bookmarks = await getUserBookmarks(user.id)
+    // const checkIsBookmarked = (ramenId: string): boolean => {
+    //     return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
+    // };
 
     return (
         <div className="">
@@ -54,8 +48,9 @@ export default async function Page() {
 
                         <div className="flex justify-between items-center text-primary mx-3 my-2">
                             <h2>{ramen.name}</h2>
-                            <BookmarkButton id={ramen.id} name={ramen.name}
-                                Bookmarked={checkIsBookmarked(ramen.id)} />
+                            <Suspense fallback={<div className="ml-auto"><DotsLoading /></div>}>
+                                <RamenHomeFooter shopId={ramen.id} />
+                            </Suspense>
                         </div>
                     </div>);
             })}

@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { API_URL } from '../../../libs/client/constants';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 async function SubmitBookmark(id: string, name: string) {
     toast.success(`『${name}』を保存しました`);
@@ -27,7 +28,8 @@ export default function BookmarkButton({ id, name, Bookmarked }: { id: string, n
     const [isBookmark, setIsBookmark] = useState<boolean>(false)
     useEffect(() => {
         setIsBookmark(Bookmarked)
-    }, [])
+    }, []);
+    const router = useRouter();
     return (
         <div>
             {(!isBookmark) ?
@@ -35,6 +37,7 @@ export default function BookmarkButton({ id, name, Bookmarked }: { id: string, n
                 <button onClick={() => {
                     SubmitBookmark(id, name)
                     setIsBookmark(true)
+                    return router.refresh();
                 }}
                     className="bg-white rounded-full place-center">
                     <BookmarkIcon className="text-primary h-5 w-5" />
@@ -43,6 +46,7 @@ export default function BookmarkButton({ id, name, Bookmarked }: { id: string, n
                 <button onClick={() => {
                     DeleteBookmark(id, name)
                     setIsBookmark(false)
+                    return router.refresh();
                 }}
                     className="bg-white rounded-full place-center">
                     <Image src={"/solid-icons/bookmark.svg"} alt="bookmark" width={20} height={20}

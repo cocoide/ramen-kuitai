@@ -63,11 +63,11 @@ export default async function Page({ params }: { params: { shopId: string } }) {
 };
 
 
-export async function generateStaticParams() {
-    const ramens = await prisma.ramenShop.findMany({
-        select: { id: true }
-    })
-    return ramens.map((ramen) => ({
-        shopId: ramen.id
-    }));
-}
+// export async function generateStaticParams() {
+//     const ramens = await prisma.ramenShop.findMany({
+//         select: { id: true }
+//     })
+//     return ramens.map((ramen) => ({
+//         shopId: ramen.id
+//     }));
+// }
