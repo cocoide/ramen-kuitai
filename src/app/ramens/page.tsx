@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { getAllShops } from '../../libs/server/services/shop';
-import { getCurrentUser } from '../../libs/server/session';
 import { cn } from '../../utils/cn';
 import DotsLoading from '../@Components/Animations/DotsLoading';
+import BookmarkButton from './components/BookmarkButton';
 import RamenHomeFooter from './RamenHomeFooter';
 
 // async function getAllShops() {
@@ -17,11 +17,6 @@ import RamenHomeFooter from './RamenHomeFooter';
 // };
 export default async function Page() {
     const ramens = await getAllShops();
-    // const bookmarks = await getUserBookmarks(user.id)
-    // const checkIsBookmarked = (ramenId: string): boolean => {
-    //     return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
-    // };
-
     return (
         <div className="">
             <div className="place-center w-screen space-x-5
@@ -55,6 +50,7 @@ export default async function Page() {
                     </div>);
             })}
         </div>
+            <BookmarkButton id={"hachigo"} name={"テスト"} Bookmarked={false} />
         </div>
     );
 }
