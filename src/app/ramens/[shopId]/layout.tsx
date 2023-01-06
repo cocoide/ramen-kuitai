@@ -1,14 +1,23 @@
 import { Suspense } from 'react';
-import CircleLoading from '../../@Components/Animations/CircleLoading';
+import { getCurrentUser } from '../../../libs/server/session';
+import RamenFooter from './RamenFooter';
 
-export default function ReviewDetailLayout({
-    children,
+export default async function ReviewDetailLayout({
+    children, 
+    params
 }: {
-    children: React.ReactNode;
+        children: React.ReactNode,
+        params: { shopId: string }
 }) {
+    const user = await getCurrentUser();
     return (
         <>
             <div>{children}</div>
+            <Suspense fallback={<div>Loading...</div>}>
+                {user &&
+                    <RamenFooter params={params} userId={user?.id} />
+                }
+            </Suspense>
         </>
     );
 }

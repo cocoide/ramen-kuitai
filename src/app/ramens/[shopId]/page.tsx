@@ -1,14 +1,10 @@
-import { EllipsisHorizontalIcon, MapPinIcon, PencilIcon, ShareIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import Link from 'next/link';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import prisma from '../../../libs/client/prisma';
 import { getShopDetail } from '../../../libs/server/services/shop';
-import { getUserBookmarks } from '../../../libs/server/services/user';
-import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
-import BookmarkButton from '../components/BookmarkButton';
 
 // async function getShopDetail(shopId: string) {
 //     const URL = `${API_URL}/shop/${shopId}`
@@ -19,14 +15,6 @@ export const revalidate = 600
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
-    const user = await getCurrentUser();
-    if (!user) {
-        redirect("/")
-    };
-    const bookmarks = await getUserBookmarks(user.id)
-    const checkIsBookmarked = (ramenId: string): boolean => {
-        return bookmarks.some(bookmark => bookmark.id.includes(ramenId))
-    };
     if (!shop) {
         notFound();
     };
@@ -67,21 +55,7 @@ export default async function Page({ params }: { params: { shopId: string } }) {
                 </div>
                 {/* Article Section  */}
 
-                <div className="fixed bottom-0 w-full flex justify-center items-center p-3 space-x-5">
-                    <div className="bg-white text-primary ring-1 ring-primary rounded-md py-2 px-3 place-center">
-                        <ShareIcon className="w-5 h-5 text-primary" />
-                        共有
-                    </div>
-                    <div className="bg-white text-primary ring-1 ring-primary rounded-md  place-center py-2 px-3">
 
-                    <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
-                        保存
-                    </div>
-
-                    <Link href={"/post"} className="bg-white text-primary ring-1 ring-primary rounded-md py-2 px-3 place-center"
-                    ><PencilIcon className="w-5 h-5 text-primary" />
-                        投稿</Link>
-                </div>
             </div>
             {/* Footer button  */}
         </div>

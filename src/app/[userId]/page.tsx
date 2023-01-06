@@ -6,12 +6,12 @@ import CreateReviewModal from '../post/components/CreateReviewModal';
 import PostedReview from './components/PostedReview';
 
 // export const revalidate = 30; 
-// revalidate this page every 10 seconds
+// revalidate this page every 30 seconds
 
 export default async function Page({ params }: { params: { userId: string } }) {
     const user = await getUniqueUserAllData(params.userId)
     if (!user) {
-        notFound();
+        notFound()
     };
     return (
         <div className="bg-gray-100 w-screen h-screen">
