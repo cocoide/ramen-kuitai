@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { asyncComponent } from '../../../../error/async-error';
 import { getUniqueUserAllData } from '../../../libs/server/services/user';
 import { getCurrentUser } from '../../../libs/server/session';
@@ -23,7 +24,13 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
                         </div>
                     </div>
                 </div>
+                {nowUser ?
                 <FollowButton following={nowUser?.id} followed={userId} name={user?.name} />
+                    :
+                    <Link href={"/login"}
+                        className="place-center rounded-full bg-gray-100 text-gray-600 hover:brightness-80 p-1 w-full"
+                    >フォローする</Link>
+                }
             </div>
             <Usertab userId={userId} />
         </div>

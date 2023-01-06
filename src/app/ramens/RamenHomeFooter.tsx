@@ -1,4 +1,4 @@
-import { PencilIcon, ShareIcon } from '@heroicons/react/24/outline'
+import { BookmarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { cache } from 'react'
 import { asyncComponent } from '../../../error/async-error'
@@ -33,7 +33,15 @@ const RamenHomeFooter = asyncComponent(async ({ shopId }: { shopId: string }) =>
     };
     return (
         <div className="place-center">
+            {user ?
             <BookmarkButton id={shopId} name={shop.name} Bookmarked={checkIsBookmarked(shopId)} />
+                :
+                <Link href={"/login"}
+                    className="bg-white rounded-full place-center">
+                    <BookmarkIcon className="text-primary h-5 w-5" />
+                </Link>
+            }
+            {/* 非ログイン時は、ログインページへリダイレクト */}
             <h3 className="">{shop._count.bookmarkedBy}</h3>
         </div>
     )

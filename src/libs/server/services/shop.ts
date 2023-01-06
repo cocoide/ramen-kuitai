@@ -2,6 +2,7 @@ import { cache } from 'react';
 import prisma from '../../client/prisma';
 
 export const getShopDetail=cache( async(shopId: string)=> {
+    if(shopId){
     const shopDetail = await prisma.ramenShop.findUnique({
         where: {
             id: shopId,
@@ -9,6 +10,7 @@ export const getShopDetail=cache( async(shopId: string)=> {
         select: { id: true, name: true, image: true },
     })
     return shopDetail;
+}
 });
 
 export const getAllShops=cache(async()=> {

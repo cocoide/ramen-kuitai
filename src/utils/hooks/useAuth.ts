@@ -12,7 +12,7 @@ const useAuth =()=>{
       
       const Logout = async() => {
         await signOut({
-          callbackUrl: "/"
+          callbackUrl: window.location.href,
         })
           toast('ログアウト完了', {
           icon: '✅',

@@ -3,6 +3,7 @@ import { cache } from 'react'
 import prisma from '../../client/prisma'
 
 export const getUserBookmarks = cache(async (userId: User["id"]) => {
+    if(userId){
     const res = await prisma.user.findUnique({
         where: {
             id: userId
@@ -16,6 +17,7 @@ export const getUserBookmarks = cache(async (userId: User["id"]) => {
         }
     })
     return res.bookmark
+}
 });
 
 export const getUniqueUserAllData = cache(async (userId: User["id"]) => {

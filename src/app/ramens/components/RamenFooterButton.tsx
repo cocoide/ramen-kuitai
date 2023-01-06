@@ -1,8 +1,4 @@
-import { HandThumbUpIcon, HeartIcon, PencilIcon, ShareIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import { useState } from 'react'
-import BookmarkButton from './BookmarkButton';
-
+import { PencilIcon, ShareIcon } from '@heroicons/react/24/outline'
 
 const RamenFooterButton = () => {
     return (
