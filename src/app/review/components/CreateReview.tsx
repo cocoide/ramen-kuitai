@@ -60,9 +60,7 @@ const CreateReview = () => {
     return (
 
         <div className="">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-5 bg-white p-5">
-                <div className="h-10 w-30 p-1 rounded-md text-xl">{shopId}</div>
-
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 bg-white">
 
                 <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
 
