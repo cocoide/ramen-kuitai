@@ -1,4 +1,7 @@
 import { Suspense } from 'react';
+import CircleLoading from '../@Components/Animations/CircleLoading';
+import DotsLoading from '../@Components/Animations/DotsLoading';
+import ParcialLoading from '../@Components/Animations/ParciaLoading';
 import UserDetail from './components/UserDetail';
 
 export default function UserLayout({
@@ -9,10 +12,14 @@ export default function UserLayout({
 }) {
     return (
         <div>
-            <Suspense fallback={<div>loading...</div>}>
+            <Suspense fallback={<DotsLoading />}>
                 <UserDetail userId={params.userId} />
             </Suspense>
+            <Suspense fallback={<div className="flex justify-center pt-5">
+                <ParcialLoading />
+            </div>}>
             <div>{children}</div>
+            </Suspense>
         </div>
     );
 }
