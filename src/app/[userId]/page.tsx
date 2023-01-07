@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import {  Suspense } from 'react'
+import prisma from '../../libs/client/prisma';
 import { getUniqueUserAllData } from '../../libs/server/services/user';
 import ParcialLoading from '../@Components/Animations/ParciaLoading';
 import CreateReviewModal from '../reviews/components/CreateReviewModal';
@@ -15,19 +16,17 @@ export default async function Page({ params }: { params: { userId: string } }) {
     };
     return (
         <div className="bg-gray-200 w-screen h-min-screen">
-            <Suspense fallback={<ParcialLoading />}>
                 <PostedReview userId={user.id} />
-            </Suspense>
-            <CreateReviewModal />
+            {/* <CreateReviewModal /> */}
         </div>
     )
 };
 
-// export async function generateStaticParams() {
-//     const users = await prisma.user.findMany({
-//         select: { id: true }
-//     })
-//     return users.map((user) => ({
-//         userId: user.id
-//     }));
-// }
+export async function generateStaticParams() {
+    const users = await prisma.user.findMany({
+        select: { id: true }
+    })
+    return users.map((user) => ({
+        userId: user.id
+    }));
+}
