@@ -59,7 +59,7 @@ export default function CreateReviewModal() {
                                     <div className="mt-2">
                                         <div className="text-sm text-gray-500">
 
-                                            <CreateReview />
+                                            <CreateReview shopId={"hachigo"} shopName={"八五"} />
                                             {/* Input form  */}
 
                                         </div>

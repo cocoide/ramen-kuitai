@@ -3,7 +3,7 @@ import {  Suspense } from 'react'
 import prisma from '../../libs/client/prisma';
 import { getUniqueUserAllData } from '../../libs/server/services/user';
 import ParcialLoading from '../@Components/Animations/ParciaLoading';
-import CreateReviewModal from '../reviews/components/CreateReviewModal';
+import CreateReviewModal from '../review/components/CreateReviewModal';
 import PostedReview from './components/PostedReview';
 
 // export const revalidate = 30; 

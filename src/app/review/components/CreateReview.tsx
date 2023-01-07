@@ -8,7 +8,7 @@ import toast from 'react-hot-toast';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useRouter } from 'next/navigation';
 import { FlagIcon, StarIcon } from '@heroicons/react/24/solid'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 import { reviewCreateSchema } from '../../../libs/server/validations/review';
@@ -17,7 +17,7 @@ import { isReviewModalOpen } from '../../../@types/models/Modal';
 
 type FormData = z.infer<typeof reviewCreateSchema>
 
-const CreateReview = () => {
+const CreateReview = ({ shopId, shopName }: { shopId: string, shopName: string }) => {
     const router = useRouter()
     const { register, handleSubmit, reset, setValue } = useForm<FormData>({
         resolver: zodResolver(reviewCreateSchema),
@@ -50,14 +50,19 @@ const CreateReview = () => {
         }
     };
     const [rating, setRating] = useState(0)
+    useEffect(() => {
+        setValue("shopId", `${shopId}`)
+    }, [])
     return (
 
         <div className="">
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col justify-center space-y-2 mx-5 bg-white p-5">
+                <div className="h-10 w-30 p-1 rounded-md text-xl">{shopName}</div>
+
+
                 <input {...register('title')} className="h-10 w-30 p-1 rounded-md bg-gray-100" />
-                {/* Title */}
-                {/* <input {...register('content')} className="h-10 w-30 p-1 rounded-md bg-gray-100" /> */}
-                {/* Content  */}
+
+
                 <div className="flex justify-center">
                     {[...Array(5)].map((star, index) => {
                         index += 1;

@@ -32,7 +32,7 @@ export default async function Page() {
             </div>
             {/* Ramen Header  */}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-4 p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-8  px-10">
             {ramens.map((ramen) => {
                 return (
                     <div key={ramen.name} className="flex flex-col">
@@ -40,13 +40,13 @@ export default async function Page() {
                             <Image src={ramen.image} alt={ramen.name} width={500} height={500}
                                 className={cn("rounded-xl h-auto aspect-square",)} />
                         </Link>
-
-                        <div className="flex justify-between items-center text-primary mx-3 my-2">
-                            <h2>{ramen.name}</h2>
+                        <div className="flex justify-between items-center text-primary mx-3 my-2 ">
+                            <h2 className="text-gray-600 text-base">{ramen.name}</h2>
                             <Suspense fallback={<div className="ml-auto"><DotsLoading /></div>}>
                                 <RamenHomeFooter shopId={ramen.id} />
                             </Suspense>
                         </div>
+
                     </div>);
             })}
         </div>

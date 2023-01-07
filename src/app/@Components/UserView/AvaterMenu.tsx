@@ -26,7 +26,7 @@ const AvaterMenu = ({ userId }: { userId: User["id"] }) => {
         {
             label: 'らあ活を投稿',
             icon: <PencilSquareIcon />,
-            path: '/post',
+            path: '/review',
         },
         {
             label: 'いいねした投稿',

@@ -42,7 +42,7 @@ const RamenFooter = asyncComponent(async (
                     保存
                 </div>
 
-                <Link href={"/post"} className="bg-white text-primary ring-1 ring-primary rounded-md py-2 px-3 place-center"
+                <Link href={"/reviews"} className="bg-white text-primary ring-1 ring-primary rounded-md py-2 px-3 place-center"
                 ><PencilIcon className="w-5 h-5 text-primary" />
                     投稿</Link>
             </div>
