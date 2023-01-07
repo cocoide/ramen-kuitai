@@ -33,6 +33,7 @@ const RamenHomeFooter = asyncComponent(async ({ shopId }: { shopId: string }) =>
     };
     return (
         <div className="place-center">
+            {/* 非ログイン時は、ログインページへリダイレクト */}
             {user ?
             <BookmarkButton id={shopId} name={shop.name} Bookmarked={checkIsBookmarked(shopId)} />
                 :
@@ -41,7 +42,6 @@ const RamenHomeFooter = asyncComponent(async ({ shopId }: { shopId: string }) =>
                     <BookmarkIcon className="text-primary h-5 w-5" />
                 </Link>
             }
-            {/* 非ログイン時は、ログインページへリダイレクト */}
             <h3 className="">{shop._count.bookmarkedBy}</h3>
         </div>
     )

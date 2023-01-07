@@ -35,7 +35,7 @@ export default async function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-4 p-4">
             {ramens.map((ramen) => {
                 return (
-                    <div key={ramen.id} className="flex flex-col">
+                    <div key={ramen.name} className="flex flex-col">
                         <Link href={`/ramens/${ramen.id}`} className="">
                             <Image src={ramen.image} alt={ramen.name} width={500} height={500}
                                 className={cn("rounded-xl h-auto aspect-square",)} />
