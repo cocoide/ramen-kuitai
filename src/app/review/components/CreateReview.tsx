@@ -53,6 +53,7 @@ const CreateReview = () => {
         }
     };
     const [rating, setRating] = useState(0)
+    const [shopName, setShopName] = useState("")
     useEffect(() => {
         setValue("shopId", `${shopId}`)
     }, [])

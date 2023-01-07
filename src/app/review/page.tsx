@@ -8,9 +8,9 @@ import { redirect, useSearchParams } from 'next/navigation';
 import CreateReview from './components/CreateReview';
 import ShopId from '../../pages/api/shop/[shopId]';
 
-type ParamsProps = {
-    searchParams: { shopId: string }
-}
+// type ParamsProps = {
+//     searchParams: { shopId: string }
+// }
 
 export default async function Page() {
     const user = await getCurrentUser()
