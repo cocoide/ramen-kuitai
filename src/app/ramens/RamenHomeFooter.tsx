@@ -17,6 +17,7 @@ const getShopDetail = cache(async (shopId: string) => {
             _count: {
                 select: {
                     bookmarkedBy: true,
+                    reviews: true,
                 },
             },
         },
@@ -33,8 +34,10 @@ const RamenHomeFooter = asyncComponent(async ({ shopId }: { shopId: string }) =>
     };
     return (
         <div className="place-center">
-
-            <ChatBubbleOvalLeftIcon className="text-primary h-5 w-5 mr-5" />
+            <Link href={`/review?shopId?=${shopId}`} className="place-center text-primary mr-3">
+                <PencilIcon className="h-5 w-5" />
+                {shop._count.reviews}
+            </Link>
 
             {/* 非ログイン時は、ログインページへリダイレクト */}
             {user ?

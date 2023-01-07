@@ -1,20 +1,15 @@
 import { HandThumbUpIcon, PencilIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Suspense } from 'react';
+import { cache, Suspense } from 'react';
+
 import { getAllShops } from '../../libs/server/services/shop';
 import { cn } from '../../utils/cn';
 import DotsLoading from '../@Components/Animations/DotsLoading';
-import BookmarkButton from './components/BookmarkButton';
+import ExtractReview from './ExtractReview';
 import RamenHomeFooter from './RamenHomeFooter';
 
-// async function getAllShops() {
-//     const URL = `${API_URL}/shop`
-//     const res = await fetch(URL)
-//     if (!res.ok) throw new Error('getAllShopでエラーが発生');
-//     const ramens: RamenShop[] = await res.json();
-//     return ramens;
-// };
+
 export default async function Page() {
     const ramens = await getAllShops();
     return (
@@ -32,7 +27,8 @@ export default async function Page() {
             </div>
             {/* Ramen Header  */}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-8  px-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center overflow-auto gap-8  px-10
+            items-start">
             {ramens.map((ramen) => {
                 return (
                     <div key={ramen.name} className="flex flex-col">
@@ -46,11 +42,12 @@ export default async function Page() {
                                 <RamenHomeFooter shopId={ramen.id} />
                             </Suspense>
                         </div>
-
+                        <Suspense fallback={<div className="mx-auto"><DotsLoading /></div>}>
+                            <ExtractReview shopId={ramen.id} />
+                        </Suspense>
                     </div>);
             })}
-        </div>
-            <BookmarkButton id={"hachigo"} name={"テスト"} Bookmarked={false} />
+            </div>
         </div>
     );
 }
