@@ -1,4 +1,4 @@
-import { HandThumbUpIcon, PencilIcon } from '@heroicons/react/24/outline';
+import { GlobeEuropeAfricaIcon, HandThumbUpIcon, PencilIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cache, Suspense } from 'react';
@@ -14,16 +14,16 @@ export default async function Page() {
     const ramens = await getAllShops();
     return (
         <div className="">
-            <div className="place-center w-screen space-x-5
-                sticky top-0  backdrop-blur-sm bg-white/95 md:border-t font-medium">
+            <div className="place-center w-screen space-x-10
+                sticky top-0  backdrop-blur-sm bg-white/90 border-t font-medium">
 
-                <h3 className="border-b-2 border-primary  p-3 place-center text-primary">
-                    <HandThumbUpIcon className="h-7 w-7" />
-                    人気のお店</h3>
+                <h3 className="border-b border-primary  p-1 place-center text-primary">
+                    <GlobeEuropeAfricaIcon className="h-7 w-7" />
+                    お店</h3>
 
-                <h3 className="place-center p-3 text-secondary">
+                <h3 className="place-center p-3 text-primary">
                     <PencilIcon className="h-7 w-7" />
-                    みんなの投稿</h3>
+                    投稿</h3>
             </div>
             {/* Ramen Header  */}
 

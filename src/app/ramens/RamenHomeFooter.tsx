@@ -34,7 +34,7 @@ const RamenHomeFooter = asyncComponent(async ({ shopId }: { shopId: string }) =>
     };
     return (
         <div className="place-center">
-            <Link href={`/review?shopId?=${shopId}`} className="place-center text-primary mr-3">
+            <Link href={`/review?shopId=${shopId}`} className="place-center text-primary mr-3">
                 <PencilIcon className="h-5 w-5" />
                 {shop._count.reviews}
             </Link>
