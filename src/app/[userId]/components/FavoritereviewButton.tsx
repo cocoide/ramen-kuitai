@@ -24,7 +24,7 @@ const FavoriteButton = ({ reviewId }: { reviewId: string }) => {
                     setFavorite(false)
                 }}>
                     <Image src={"/solid-icons/handthumbup-icon.svg"} alt="" width={30} height={30}
-                        className="h-8 w-8 text-primary ring-1 ring-primary rounded-full p-1" />
+                        className="h-8 w-8 text-primary ring-1 ring-primary rounded-full p-2" />
                 </button>
                 :
                 <button onClick={() => {
@@ -32,7 +32,7 @@ const FavoriteButton = ({ reviewId }: { reviewId: string }) => {
                     router.refresh()
                     setFavorite(true)
                 }}>
-                    <HandThumbUpIcon className="h-8 w-8 text-primary ring-1 ring-primary rounded-full p-1" />
+                    <HandThumbUpIcon className="h-8 w-8 text-primary ring-1 ring-primary rounded-full p-2" />
                 </button>
             }
         </>

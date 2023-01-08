@@ -17,7 +17,7 @@ const DeleteReviewButton = ({ reviewId }: { reviewId: string }) => {
             deleteReview(reviewId)
             router.refresh()
         }}>
-            <TrashIcon className="h-8 w-8 text-primary ring-1 ring-primary rounded-full p-1" />
+            <TrashIcon className="h-8 w-8 text-primary ring-1 ring-primary rounded-full p-2" />
         </button>
     )
 }

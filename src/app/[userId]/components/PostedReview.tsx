@@ -49,7 +49,8 @@ const PostedReview = asyncComponent(async ({ userId }: { userId: string }) => {
             </div>
             <div className="flex flex-col space-y-3">
               <FavoriteButton reviewId={review.id} />
-              {user.id == userId &&
+
+              {user && user?.id == userId &&
                 <DeleteReviewButton reviewId={review.id} />
               }
             </div>
