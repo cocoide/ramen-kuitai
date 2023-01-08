@@ -10,14 +10,12 @@ export default async function ReviewDetailLayout({
         children: React.ReactNode,
         params: { shopId: string }
 }) {
-    const user = await getCurrentUser();
+
     return (
         <>
             <div>{children}</div>
             <Suspense fallback={<div className="fixed button-2"><DotsLoading /></div>}>
-                {user &&
-                    <RamenFooter params={params} userId={user?.id} />
-                }
+                <RamenFooter params={params} />
             </Suspense>
         </>
     );

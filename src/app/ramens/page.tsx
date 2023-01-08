@@ -13,7 +13,7 @@ import RamenHomeFooter from './RamenHomeFooter';
 export default async function Page() {
     const ramens = await getAllShops();
     return (
-        <div className="">
+        <div className="flex flex-col justify-center">
             <div className="place-center w-screen space-x-10
                 sticky top-0  backdrop-blur-sm bg-white/90 border-t font-medium">
 
