@@ -24,12 +24,12 @@ const RamenFooter = asyncComponent(async (
             params: { shopId: string }
         }) => {
 
-    // const user = await getCurrentUser();
-    // const shop = await getShopDetail(params.shopId)
-    // const bookmarks = await getUserBookmarks(user?.id)
-    // const checkIsBookmarked = (shopId: string): boolean => {
-        // return bookmarks.some(bookmark => bookmark.id.includes(shopId))
-    // };
+    const user = await getCurrentUser();
+    const shop = await getShopDetail(params.shopId)
+    const bookmarks = await getUserBookmarks(user?.id)
+    const checkIsBookmarked = (shopId: string): boolean => {
+        return bookmarks.some(bookmark => bookmark.id.includes(shopId))
+    };
     return (
         <div>
             <div className="fixed bottom-0 w-full flex justify-center items-center p-3 space-x-5">
@@ -39,7 +39,7 @@ const RamenFooter = asyncComponent(async (
                 </div>
                 <div className="bg-white text-primary ring-1 ring-primary rounded-md  place-center py-2 px-3">
 
-                    {/* <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} /> */}
+                    <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
                     保存
                 </div>
 
