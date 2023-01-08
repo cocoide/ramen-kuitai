@@ -12,7 +12,7 @@ import BackButton from '../components/backbutton';
 //     const res = await fetch(URL, { next: { revalidate: 600 } })
 //     return res.json() as Promise<RamenShop>;
 // };
-export const revalidate = 30
+// export const revalidate = 30
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
@@ -64,11 +64,11 @@ export default async function Page({ params }: { params: { shopId: string } }) {
 };
 
 
-export async function generateStaticParams() {
-    const ramens = await prisma.ramenShop.findMany({
-        select: { id: true }
-    })
-    return ramens.map((ramen) => ({
-        shopId: ramen.id
-    }));
-}
+// export async function generateStaticParams() {
+//     const ramens = await prisma.ramenShop.findMany({
+//         select: { id: true }
+//     })
+//     return ramens.map((ramen) => ({
+//         shopId: ramen.id
+//     }));
+// }
