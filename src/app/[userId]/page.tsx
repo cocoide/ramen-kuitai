@@ -8,7 +8,7 @@ export default async function Page({ params }: { params: { userId: string } }) {
         notFound()
     };
     return (
-        <div className="bg-gray-200 w-screen h-min-screen">
+        <div className="bg-gray-200 w-screen h-screen">
             <PostedReview userId={user.id} />
         </div>
     )

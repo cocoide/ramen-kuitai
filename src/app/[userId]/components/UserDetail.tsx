@@ -36,25 +36,21 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
     const user = await getUniqueUserData(userId);
     return (
         <div className="flex flex-col">
-            <div className="flex flex-col bg-white">
-                <div className="flex justify-center p-3">
+            <div className="flex flex-col bg-white mx-10 md:mx-[100px] lg:mx-[200px]">
+                <div className="flex justify-between items-center">
 
-                    <SimpleAvater w={30} h={30} image={user?.image} />
+                    <SimpleAvater w={17} h={17} image={user?.image} />
 
-                    <div className="flex flex-col m-5 font-medium text-gray-600 space-y-3">
-                        <div className="">
-                            <div className="text-bold">ユーザー名：{user?.name}</div>
-                            <div className="text-bold">自己紹介：{user?.bio}</div>
-                            <div>🍜投稿したらあ活：{user?._count.posts}杯</div>
-
-                            <div className="place-center text-bold space-x-3 mt-3">
-                                <Link href={`/${userId}/following`}>フォロー：{user?._count.following}</Link>
-                                <h3>フォロワー：{user?._count.followedBy}</h3>
-                            </div>
-
-                        </div>
+                    <div className="place-center text-sm space-x-3 mb-3 text-gray-600">
+                        <div className="flex flex-col justify-center text-center ml-12 mr-5">{user?._count.posts}<div>投稿</div></div>
+                        <Link href={`/${userId}/followed`} className="flex flex-col justify-center text-center">{user?._count.followedBy}<div>フォロワー</div></Link>
+                        <Link href={`/${userId}/following`} className="flex flex-col justify-center text-center">{user?._count.following}<div>フォロー中</div></Link>
                     </div>
                 </div>
+
+                <div className="text-bold text-start mt-3">{user?.name}</div>
+                <div className="text-bold text-star mb-3">{user?.bio}</div>
+
                 {nowUser ?
                 <FollowButton following={nowUser?.id} followed={userId} name={user?.name} />
                     :
@@ -63,6 +59,7 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
                     >フォローする</Link>
                 }
             </div>
+
             <Usertab userId={userId} />
         </div>
     )
