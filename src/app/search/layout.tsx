@@ -1,7 +1,9 @@
 import { Suspense } from 'react';
 import CircleLoading from '../@Components/Animations/CircleLoading';
 
-export default function PostReviewLayout({
+export const dynamic = "force-dynamic"
+
+export default function SearchLayout({
     children,
 }: {
     children: React.ReactNode;
