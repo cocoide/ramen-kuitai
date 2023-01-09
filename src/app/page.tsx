@@ -2,7 +2,7 @@
 import React from "react";
 import "/styles/globals.css";
 import { motion } from "framer-motion"
-import SearchRamen from './@Components/SearchRamen';
+import SearchRamen from './explore/SearchForm';
 import Image from 'next/image';
 import { ramens } from '../@types/models/Ramen';
 import Link from 'next/link';
