@@ -9,6 +9,8 @@ import DotsLoading from '../@Components/Animations/DotsLoading';
 import ExtractReview from './ExtractReview';
 import RamenHomeFooter from './RamenHomeFooter';
 
+export const revalidate = 300
+export const dynamic = 'force-static'
 
 export default async function Page() {
     const ramens = await getAllShops();

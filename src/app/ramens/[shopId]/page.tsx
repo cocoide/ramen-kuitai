@@ -7,12 +7,8 @@ import { getShopDetail } from '../../../libs/server/services/shop';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 
-// async function getShopDetail(shopId: string) {
-//     const URL = `${API_URL}/shop/${shopId}`
-//     const res = await fetch(URL, { next: { revalidate: 600 } })
-//     return res.json() as Promise<RamenShop>;
-// };
-// export const revalidate = 30
+export const revalidate = 300
+export const dynamicParams = false
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
@@ -64,11 +60,11 @@ export default async function Page({ params }: { params: { shopId: string } }) {
 };
 
 
-// export async function generateStaticParams() {
-//     const ramens = await prisma.ramenShop.findMany({
-//         select: { id: true }
-//     })
-//     return ramens.map((ramen) => ({
-//         shopId: ramen.id
-//     }));
-// }
+export async function generateStaticParams() {
+    const ramens = await prisma.ramenShop.findMany({
+        select: { id: true }
+    })
+    return ramens.map((ramen) => ({
+        shopId: ramen.id
+    }));
+}
