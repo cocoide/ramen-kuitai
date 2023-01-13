@@ -4,6 +4,7 @@ import DotsLoading from '../@Components/Animations/DotsLoading';
 import ParcialLoading from '../@Components/Animations/ParciaLoading';
 import UserDetail from './components/UserDetail';
 
+
 export default function UserLayout({
     children, params
 }: {
