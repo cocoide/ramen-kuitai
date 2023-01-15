@@ -16,7 +16,7 @@ function Header() {
 
 
     return (
-        <header className="z-50 p-2 bg-white md:flex justify-between items-center 
+        <header className="z-50 p-2 bg-white md:flex justify-between items-center  fixed inset-x-0 top-0
         hidden">
 
             <Link href="/ramens" className="place-center"

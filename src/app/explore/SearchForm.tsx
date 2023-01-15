@@ -80,12 +80,12 @@ const SearchForm = () => {
 
             {/* Suggest search Section  */}
             {isFocus &&
-                <div className="flex flex-col divide-y shadow-natural rounded-xl z-20">
+                <div className="flex flex-col divide-y shadow-natural rounded-xl bg-white">
                     {suggestions?.map((option) => {
                         return (
                             <form
                                 onSubmit={(e) => handleSuggestionSubmit(e, option.text)}>
-                                <button key={option.id} className="text-start hover:bg-gray-100 p-2 w-full duration-100
+                                <button key={option.id} className="text-start hover:bg-gray-100 hover:rounded-xl p-2 w-full duration-100
                                 flex justify-between items-center">
                                     <h3>{option.text}</h3>
                                     <ArrowUturnLeftIcon className="h-5 w-5" />
