@@ -1,6 +1,5 @@
 "use client"
-import { MagnifyingGlassIcon, XMarkIcon, } from '@heroicons/react/20/solid'
-import { ArrowUturnLeftIcon } from '@heroicons/react/24/outline';
+import { ArrowUpLeftIcon, MagnifyingGlassIcon, XMarkIcon, } from '@heroicons/react/20/solid'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -54,7 +53,7 @@ const SearchForm = () => {
     return (
         <>
             <form onSubmit={handleSubmit}
-                className='flex  items-center rounded-full shadow-inner p-1 w-auto bg-gray-100 z-30'>
+                className='flex  items-center rounded-full shadow-inner p-1 w-auto bg-gray-100 z-20'>
                 <button type="submit" className="focus:ring-0 border-none">
                     <MagnifyingGlassIcon className="h-6 w-6 text-gray-400 mx-2" />
                 </button>
@@ -81,14 +80,24 @@ const SearchForm = () => {
             {/* Suggest search Section  */}
             {isFocus &&
                 <div className="flex flex-col divide-y shadow-natural rounded-xl bg-white">
+                    {keyword.length >= 1 &&
+                        <form
+                            onSubmit={(e) => handleSuggestionSubmit(e, keyword)}>
+                            <button className="text-start hover:bg-gray-100 hover:rounded-xl p-3 w-full duration-100
+                                flex justify-between items-center">
+                                <h3>{keyword}</h3>
+                                <ArrowUpLeftIcon className="h-5 w-5 text-primary" />
+                            </button>
+                        </form>
+                    }
                     {suggestions?.map((option) => {
                         return (
                             <form
                                 onSubmit={(e) => handleSuggestionSubmit(e, option.text)}>
-                                <button key={option.id} className="text-start hover:bg-gray-100 hover:rounded-xl p-2 w-full duration-100
+                                <button key={option.id} className="text-start hover:bg-gray-100 hover:rounded-xl p-3 w-full duration-100
                                 flex justify-between items-center">
                                     <h3>{option.text}</h3>
-                                    <ArrowUturnLeftIcon className="h-5 w-5" />
+                                    <ArrowUpLeftIcon className="h-5 w-5 text-primary" />
                                 </button>
                             </form>
                         )
