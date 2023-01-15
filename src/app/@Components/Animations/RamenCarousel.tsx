@@ -13,10 +13,10 @@ import 'swiper/css/pagination';
 const RamenCarousel = () => {
 
   return (
-    <div className="flex justify-center m-3">
+    <div className="flex justify-center">
       <Swiper
 
-        slidesPerView={4}
+        slidesPerView={3}
         spaceBetween={5}
         centeredSlides={true}
         autoplay={{

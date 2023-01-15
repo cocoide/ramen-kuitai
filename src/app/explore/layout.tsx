@@ -12,9 +12,9 @@ export default function SearchLayout({
 }) {
     const scrollPosition = useScroll();
     return (
-        <div className="bg-gray-100">
-            <div className={cn("sticky top-0 inset-x-0 px-2 py-4",
-                scrollPosition >= 10 ? "backdrop-blur-sm bg-white/90" : ""
+        <div className="">
+            <div className={cn("fixed top-0 inset-x-0 md:sticky px-2 py-4 z-30",
+                scrollPosition >= 500 ? "backdrop-blur-sm bg-white/90" : ""
             )}>
                 <SearchForm />
             </div>
