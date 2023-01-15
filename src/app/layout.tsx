@@ -5,6 +5,7 @@ import NextAuthProvider from './@Components/Providers/NextauthProvider';
 import CircleLoading from './@Components/Animations/CircleLoading';
 import { Suspense } from 'react';
 import LoginModal from './@Components/Modals/LoginModal/index';
+import FooterNavi from './@Components/Button/FooterNavi';
 
 export default function RootLayout({
     children,
@@ -17,13 +18,13 @@ export default function RootLayout({
             <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" name="viewport" />
             <link rel="icon" href="/ramen-orange.svg" />
             <body className='bg-white'>
-                {/* bg-[#e4e2df] */}
                 <NextAuthProvider>
                     <Suspense fallback={<CircleLoading />}>
                         <RecoilProvider>
                             <Header />
                             {children}
                             <LoginModal />
+                            <FooterNavi />
                         </RecoilProvider>
                     </Suspense>
                 </NextAuthProvider>
