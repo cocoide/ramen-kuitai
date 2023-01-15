@@ -1,11 +1,10 @@
 import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import prisma from '../../../libs/client/prisma';
 import { getShopDetail } from '../../../libs/server/services/shop';
 import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
+import ShopBookmark from './ShopBookmark';
 
 export const revalidate = 300
 export const dynamicParams = false
@@ -27,7 +26,8 @@ export default async function Page({ params }: { params: { shopId: string } }) {
                     <BackButton />
                     <h2 className="font-medium text-xl text-gray-600">{shop.name}</h2>
                     {/* Ramen shop title */}
-                    <EllipsisHorizontalIcon className="h-8 w-8 text-[#c3b9a8]" />
+                    {/* <EllipsisHorizontalIcon className="h-8 w-8 text-[#c3b9a8]" /> */}
+                    <ShopBookmark params={params} />
                 </div>
                 {/* Header  */}
 

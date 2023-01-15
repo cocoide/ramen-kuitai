@@ -35,7 +35,7 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
     };
     const user = await getUniqueUserData(userId);
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col pt-5">
             <div className="flex flex-col bg-white mx-10 md:mx-[100px] lg:mx-[200px]">
                 <div className="flex justify-between items-center">
 

@@ -40,7 +40,7 @@ export default function BookmarkButton({ id, name, Bookmarked }: { id: string, n
                     return router.refresh();
                 }}
                     className="bg-white rounded-full place-center">
-                    <BookmarkIcon className="text-primary h-5 w-5" />
+                    <BookmarkIcon className="text-[#4CC764] h-5 w-5" />
                 </button>
                 :
                 <button onClick={() => {

@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
-import { getCurrentUser } from '../../../libs/server/session';
-import DotsLoading from '../../@Components/Animations/DotsLoading';
-import RamenFooter from './RamenFooter';
+import ParcialLoading from '../../@Components/Animations/ParciaLoading';
+import ShopBookmark from './ShopBookmark';
 
 export default async function ReviewDetailLayout({
     children, 
@@ -14,9 +13,6 @@ export default async function ReviewDetailLayout({
     return (
         <>
             <div>{children}</div>
-            <Suspense fallback={<div className="fixed button-2"><DotsLoading /></div>}>
-                <RamenFooter params={params} />
-            </Suspense>
         </>
     );
 }
