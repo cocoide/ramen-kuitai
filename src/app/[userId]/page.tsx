@@ -5,7 +5,7 @@ import PostedReview from './components/PostedReview';
 
 
 export const revalidate = 3
-export const dynamicParams = false
+// export const dynamicParams = false
 
 export default async function Page({ params }: { params: { userId: string } }) {
     const user = await getUniqueUserAllData(params.userId)
