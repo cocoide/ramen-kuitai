@@ -10,7 +10,7 @@ import ExtractReview from './ExtractReview';
 import RamenHomeFooter from './RamenHomeFooter';
 
 export const revalidate = 300
-// export const dynamic = 'force-static'
+export const dynamic = 'force-static'
 
 export default async function Page() {
     const ramens = await getAllShops();
@@ -37,16 +37,16 @@ export default async function Page() {
                         <Link href={`/ramens/${ramen.id}`} className="">
                             <Image src={ramen.image} alt={ramen.name} width={500} height={500}
                                 className={cn("rounded-xl h-auto aspect-square",)} />
-                        </Link>
                         <div className="flex justify-between items-center text-primary mx-3 my-2 ">
                             <h2 className="text-gray-600 text-base">{ramen.name}</h2>
                             <Suspense fallback={<div className="ml-auto"><DotsLoading /></div>}>
                                 <RamenHomeFooter shopId={ramen.id} />
                             </Suspense>
                         </div>
-                        <Suspense fallback={<div className="mx-auto"><DotsLoading /></div>}>
+                        </Link>
+                        {/* <Suspense fallback={<div className="mx-auto"><DotsLoading /></div>}>
                             <ExtractReview shopId={ramen.id} />
-                        </Suspense>
+                        </Suspense> */}
                     </div>);
             })}
             </div>

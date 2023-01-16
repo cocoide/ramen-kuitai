@@ -12,8 +12,8 @@ import RamenCarousel from './@Components/Animations/RamenCarousel';
 function Home() {
     return (
         <>
-                <div className="flex-col">
-
+            <div className="flex-col">
+                eaw
                 <div className="flex justify-center bg-white">
                 </div>
             </div>

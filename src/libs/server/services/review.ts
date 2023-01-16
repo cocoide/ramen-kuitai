@@ -1,4 +1,4 @@
-import { User } from '@prisma/client';
+import { RamenShop, User } from '@prisma/client';
 import { cache } from 'react';
 import prisma from '../../client/prisma';
 
@@ -13,6 +13,30 @@ export const getReviewForUser = cache(async (userId: User["id"]) => {
             content: true,
             image: true,
             rating: true,
+        },
+    })
+});
+
+export const getReviewsForShop=cache(async (shopId: RamenShop["id"]) => {
+    return await prisma.review.findMany({
+        where: {
+            shopId: shopId,
+        },
+        select: {
+            id: true,
+            title: true,
+            content: true,
+            image: true,
+            rating: true,
+            favorited: {select: {_count: true}},
+            author: {
+                select: {
+                    id: true,
+                    name: true,
+                    image: true,
+                }
+            },
+            _count: {},
         },
     })
 });

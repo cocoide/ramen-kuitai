@@ -7,11 +7,12 @@ export const getShopDetail=cache( async(shopId: string)=> {
         where: {
             id: shopId,
         },
-        select: { id: true, name: true, image: true },
+        select: { id: true, name: true, image: true ,address:true,category:{select:{name: true}}},
     })
     return shopDetail;
 }
 });
+
 
 export const getAllShops=cache(async()=> {
     return await prisma.ramenShop.findMany({

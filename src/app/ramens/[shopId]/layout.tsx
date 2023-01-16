@@ -1,3 +1,4 @@
+import { ChatBubbleOvalLeftIcon } from '@heroicons/react/20/solid';
 import prisma from '../../../libs/client/prisma';
 
 // export const revalidate = 300

@@ -4,6 +4,7 @@ import { asyncComponent } from '../../../../error/async-error';
 import { cache } from 'react';
 import prisma from '../../../libs/client/prisma';
 import BookmarkButton from '../components/BookmarkButton';
+import BookmarkView from './BookmarkView';
 
 const getShopDetail = cache(async (shopId: string) => {
     return await prisma.ramenShop.findUnique({
@@ -32,9 +33,7 @@ const ShopBookmark = asyncComponent(async ({ params }: { params: { shopId: strin
 
     return (
         <div>
-            <div className="ring-1 ring-[#4CC764] rounded-full p-2">
-                <BookmarkButton id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
-            </div>
+            <BookmarkView id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
         </div>
     )
 })
