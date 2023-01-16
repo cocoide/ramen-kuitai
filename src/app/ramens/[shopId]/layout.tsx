@@ -1,6 +1,7 @@
-import { Suspense } from 'react';
-import ParcialLoading from '../../@Components/Animations/ParciaLoading';
-import ShopBookmark from './ShopBookmark';
+import prisma from '../../../libs/client/prisma';
+
+// export const revalidate = 300
+export const dynamicParams = false
 
 export default async function ReviewDetailLayout({
     children, 
@@ -15,4 +16,14 @@ export default async function ReviewDetailLayout({
             <div>{children}</div>
         </>
     );
+}
+
+
+export async function generateStaticParams() {
+    const ramens = await prisma.ramenShop.findMany({
+        select: { id: true }
+    })
+    return ramens.map((ramen) => ({
+        shopId: ramen.id
+    }));
 }

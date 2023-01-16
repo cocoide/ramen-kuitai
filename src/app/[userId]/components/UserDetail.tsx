@@ -30,9 +30,9 @@ const getUniqueUserData = cache(async (userId: string) => {
 });
 const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
     const nowUser = await getCurrentUser();
-    if (!nowUser) {
-        notFound()
-    };
+    // if (!nowUser) {
+    //     notFound()
+    // };
     const user = await getUniqueUserData(userId);
     return (
         <div className="flex flex-col pt-5">

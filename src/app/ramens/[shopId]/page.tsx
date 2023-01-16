@@ -1,4 +1,3 @@
-import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { getShopDetail } from '../../../libs/server/services/shop';
@@ -6,8 +5,7 @@ import { cn } from '../../../utils/cn';
 import BackButton from '../components/backbutton';
 import ShopBookmark from './ShopBookmark';
 
-export const revalidate = 300
-export const dynamicParams = false
+
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
@@ -60,11 +58,3 @@ export default async function Page({ params }: { params: { shopId: string } }) {
 };
 
 
-// export async function generateStaticParams() {
-//     const ramens = await prisma.ramenShop.findMany({
-//         select: { id: true }
-//     })
-//     return ramens.map((ramen) => ({
-//         shopId: ramen.id
-//     }));
-// }
