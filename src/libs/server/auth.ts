@@ -1,23 +1,23 @@
 import GoogleProvider from "next-auth/providers/google"
-import prisma from '../client/prisma';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { NextAuthOptions } from 'next-auth';
+import { db } from '../client/prisma';
 
 export const authOptions: NextAuthOptions={
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID || "",
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET||"",
-        }),
-    ],
-    adapter: PrismaAdapter(prisma),
-    secret: process.env.NEXT_PUBLIC_SECRET,
-    pages: {
-      signIn: "/login",
-    },
-    session: {
-      strategy: "jwt",
-    },
+  adapter: PrismaAdapter(db as any),
+  session: {
+    strategy: "jwt",
+  },
+  pages: {
+    signIn: "/login",
+  },
+  providers: [
+      GoogleProvider({
+          clientId: process.env.GOOGLE_CLIENT_ID || "",
+          clientSecret: process.env.GOOGLE_CLIENT_SECRET||"",
+      }),
+  ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async session({ token, session }) {
           if (token) {
@@ -30,22 +30,22 @@ export const authOptions: NextAuthOptions={
           return session
         },
         async jwt({ token, user }) {
-          const prismaUser = await prisma.user.findFirst({
+          const dbUser = await db.user.findFirst({
             where: {
               email: token.email,
             },
           })
     
-          if (!prismaUser) {
+          if (!dbUser) {
             token.id = user.id
             return token
           }
     
           return {
-            id: prismaUser.id,
-            name: prismaUser.name,
-            email: prismaUser.email,
-            picture: prismaUser.image,
+            id: dbUser.id,
+            name: dbUser.name,
+            email: dbUser.email,
+            picture: dbUser.image,
           }
         },
     },

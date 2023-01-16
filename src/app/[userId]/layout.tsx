@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import prisma from '../../libs/client/prisma';
 import DotsLoading from '../@Components/Animations/DotsLoading';
 import ParcialLoading from '../@Components/Animations/ParciaLoading';
 import UserDetail from './components/UserDetail';

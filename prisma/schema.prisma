@@ -28,6 +28,8 @@ model User {
   
   followedBy User[] @relation("UserFollows")
   following User[] @relation("UserFollows")
+  
+  @@map(name: "users")
 }
 
 model Review {
@@ -96,6 +98,8 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+  
+  @@map(name: "verification_tokens")
 }
 model Session {
   id           String   @id @default(cuid())
@@ -103,4 +107,5 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@map(name: "sessions")
 }

@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next"
-import prisma from '../../../libs/client/prisma'
 import { withMethods } from '../../../libs/server/middlewares/with-methods';
 // import { withReview } from '../../../libs/server/middlewares/with-review';
 import { reviewPatchSchema } from '../../../libs/server/validations/review';
 import * as z from "zod"
+import { db } from '../../../libs/client/prisma';
 // https://qiita.com/kurab/items/efce37b19f4484ae39bcs
 
 export const querySchema = z.object({
@@ -14,7 +14,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "DELETE") {
     try {
      const query = querySchema.parse(req.query)
-        await prisma.review.delete({
+        await db.review.delete({
         where: {
           id: query.reviewId,
         },
@@ -29,7 +29,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === "PATCH") {
       try {
          const query = querySchema.parse(req.query)
-          const review = await prisma.review.findUnique({
+          const review = await db.review.findUnique({
             where: {
               id: query.reviewId,
             },
@@ -37,7 +37,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           
           
           const body = reviewPatchSchema.parse(req.body)
-          await prisma.review.update({
+          await db.review.update({
             where: {
               id: review.id,
             },

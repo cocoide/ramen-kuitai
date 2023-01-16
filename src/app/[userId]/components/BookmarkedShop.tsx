@@ -2,10 +2,10 @@ import { User } from '@prisma/client';
 import Image from 'next/image';
 import { cache } from 'react';
 import { asyncComponent } from '../../../../error/async-error';
-import prisma from '../../../libs/client/prisma';
+import { db } from '../../../libs/client/prisma';
 
 const getBookmarkedShops = cache(async (userId: string) => {
-    const res = await prisma.user.findUnique({
+    const res = await db.user.findUnique({
         where: {
             id: userId,
         },

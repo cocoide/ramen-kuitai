@@ -2,14 +2,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { asyncComponent } from '../../../../error/async-error';
-import prisma from '../../../libs/client/prisma';
+import { db } from '../../../libs/client/prisma';
 import { getCurrentUser } from '../../../libs/server/session';
 import SimpleAvater from '../../@Components/UserView/SimpleAvater';
 import FollowButton from './FollowButton';
 import Usertab from './UserTab';
 
 const getUniqueUserData = cache(async (userId: string) => {
-    return await prisma.user.findUnique({
+    return await db.user.findUnique({
         where: {
             id: userId,
         },

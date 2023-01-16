@@ -4,14 +4,14 @@ import { User } from '@prisma/client';
 import Image from 'next/image';
 import { cache } from 'react';
 import { asyncComponent } from '../../../../error/async-error';
-import prisma from '../../../libs/client/prisma';
+import { db } from '../../../libs/client/prisma';
 import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
 import DeleteReviewButton from './DeleteReviewButton';
 import FavoriteButton from './FavoritereviewButton';
 
 const getReviewOnUser = cache(async (userId: User["id"]) => {
-  return await prisma.review.findMany({
+  return await db.review.findMany({
     where: {
       authorId: userId,
     },

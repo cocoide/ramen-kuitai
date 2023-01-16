@@ -2,13 +2,13 @@ import React, { cache } from "react";
 import "/styles/globals.css";
 import { GlobeEuropeAfricaIcon, PencilIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import prisma from '../libs/client/prisma';
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { cn } from '../utils/cn';
+import { db } from '../libs/client/prisma';
 
 const getRamdomReview = cache(async () => {
-    const res = prisma.review.findMany({
+    const res = db.review.findMany({
         select: {
             id: true,
             title: true,

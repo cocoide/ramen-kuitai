@@ -4,12 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { cache } from 'react'
 import { asyncComponent } from '../../../error/async-error'
-import prisma from '../../libs/client/prisma'
+import { db } from '../../libs/client/prisma'
 import { cn } from '../../utils/cn'
 
 
 const extractComment = cache(async (shopId: string) => {
-    const res = await prisma.ramenShop.findFirst({
+    const res = await db.ramenShop.findFirst({
         where: { id: shopId },
         select: {
             reviews: {

@@ -1,9 +1,9 @@
 import { RamenShop, User } from '@prisma/client';
 import { cache } from 'react';
-import prisma from '../../client/prisma';
+import { db } from '../../client/prisma';
 
 export const getReviewForUser = cache(async (userId: User["id"]) => {
-    return await prisma.review.findMany({
+    return await db.review.findMany({
         where: {
             authorId: userId,
         },
@@ -18,7 +18,7 @@ export const getReviewForUser = cache(async (userId: User["id"]) => {
 });
 
 export const getReviewsForShop=cache(async (shopId: RamenShop["id"]) => {
-    return await prisma.review.findMany({
+    return await db.review.findMany({
         where: {
             shopId: shopId,
         },

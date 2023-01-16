@@ -2,15 +2,15 @@ import FetchReview from './components/FetchReview'
 import { cache, use } from 'react';
 import { authOptions } from '../../libs/server/auth';
 import { User } from '@prisma/client';
-import prisma from '../../libs/client/prisma';
 import { getCurrentUser, getSession } from '../../libs/server/session';
 import { redirect, useSearchParams } from 'next/navigation';
 import CreateReview from './components/CreateReview';
+import { db } from '../../libs/client/prisma';
 // https://beta.nextjs.org/docs/api-reference/file-conventions/page#searchparams-optional
 
 const getShopName = cache(async (shopId: any) => {
     if (shopId) {
-        const res = await prisma.ramenShop.findUnique({
+        const res = await db.ramenShop.findUnique({
             where: {
                 id: shopId
             },

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { cache } from 'react';
-import prisma from '../../libs/client/prisma';
+import { db } from '../../libs/client/prisma';
 const getCategory = cache(async () => {
-    const res = await prisma.category.findMany()
+    const res = await db.category.findMany()
     return res
 })
 export default async function SearchPage() {

@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import prisma from '../../libs/client/prisma';
 import { getUniqueUserAllData } from '../../libs/server/services/user';
 import PostedReview from './components/PostedReview';
 

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth';
-import prisma from '../../../../libs/client/prisma';
+import { db } from '../../../../libs/client/prisma';
 import { authOptions } from '../../../../libs/server/auth';
 import { withMethods } from '../../../../libs/server/middlewares/with-methods';
 import { userQuerySchema } from '../../../../libs/server/validations';
@@ -10,7 +10,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const session = await unstable_getServerSession( req, res, authOptions);
     if (req.method === "PATCH") {
     try {
-        await prisma.user.update({
+        await db.user.update({
             where: {
                 id: session?.user.id,
             },
@@ -30,7 +30,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     };
     if (req.method === "DELETE") {
     try {
-        await prisma.user.update({
+        await db.user.update({
             where: {
                 id: session?.user.id,
             },

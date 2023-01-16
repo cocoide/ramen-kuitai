@@ -2,12 +2,12 @@ import { getUserBookmarks } from '../../../libs/server/services/user'
 import { getCurrentUser } from '../../../libs/server/session'
 import { asyncComponent } from '../../../../error/async-error';
 import { cache } from 'react';
-import prisma from '../../../libs/client/prisma';
 import BookmarkButton from '../components/BookmarkButton';
 import BookmarkView from './BookmarkView';
+import { db } from '../../../libs/client/prisma';
 
 const getShopDetail = cache(async (shopId: string) => {
-    return await prisma.ramenShop.findUnique({
+    return await db.ramenShop.findUnique({
         where: {
             id: shopId,
         },

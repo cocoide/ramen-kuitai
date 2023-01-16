@@ -1,9 +1,9 @@
 import { cache } from 'react';
-import prisma from '../../client/prisma';
+import { db } from '../../client/prisma';
 
 export const getShopDetail=cache( async(shopId: string)=> {
     if(shopId){
-    const shopDetail = await prisma.ramenShop.findUnique({
+    const shopDetail = await db.ramenShop.findUnique({
         where: {
             id: shopId,
         },
@@ -15,7 +15,7 @@ export const getShopDetail=cache( async(shopId: string)=> {
 
 
 export const getAllShops=cache(async()=> {
-    return await prisma.ramenShop.findMany({
+    return await db.ramenShop.findMany({
         select: {
             id: true, name: true, image: true, bookmarkedBy: true,
         },

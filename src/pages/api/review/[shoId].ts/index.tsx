@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth';
-import prisma from '../../../../libs/client/prisma';
+import { db } from '../../../../libs/client/prisma';
 import { authOptions } from '../../../../libs/server/auth';
 import { withMethods } from '../../../../libs/server/middlewares/with-methods';
 
@@ -14,7 +14,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === "GET") {
         try {
-            const posts = await prisma.ramenShop.findMany({
+            const posts = await db.ramenShop.findMany({
                 where: {
                     id: req.query.shopId as string,
                 },

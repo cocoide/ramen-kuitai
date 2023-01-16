@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { cache } from 'react'
-import prisma from '../../../libs/client/prisma'
+import { db } from '../../../libs/client/prisma';
 import UnFollowButton from './UnFollowButton';
 
 const getFollowing = cache(async (userId: string) => {
-    const res = await prisma.user.findUnique({
+    const res = await db.user.findUnique({
         where: {
             id: userId
         },

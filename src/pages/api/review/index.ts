@@ -6,7 +6,8 @@ import { withMethods } from '../../../libs/server/middlewares/with-methods';
 import * as z from "zod"
 
 import { reviewCreateSchema } from '../../../libs/server/validations/review';
-import prisma from '../../../libs/client/prisma';
+import { db } from '../../../libs/client/prisma';
+
 // https://github.com/AlterClassIO/supa-vacation/blob/main/pages/api/homes.js
 // https://github.com/shadcn/taxonomy/blob/main/pages/api/posts/index.ts
 // https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#connectorcreate
@@ -21,7 +22,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     
       if (req.method === "GET") {
         try {
-          const posts = await prisma.review.findMany({
+          const posts = await db.review.findMany({
             where: {
               authorId: session?.user.id,
             },
@@ -39,7 +40,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const reviews = reviewCreateSchema.parse(req.body)
       const { image, title, content, rating, shopId} =reviews;
         
-        const review= await prisma.review.create({
+        const review= await db.review.create({
         data: {
           image,
           title,

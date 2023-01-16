@@ -1,7 +1,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import * as z from "zod"
-import prisma from '../../../libs/client/prisma';
+import { db } from '../../../libs/client/prisma';
 import { withMethods } from '../../../libs/server/middlewares/with-methods';
 import { shopQuerySchema } from '../../../libs/server/validations/index';
   
@@ -9,7 +9,7 @@ import { shopQuerySchema } from '../../../libs/server/validations/index';
     if (req.method === "GET") {
         const query = shopQuerySchema.parse(req.query)
         try {
-          const shopDetail = await prisma.ramenShop.findUnique({
+          const shopDetail = await db.ramenShop.findUnique({
             where: {
                 id: query.shopId,
             },
