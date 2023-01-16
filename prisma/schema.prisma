@@ -39,7 +39,7 @@ model Review {
   category Category[]
   
   shopId String?
-  ramenShop RamenShop? @relation(fields: [shopId],references: [id])
+  shop RamenShop? @relation(fields: [shopId],references: [id])
   
   authorId String?
   author  User? @relation("UserPosts",fields: [authorId], references: [id])

@@ -6,7 +6,6 @@ import prisma from '../libs/client/prisma';
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { cn } from '../utils/cn';
-import { RamenShop } from '@prisma/client';
 
 const getRamdomReview = cache(async () => {
     const res = prisma.review.findMany({
@@ -14,7 +13,7 @@ const getRamdomReview = cache(async () => {
             id: true,
             title: true,
             image: true,
-            ramenShop: { select: { name: true, id: true } },
+            shop: { select: { name: true, id: true } },
             rating: true,
             author: {
                 select: {
@@ -55,7 +54,7 @@ async function Home() {
                                     <div className=""> {review.author.name}</div>
                                 </div>
 
-                                <div><Link href={`/ramens/${review.ramenShop?.id}`} className="border-b border-primary text-primary">@{review.ramenShop?.name}</Link></div>
+                                <div><Link href={`/ramens/${review.shop?.id}`} className="border-b border-primary text-primary">@{review.shop?.name}</Link></div>
 
                                 <div className="flex justify-start items-start space-x-2 py-2">
                                     <h3 className="flex">{[...Array(5)].map((star, index) => {
