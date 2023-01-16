@@ -13,7 +13,9 @@ const getShopDetail = cache(async (shopId: string) => {
         },
         select: {
             name: true,
-            bookmarkedBy: true,
+            bookmarkedBy: {
+                select: { id: true }
+            },
         }
     })
 })
@@ -23,17 +25,16 @@ const ShopBookmark = asyncComponent(async ({ params }: { params: { shopId: strin
 
     const user = await getCurrentUser();
     const shop = await getShopDetail(params.shopId);
-    const bookmarks = await getUserBookmarks(user?.id);
 
-    const checkIsBookmarked = (shopId: string): boolean => {
+    const checkIsBookmarked = (userId: string): boolean => {
         if (user) {
-            return bookmarks.some(bookmark => bookmark.id.includes(shopId))
+            return shop.bookmarkedBy.some(user => user.id.includes(userId))
         }
     };
 
     return (
         <div>
-            <BookmarkView id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(params.shopId)} />
+            <BookmarkView id={params.shopId} name={shop.name} Bookmarked={checkIsBookmarked(user.id)} />
         </div>
     )
 })

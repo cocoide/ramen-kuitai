@@ -19,13 +19,13 @@ export default async function Page() {
             <div className="place-center w-screen space-x-10
                 sticky top-0  backdrop-blur-sm bg-white/90 border-t font-medium">
 
-                <h3 className="border-b border-primary  p-1 place-center text-primary">
+                <h3 className="border-b border-primary  p-3 place-center text-primary">
                     <GlobeEuropeAfricaIcon className="h-7 w-7" />
                     お店</h3>
 
-                <h3 className="place-center p-3 text-primary">
+                <Link href="/" className="place-center p-3 text-primary">
                     <PencilIcon className="h-7 w-7" />
-                    投稿</h3>
+                    投稿</Link>
             </div>
             {/* Ramen Header  */}
 

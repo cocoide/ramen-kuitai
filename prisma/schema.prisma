@@ -39,7 +39,8 @@ model Review {
   category Category[]
   
   shopId String?
-  shop RamenShop? @relation(fields: [shopId], references: [id])
+  ramenShop RamenShop? @relation(fields: [shopId],references: [id])
+  
   authorId String?
   author  User? @relation("UserPosts",fields: [authorId], references: [id])
   
@@ -52,6 +53,7 @@ model RamenShop {
   name String @unique
   image  String?
   address String?
+  description String?
   reviews Review[]
   bookmarkedBy User[] @relation("UserBookmarks")
   category Category[]

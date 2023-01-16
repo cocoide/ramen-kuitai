@@ -20,8 +20,8 @@ export default async function Page({ params }: { params: { shopId: string } }) {
             <div className="flex flex-col justify-center place-items-center">
 
 
-                <div className="flex justify-between place-items-center p-2 w-full
-                sticky top-0 bg-white border-b md:border-t border-gray-200">
+                <div className="flex justify-between place-items-center py-2 w-full
+                sticky top-0 bg-white border-b md:border-t border-gray-200 px-6">
                     <div className="place-center space-x-3">
                         <Image src={shop.image} alt={shop.name} width={100} height={100} className="h-10 w-10 rounded-full ring-primary ring-1 ring-offset-2" />
                     <h2 className="font-medium text-xl text-gray-600">{shop.name}</h2>
