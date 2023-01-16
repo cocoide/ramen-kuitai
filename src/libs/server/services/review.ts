@@ -28,7 +28,6 @@ export const getReviewsForShop=cache(async (shopId: RamenShop["id"]) => {
             content: true,
             image: true,
             rating: true,
-            favorited: {select: {_count: true}},
             author: {
                 select: {
                     id: true,
@@ -36,7 +35,11 @@ export const getReviewsForShop=cache(async (shopId: RamenShop["id"]) => {
                     image: true,
                 }
             },
-            _count: {},
+            _count:{
+                select: {
+                    favorited: true,
+                }
+            }
         },
     })
 });
