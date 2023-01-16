@@ -1,5 +1,5 @@
 "use client"
-import { BookmarkIcon, HandThumbUpIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
+import { BookmarkIcon, HandThumbUpIcon, HeartIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '../../../utils/cn';
@@ -34,7 +34,7 @@ export default function Usertab({ userId }: { userId: string }) {
                     pathName == `/${userId}/favorite` ?
                         "text-primary border-b-2 border-primary" : "text-secondary",
                 )}>
-                <HandThumbUpIcon className="h-7 w-7" />
+                <HeartIcon className="h-7 w-7" />
                 <h3>いいね</h3>
             </Link>
         </div>

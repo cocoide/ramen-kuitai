@@ -7,7 +7,7 @@ export const getShopDetail=cache( async(shopId: string)=> {
         where: {
             id: shopId,
         },
-        select: { id: true, name: true, image: true ,address:true,category:{select:{name: true}}},
+        select: { id: true, name: true, image: true ,address:true,description: true,category:{select:{name: true}}},
     })
     return shopDetail;
 }

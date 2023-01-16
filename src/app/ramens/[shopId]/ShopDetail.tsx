@@ -13,7 +13,7 @@ const ShopDetail = asyncComponent(async (
         <div className="">
             <h2 className="">店名：{shop.name}</h2>
             <div className="">住所：{shop.address}</div>
-            <div className=""></div>
+            <div className="">特徴：{shop.description}</div>
         </div>
     )
 
