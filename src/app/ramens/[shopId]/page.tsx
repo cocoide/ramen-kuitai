@@ -6,7 +6,7 @@ import { cn } from '../../../utils/cn';
 import ReviewsForShops from './ReviewsForShop.tsx';
 import ShopDetail from './ShopDetail';
 
-
+export const dynamicParams = false
 
 export default async function Page({ params }: { params: { shopId: string } }) {
     const shop = await getShopDetail(params.shopId)
@@ -40,5 +40,12 @@ export default async function Page({ params }: { params: { shopId: string } }) {
         </>
     )
 };
-
+export async function generateStaticParams() {
+    const ramens = await db.ramenShop.findMany({
+        select: { id: true }
+    })
+    return ramens.map((ramen) => ({
+        shopId: ramen.id
+    }));
+}
 
