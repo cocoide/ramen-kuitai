@@ -23,18 +23,11 @@ const getShopDetail = cache(async (shopId: string) => {
 
 const ShopBookmark = asyncComponent(async ({ params }: { params: { shopId: string } }) => {
 
-    const user = await getCurrentUser();
     const shop = await getShopDetail(params?.shopId);
-
-    const checkIsBookmarked = (userId: string): boolean => {
-        if (user) {
-            return shop.bookmarkedBy.some(user => user.id.includes(userId))
-        }
-    };
 
     return (
         <div>
-            <BookmarkView id={params?.shopId} name={shop.name} Bookmarked={checkIsBookmarked(user.id)} />
+            <BookmarkView id={params?.shopId} name={shop.name} bookmarkedBy={shop.bookmarkedBy}  />
         </div>
     )
 })

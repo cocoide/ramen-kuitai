@@ -5,6 +5,10 @@ import { API_URL } from '../../../libs/client/constants';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+
+
+
 
 async function SubmitBookmark(id: string, name: string) {
     toast.success(`『${name}』を保存しました`);
@@ -24,10 +28,17 @@ async function DeleteBookmark(id: string, name: string) {
     })
 };
 
-export default function BookmarkView({ id, name, Bookmarked }: { id: string, name: string, Bookmarked: boolean }) {
+export default function BookmarkView({ id, name, bookmarkedBy }: { id: string, name: string, bookmarkedBy: { id: string }[] }) {
     const [isBookmark, setIsBookmark] = useState<boolean>(false)
+    const { data: session } = useSession()
+
     useEffect(() => {
-        setIsBookmark(Bookmarked)
+        const Bookmarked = (userId: string): boolean => {
+            if (session?.user.id) {
+                return bookmarkedBy.some(user => user.id == userId)
+            }
+        };
+        setIsBookmark(Bookmarked(session?.user.id))
     }, []);
     const router = useRouter();
     return (

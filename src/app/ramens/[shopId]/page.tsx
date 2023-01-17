@@ -41,12 +41,4 @@ export default async function Page({ params }: { params: { shopId: string } }) {
     )
 };
 
-// export async function generateStaticParams() {
-//     const ramens = await db.ramenShop.findMany({
-//         select: { id: true }
-//     })
-//     return ramens.map((ramen) => ({
-//         shopId: ramen.id
-//     }));
-// }
 

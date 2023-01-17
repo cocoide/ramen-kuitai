@@ -2,8 +2,10 @@ import { ChatBubbleOvalLeftIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 import { getShopDetail } from '../../../libs/server/services/shop';
 import ShopBookmark from './ShopBookmark';
+import { db } from '../../../libs/client/prisma';
+import { Suspense } from 'react';
 
-// export const revalidate = 300
+export const revalidate = 20
 export const dynamicParams = false
 
 export default async function ReviewDetailLayout({
@@ -25,9 +27,21 @@ export default async function ReviewDetailLayout({
 
 
                 {/* Ramen shop title */}
+                <Suspense fallback={<div>..loaing</div>}>
+
                 <ShopBookmark params={params} />
+                </Suspense>
             </div>
             <div>{children}</div>
         </>
     );
+}
+
+export async function generateStaticParams() {
+    const ramens = await db.ramenShop.findMany({
+        select: { id: true }
+    })
+    return ramens.map((ramen) => ({
+        shopId: ramen.id
+    }));
 }
