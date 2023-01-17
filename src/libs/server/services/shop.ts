@@ -17,7 +17,7 @@ export const getShopDetail=cache( async(shopId: string)=> {
 export const getAllShops=cache(async()=> {
     return await db.ramenShop.findMany({
         select: {
-            id: true, name: true, image: true, bookmarkedBy: true,
+            id: true, name: true, image: true, bookmarkedBy: true ,address:true, description: true,
         },
     })
 });

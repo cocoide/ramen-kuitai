@@ -21,11 +21,11 @@ export default async function Page({ params }: { params: { shopId: string } }) {
                 {/* Header  */}
 
                 <Image src={shop.image} alt={shop.name} width={600} height={600}
-                    className={cn("w-[100%] sm:w-[400px] aspect-square sm:rounded-md sm:mt-5")} />
+                    className={cn("w-[100%] sm:w-[350px] aspect-square sm:rounded-md sm:mt-5")} />
                 {/* Thumnail  */}
 
 
-                <div className="p-3 w-full h-auto bg-white sm:w-[400px] md:rounded-xl">
+                <div className="p-3 sm:px-0 w-full h-auto bg-white sm:w-[500px] md:rounded-xl">
                     <div className="flex space-x-3 text-primary ">
 
                     </div>
@@ -41,12 +41,12 @@ export default async function Page({ params }: { params: { shopId: string } }) {
     )
 };
 
-export async function generateStaticParams() {
-    const ramens = await db.ramenShop.findMany({
-        select: { id: true }
-    })
-    return ramens.map((ramen) => ({
-        shopId: ramen.id
-    }));
-}
+// export async function generateStaticParams() {
+//     const ramens = await db.ramenShop.findMany({
+//         select: { id: true }
+//     })
+//     return ramens.map((ramen) => ({
+//         shopId: ramen.id
+//     }));
+// }
 
