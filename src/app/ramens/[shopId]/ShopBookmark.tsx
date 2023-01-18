@@ -2,7 +2,7 @@ import { asyncComponent } from "../../../../error/async-error";
 import BookmarkView from "./BookmarkView";
 import { db } from "../../../libs/client/prisma";
 
-const getShopDetail = cache(async (shopId: string) => {
+const getShopDetail = async (shopId: string) => {
   return await db.ramenShop.findUnique({
     where: {
       id: shopId,
@@ -14,7 +14,7 @@ const getShopDetail = cache(async (shopId: string) => {
       },
     },
   });
-});
+};
 
 const ShopBookmark = asyncComponent(
   async ({ params }: { params: { shopId: string } }) => {
@@ -22,11 +22,13 @@ const ShopBookmark = asyncComponent(
 
     return (
       <div>
-        <BookmarkView
-          id={params?.shopId}
-          name={shop?.name}
-          bookmarkedBy={shop.bookmarkedBy}
-        />
+        {shop != null && (
+          <BookmarkView
+            id={params?.shopId}
+            name={shop.name}
+            bookmarkedBy={shop.bookmarkedBy}
+          />
+        )}
       </div>
     );
   }

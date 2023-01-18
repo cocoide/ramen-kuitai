@@ -56,18 +56,20 @@ const FavoritedReview = asyncComponent(
             >
               <div className="flex justify-start items-center space-x-3">
                 <Image
-                  src={favorite.author?.image}
-                  alt={favorite.author?.name}
+                  src={favorite.author?.image as string}
+                  alt={favorite.author?.name as string}
                   width={100}
                   height={100}
                   className="h-8 w-8 rounded-full ring-primary ring-1 ring-offset-2"
                 />
+                <div className="h-8 w-8 rounded-full ring-primary ring-1 ring-offset-2 bg-secondary animate-pulse"></div>
                 <div className=""> {favorite.author?.name}</div>
               </div>
 
               <div className="flex justify-start items-center space-x-2">
                 <Link
-                  href={`/ramens/${favorite.shop.id}`}
+                  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                  href={`/ramens/${favorite?.shop?.id}`}
                   className="text-[#167ac6]  border-b border-[#167ac6]"
                 >
                   #{favorite.shop?.name}
@@ -79,7 +81,7 @@ const FavoritedReview = asyncComponent(
                       <div
                         key={index}
                         className={cn(
-                          index <= favorite.rating
+                          favorite?.rating != null && index <= favorite?.rating
                             ? "text-yellow-300"
                             : "text-gray-200"
                         )}

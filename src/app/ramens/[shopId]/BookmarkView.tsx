@@ -31,9 +31,9 @@ export default function BookmarkView({
   bookmarkedBy: Array<{ id: string }>;
 }) {
   const [isBookmark, setIsBookmark] = useState<boolean>(false);
+  const { data: session } = useSession();
 
   useEffect(() => {
-    const { data: session } = useSession();
     if (session?.user.id != null) {
       const Bookmarked = (userId: string): boolean => {
         return bookmarkedBy.some((user) => user.id === userId);

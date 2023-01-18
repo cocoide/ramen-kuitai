@@ -27,7 +27,7 @@ export default async function Page() {
             <div key={ramen.id} className="flex flex-col">
               <Link href={`/ramens/${ramen.id}`} className="">
                 <Image
-                  src={ramen.image}
+                  src={ramen.image as string}
                   alt={ramen.name}
                   width={500}
                   height={500}
