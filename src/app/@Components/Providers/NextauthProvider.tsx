@@ -2,14 +2,17 @@
 
 // https://github.com/nextauthjs/next-auth/issues/5664
 import { SessionProvider } from "next-auth/react";
-import { Toaster } from 'react-hot-toast';
+import { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
-export default function NextAuthProvider({ children }) {
+export default function NextAuthProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
     <>
-      <SessionProvider>
-        {children}
-      </SessionProvider>
+      <SessionProvider>{children}</SessionProvider>
       <Toaster />
     </>
   );

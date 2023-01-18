@@ -1,12 +1,13 @@
-"use client"
-import { RecoilRoot } from 'recoil';
+"use client";
+import { ReactNode } from "react";
+import { RecoilRoot } from "recoil";
 
-const RecoilProvider = ({ children }) => {
-    return (
-        <>
-            <RecoilRoot>{children}</RecoilRoot>
-        </>
-    );
+const RecoilProvider = ({ children }: { children: ReactNode }) => {
+  return (
+    <>
+      <RecoilRoot>{children}</RecoilRoot>
+    </>
+  );
 };
 
 export default RecoilProvider;

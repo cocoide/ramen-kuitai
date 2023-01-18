@@ -30,7 +30,7 @@ const getShopDetail = cache(async (shopId: string) => {
 const RamenHomeFooter = asyncComponent(
   async ({ shopId }: { shopId: string }) => {
     const user = await getCurrentUser();
-    const bookmarks = await getUserBookmarks(user?.id);
+    const bookmarks = await getUserBookmarks(user.id);
     const shop = await getShopDetail(shopId);
 
     const checkIsBookmarked = (shopId: string): boolean => {
