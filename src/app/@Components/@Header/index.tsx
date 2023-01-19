@@ -28,12 +28,12 @@ function Header() {
                 ><MagnifyingGlassIcon className='h-10 w-10 text-secondary  hover:scale-95 duration-300 mr-2' /></Link>
                 {/* Search button */}
 
-                {user && <Link href={"/notifications"}
+                {(user != null) && <Link href={"/notifications"}
                 ><BellIcon className='h-10 w-10 text-secondary  hover:scale-95 duration-300 mr-2' /></Link>
                 }{/* Notice button */}
 
                 {(isLoadingUser) ? <div className="w-10 h-10 bg-secondary animate-pulse rounded-full" />
-                    : user ? <AvaterMenu userId={`${user.id}`} />
+                    : (user != null) ? <AvaterMenu userId={`${user.id}`} />
                         : <button onClick={() => OpenLoginModal(true)} className='text-secondary ring-none'
                         ><UserCircleIcon className="h-10" /></button>}
             </div>

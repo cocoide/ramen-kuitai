@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+
 import { NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth';
 import { db } from '../../../../libs/client/prisma';
@@ -22,7 +24,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 }
             }
         });
-        res.status(200).json({ success: `${session?.user.id} followed ${query.userId}`  });
+res
+  .status(200)
+  .json({ success: `${session?.user.id} followed ${query.userId}` });
+
     }
     catch (e) {
         return res.status(500).end({e});
@@ -42,6 +47,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
                 }
             }
         });
+
         res.status(200).json({ success: `${session?.user.id} unfolowed ${query.userId}`  });
     }
     catch (e) {

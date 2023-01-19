@@ -1,5 +1,5 @@
 "use client"
-import { BookmarkIcon, HandThumbUpIcon, HeartIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
+import { BookmarkIcon, HeartIcon, Squares2X2Icon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '../../../utils/cn';
@@ -13,7 +13,7 @@ export default function Usertab({ userId }: { userId: string }) {
 
             <Link href={`/${userId}`}
                 className={cn("p-3 place-center",
-                    pathName == `/${userId}` ?
+                    pathName === `/${userId}` ?
                         "text-primary border-b-2 border-primary" : "text-secondary",
                 )}>
                 <Squares2X2Icon className="h-7 w-7" />
@@ -22,7 +22,7 @@ export default function Usertab({ userId }: { userId: string }) {
 
             <Link href={`/${userId}/bookmark`}
                 className={cn("p-3 place-center",
-                    pathName == `/${userId}/bookmark` ?
+                    pathName === `/${userId}/bookmark` ?
                         "text-primary border-b-2 border-primary" : "text-secondary",
                 )}>
                 <BookmarkIcon className="h-7 w-7" />
@@ -31,7 +31,7 @@ export default function Usertab({ userId }: { userId: string }) {
 
             <Link href={`/${userId}/favorite`}
                 className={cn("p-3 place-center",
-                    pathName == `/${userId}/favorite` ?
+                    pathName === `/${userId}/favorite` ?
                         "text-primary border-b-2 border-primary" : "text-secondary",
                 )}>
                 <HeartIcon className="h-7 w-7" />

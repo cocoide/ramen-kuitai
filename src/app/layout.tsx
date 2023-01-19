@@ -1,4 +1,4 @@
-import "/styles/globals.css";
+import "styles/globals.css";
 import Header from './@Components/@Header';
 import RecoilProvider from './@Components/Providers/RecoilProvider';
 import NextAuthProvider from './@Components/Providers/NextauthProvider';

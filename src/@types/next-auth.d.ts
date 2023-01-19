@@ -1,13 +1,13 @@
 
 
-import { User } from "next-auth"
-import { JWT } from "next-auth/jwt"
+import { User } from "next-auth";
+
 
 type UserId = string
 
 declare module "next-auth/jwt" {
   interface JWT {
-    id: UserId
+    id?: UserId
   }
 }
 

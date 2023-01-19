@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+
 import { NextApiRequest, NextApiResponse } from 'next';
 import { shopQuerySchema } from '../../../../libs/server/validations';
 import { unstable_getServerSession } from 'next-auth';

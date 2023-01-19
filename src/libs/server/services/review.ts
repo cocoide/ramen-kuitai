@@ -20,7 +20,7 @@ export const getReviewForUser = cache(async (userId: User["id"]) => {
 export const getReviewsForShop=cache(async (shopId: RamenShop["id"]) => {
     return await db.review.findMany({
         where: {
-            shopId: shopId,
+            shopId,
         },
         select: {
             id: true,

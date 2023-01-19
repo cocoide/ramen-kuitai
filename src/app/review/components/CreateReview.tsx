@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 "use client"
 // https://zenn.dev/uzimaru0000/articles/react-hook-form-with-zod
 
@@ -22,7 +23,7 @@ const CreateReview = () => {
     const shopParams = useSearchParams()
     const shopId = shopParams.get("shopId")
 
-    const { register, handleSubmit, reset, setValue } = useForm<FormData>({
+    const { register, handleSubmit, setValue } = useForm<FormData>({
         resolver: zodResolver(reviewCreateSchema),
     });
     const openReviewModal = useSetRecoilState(isReviewModalOpen);
@@ -35,6 +36,7 @@ const CreateReview = () => {
         const toastId = toast.loading("投稿作成中...");
         try {
             const body = reviewCreateSchema.parse(data);
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             await axios.post(`${API_URL}/review`, body)
             toast.success("投稿の作成に成功🎉", {
                 id: toastId,
@@ -53,8 +55,9 @@ const CreateReview = () => {
         }
     };
     const [rating, setRating] = useState(0)
-    const [shopName, setShopName] = useState("")
+    // const [shopName, setShopName] = useState("")
     useEffect(() => {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         setValue("shopId", `${shopId}`)
     }, [])
     return (

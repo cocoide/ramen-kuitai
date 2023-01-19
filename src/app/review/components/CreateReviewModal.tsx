@@ -1,6 +1,6 @@
 "use client"
 import { Dialog, Transition } from '@headlessui/react'
-import { PencilIcon, PlusSmallIcon, XCircleIcon } from '@heroicons/react/24/outline'
+import { PencilIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import { Fragment } from 'react'
 import CreateReview from './CreateReview'
 import { useRecoilState } from 'recoil';

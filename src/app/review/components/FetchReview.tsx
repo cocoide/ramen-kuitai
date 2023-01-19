@@ -7,11 +7,13 @@ import { Review } from '../../../@types/models/Review';
 import { API_URL } from '../../../libs/client/constants';
 import { cn } from '../../../utils/cn';
 
+// eslint-disable-next-line no-lone-blocks
 {/* <use hooks>に関する注意点
 https://zenn.dev/nishiurahiroki/articles/7e61590892499b */}
 
 
 async function deleteReview(reviewId: string) {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     return await fetch(`${API_URL}/review/${reviewId}`, {
         method: 'DELETE',
     })
@@ -26,7 +28,7 @@ const FetchReview = ({ review, user }: { review: Review[], user: any }) => {
                     <div key={review.id} className="flex justify-between space-x-3 p-3 mx-10 my-5 bg-white rounded-md
                      h-50">
 
-                        {(review.image) ?
+                        {(review.image != null) ?
                             <>
                                 <Link href={`/review/${review.id}`}>
                                     <Image alt={review.title} src={review.image} width={100} height={100}
@@ -51,7 +53,7 @@ const FetchReview = ({ review, user }: { review: Review[], user: any }) => {
                                 index += 1;
                                 return (
                                     <div key={index}
-                                        className={cn(index <= review.rating ? "text-yellow-300" : "text-gray-200")}
+                                        className={cn(review.rating != null && index <= review.rating ? "text-yellow-300" : "text-gray-200")}
                                     ><StarIcon className="h-6 w-6" />
                                     </div>
                                 )
@@ -59,7 +61,7 @@ const FetchReview = ({ review, user }: { review: Review[], user: any }) => {
                         </div>
 
                         </div>
-                        <button onClick={async () => {
+                        <button onClick={() => {
                             deleteReview(review.id);
                             router.refresh();
                         }}>✖️</button>

@@ -4,7 +4,7 @@ export const revalidate = 0
 
 const SearchPage = async (
     { searchParams, }: {
-        searchParams?: { [key: string]: string | string[] | undefined };
+        searchParams: Record<string, string | string[] | undefined>;
     }
 ) => {
     return (

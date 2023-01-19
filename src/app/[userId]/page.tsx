@@ -8,7 +8,7 @@ export const dynamicParams = false
 
 export default async function Page({ params }: { params: { userId: string } }) {
     const user = await getUniqueUserAllData(params.userId)
-    if (!user) {
+    if (user == null) {
         notFound()
     };
     return (

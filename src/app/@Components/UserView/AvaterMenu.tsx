@@ -10,8 +10,7 @@ import { useAuth } from '../../../utils/hooks/useAuth';
 
 const AvaterMenu = ({ userId }: { userId: User["id"] }) => {
 
-    const { data: session, status } = useSession();
-    const { } = status
+    const { data: session } = useSession();
     const Links = [
         {
             label: 'プロフィール',
@@ -45,7 +44,7 @@ const AvaterMenu = ({ userId }: { userId: User["id"] }) => {
                 <Menu.Button className="w-10 h-10  justify-center rounded-full 
                 bg-[#e0d5c1]  focus:outline-none p-1">
 
-                    <Image src={session.user.image} alt={session.user.name} height={60} width={60} className="rounded-full" />
+                    <Image src={session?.user.image as string} alt={session?.user.name as string} height={60} width={60} className="rounded-full" />
 
                 </Menu.Button>
                 <Transition
@@ -77,6 +76,7 @@ const AvaterMenu = ({ userId }: { userId: User["id"] }) => {
                         <div className="p-1 font-medium">
                             <Menu.Item>
                                 {({ active }) => (
+                                    // eslint-disable-next-line @typescript-eslint/no-misused-promises
                                     <button onClick={Logout}
                                         className="w-full">
                                         <ListItem
@@ -121,7 +121,7 @@ const ListItem = ({
     icon,
     label,
 }: {
-    active: boolean;
+        active: boolean;
     icon: ReactNode;
     label: string;
 }) => {
@@ -130,7 +130,7 @@ const ListItem = ({
         <span
             className={cn(
                 'flex items-center space-x-2 p-2 rounded text-xl text-left',
-                active && 'text-white bg-[#D8CEBA]'
+                active ? 'text-white bg-[#D8CEBA]' : ""
             )}
         >
             <span

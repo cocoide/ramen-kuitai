@@ -1,8 +1,6 @@
 "use client"
 import { Dialog, Transition } from '@headlessui/react'
-import { UserPlusIcon } from '@heroicons/react/24/solid';
-import { signIn } from 'next-auth/react';
-import { ButtonHTMLAttributes, Fragment, ReactNode, useState } from "react"
+import { Fragment } from "react"
 import { useRecoilState } from 'recoil';
 import { isLoginModalOpen } from '../../../../@types/models/Modal';
 import { useAuth } from '../../../../utils/hooks/useAuth';
@@ -58,6 +56,7 @@ const LoginModal = () => {
                                             className="justify-center rounded-md px-4 py-3
                                             font-bold text-md  text-[#ce6056] hover:opacity-80 bg-white ring-1 ring-[#ce6056] hover:bg-[#ce6056] hover:text-white"
                                             // onClick={signInWithGoogle}
+                                            // eslint-disable-next-line @typescript-eslint/no-misused-promises
                                             onClick={signInWithGoogle}
                                         >ログイン with Google
                                         </button>

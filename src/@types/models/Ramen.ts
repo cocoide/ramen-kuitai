@@ -1,4 +1,4 @@
-export type Ramen = {
+export interface Ramen  {
   id: number;
   shop_name: string;
   image: string

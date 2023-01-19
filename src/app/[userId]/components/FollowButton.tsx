@@ -22,11 +22,12 @@ export default function FollowButton({ following, followed, name }: { following:
     const pathName = usePathname();
     return (
         <div className="mx-10 mb-3">
-            {pathName == `/${following}` || pathName == `/${following}/bookmark` || pathName == `/${following}/favorite` || pathName == `/${following}/following` || pathName == `/${following}/followed` ?
+            {pathName === `/${following}` || pathName === `/${following}/bookmark` || pathName === `/${following}/favorite` || pathName === `/${following}/following` || pathName === `/${following}/followed` ?
                 <Link href="/setting" className="place-center bg-gray-100 rounded-full text-gray-600 hover:brightness-80 p-1"
                 >プロフィールを編集</Link>
                 : 
-                <button onClick={() => patchFollow(followed, name)}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                <button onClick={async () => await patchFollow(followed, name)}
                     className="place-center rounded-full bg-gray-100 text-gray-600 hover:brightness-80 p-1 w-full"
                 >フォローする</button>
             } 

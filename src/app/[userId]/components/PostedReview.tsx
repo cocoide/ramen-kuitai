@@ -32,15 +32,15 @@ const PostedReview = asyncComponent(async ({ userId }: { userId: string }) => {
     items-start">
       {reviews.map((review) => {
         return (
-          <div className="flex justify-between bg-white p-5 rounded-md ">
+          <div key={review.id} className="flex justify-between bg-white p-5 rounded-md ">
             <div className="flex flex-col  " key={review.id}>
             <h2>{review.title}</h2>
-            {review.image && <Image src={review.image} alt={review.title} width={50} height={50} className="h-15 w-15 rounded-xl" />}
+              {(review.image != null) && <Image src={review.image} alt={review.title} width={50} height={50} className="h-15 w-15 rounded-xl" />}
               <h2 className="flex">{[...Array(5)].map((star, index) => {
                 index += 1;
                 return (
                   <div key={index}
-                    className={cn(index <= review.rating ? "text-yellow-300" : "text-gray-200")}
+                    className={cn(review.rating != null && index <= review.rating ? "text-yellow-300" : "text-gray-200")}
                   ><StarIcon className="h-6 w-6" />
                   </div>
                 )
@@ -50,7 +50,7 @@ const PostedReview = asyncComponent(async ({ userId }: { userId: string }) => {
             <div className="flex flex-col space-y-3">
               <FavoriteButton reviewId={review.id} />
 
-              {user && user?.id == userId &&
+              {(user != null) && user?.id === userId &&
                 <DeleteReviewButton reviewId={review.id} />
               }
             </div>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
+
 import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { NextAuthOptions } from 'next-auth';
@@ -13,15 +15,15 @@ export const authOptions: NextAuthOptions={
   },
   providers: [
       GoogleProvider({
-          clientId: process.env.GOOGLE_CLIENT_ID || "",
-          clientSecret: process.env.GOOGLE_CLIENT_SECRET||"",
+          clientId: process.env.GOOGLE_CLIENT_ID ?? "",
+          clientSecret: process.env.GOOGLE_CLIENT_SECRET??"",
       }),
   ],
     secret: process.env.NEXT_PUBLIC_SECRET,
     callbacks: {
         async session({ token, session }) {
-          if (token) {
-            session.user.id = token.id
+          if (token!=null) {
+            session.user.id = token.id as string;
             session.user.name = token.name
             session.user.email = token.email
             session.user.image = token.picture
@@ -37,7 +39,8 @@ export const authOptions: NextAuthOptions={
           })
     
           if (!dbUser) {
-            token.id = user.id
+token.id = user?.id as string;
+
             return token
           }
     

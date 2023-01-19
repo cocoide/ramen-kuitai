@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { cache } from 'react';
 import { db } from '../../libs/client/prisma';
 import { getAllShops } from '../../libs/server/services/shop';
-import PopularRamens from './PopularRamens';
 const getCategory = cache(async () => {
     const res = await db.category.findMany()
     return res
@@ -38,7 +37,7 @@ export default async function SearchPage() {
                     return (
                         <>
                             <Link href={`/ramens/${shop.id}`} key={shop.id} className="flex flex-col place-items-start min-w-[250px] min-h-[370px] snap-center ring-1 ring-gray-200 rounded-xl bg-gray-50">
-                                < Image src={shop.image} alt="" width={200} height={200} className="w-[100%] rounded-t-xl aspect-square" />
+                                < Image src={shop.image as string} alt="" width={200} height={200} className="w-[100%] rounded-t-xl aspect-square" />
                                 <div className="flex flex-col p-3 ">
                                     <h2> {shop.name}</h2>
                                     <h3>{shop.description}</h3>

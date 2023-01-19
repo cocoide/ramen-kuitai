@@ -3,7 +3,10 @@ import { ArrowUpLeftIcon, MagnifyingGlassIcon, XMarkIcon, } from '@heroicons/rea
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-const searchOptions = [
+interface SearchOptionType {
+    id: number, text: string,
+}
+const searchOptions: SearchOptionType[] = [
     { id: 1, text: "新宿 ラーメン おすすめ" },
     { id: 8, text: "新宿　豚骨" },
     { id: 2, text: "渋谷" },
@@ -18,11 +21,10 @@ const searchOptions = [
     { id: 9, text: "中華そば" },
     { id: 10, text: "二郎系　ランキング" },
 ];
-
 const SearchForm = () => {
     const router = useRouter()
     const [isFocus, setIsFocus] = useState(false);
-    const [suggestions, setSuggestions] = useState([]);
+    const [suggestions, setSuggestions] = useState<SearchOptionType[] | null>();
     const [keyword, setKeyword] = useState("")
     // const [category, setCategory] = useState<Category[]>([])
 
@@ -32,10 +34,11 @@ const SearchForm = () => {
     };
     const handleSuggestionSubmit = (e, suggestedText) => {
         e.preventDefault();
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         router.push(`/search?q=${suggestedText}`)
     };
     const handleChange = (keyword: string) => {
-        let matches = [];
+        let matches: SearchOptionType[] = [];
         if (keyword.length > 0) {
             matches = searchOptions.filter((opt) => {
                 const regex = new RegExp(`${keyword}`, "gi");
@@ -44,7 +47,7 @@ const SearchForm = () => {
             setSuggestions(matches);
             setKeyword(keyword);
         };
-        if (keyword.length == 0) {
+        if (keyword.length === 0) {
             setSuggestions(null);
         };
         setKeyword(keyword);
@@ -92,7 +95,7 @@ const SearchForm = () => {
                     }
                     {suggestions?.map((option) => {
                         return (
-                            <form
+                            <form key={option.id}
                                 onSubmit={(e) => handleSuggestionSubmit(e, option.text)}>
                                 <button key={option.id} className="text-start hover:bg-gray-100 hover:rounded-xl p-3 w-full duration-100
                                 flex justify-between items-center">

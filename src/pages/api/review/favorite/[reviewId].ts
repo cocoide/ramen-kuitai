@@ -7,7 +7,7 @@ import { withMethods } from '../../../../libs/server/middlewares/with-methods';
 async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const session = await unstable_getServerSession(req, res, authOptions);
-    if (!session) {
+    if (session == null) {
         return res.status(403).end();
     };
 
