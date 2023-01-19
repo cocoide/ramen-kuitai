@@ -18,8 +18,8 @@ const ReviewsForShops = asyncComponent(
               >
                 <div className="flex justify-start items-center space-x-3">
                   <Image
-                    src={review.author.image}
-                    alt={review.author.name}
+                    src={review.author?.image as string}
+                    alt={review.author?.name as string}
                     width={100}
                     height={100}
                     className="h-8 w-8 rounded-full ring-primary ring-1 ring-offset-2"
@@ -34,7 +34,7 @@ const ReviewsForShops = asyncComponent(
                         <div
                           key={index}
                           className={cn(
-                            index <= review.rating
+                            review.rating != null && index <= review.rating
                               ? "text-yellow-300"
                               : "text-gray-200"
                           )}

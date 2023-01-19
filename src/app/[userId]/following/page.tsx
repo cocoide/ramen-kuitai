@@ -5,21 +5,24 @@ import { db } from '../../../libs/client/prisma';
 import UnFollowButton from './UnFollowButton';
 
 const getFollowing = cache(async (userId: string) => {
-    const res = await db.user.findUnique({
-        where: {
-            id: userId
-        },
-        select: {
-            following: {
-                select: {
-                    id: true,
-                    name: true,
-                    image: true,
-                },
+    if (userId != null) {
+        const res = await db.user.findUnique({
+            where: {
+                id: userId
+            },
+            select: {
+                following: {
+                    select: {
+                        id: true,
+                        name: true,
+                        image: true,
+                    },
+                }
             }
-        }
-    })
-    return res.following
+        })
+        const folloiwing = res?.following
+        return folloiwing
+    }
 });
 
 const FollowingPage = async ({ params }: { params: { userId: string } }) => {
@@ -27,12 +30,12 @@ const FollowingPage = async ({ params }: { params: { userId: string } }) => {
     return (
         <div className="bg-gray-200 w-full h-screen p-3">
             <div className="bg-white rounded-md p-2 divide-y divide-gray-200">
-                {followings.map(follow => {
+                {followings != null ? followings.map(follow => {
                     return (
                         <div key={follow.id} className="flex justify-between items-center p-2">
                             <Link className="place-center w-auto"
                                 href={`/${follow.id}`}>
-                                <Image src={follow.image} alt={follow.name} width={50} height={50}
+                                <Image src={follow.image as string} alt={follow.name as string} width={50} height={50}
                                     className="rounded-full aspect-square h-10 w-10" />
                                 <h3>{follow.name}</h3>
                             </Link>
@@ -40,6 +43,7 @@ const FollowingPage = async ({ params }: { params: { userId: string } }) => {
                         </div>
                     )
                 })
+                    : <h2>フォローしてる人がいません</h2>
                 }
             </div>
         </div>

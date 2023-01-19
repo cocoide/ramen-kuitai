@@ -24,9 +24,11 @@ const RamenFooter = asyncComponent(
     const shop = await getShopDetail(params.shopId);
     const bookmarks = await getUserBookmarks(user?.id);
     const checkIsBookmarked = (shopId: string): boolean => {
-      return bookmarks.some((bookmark) => bookmark.id.includes(shopId));
+      return (
+        bookmarks != null ?
+          bookmarks.some((bookmark) => bookmark.id.includes(shopId))
+          : false)
     };
-
     return (
       <div>
         <div className="fixed bottom-0 w-full flex justify-center items-center p-3 space-x-5">
@@ -37,7 +39,7 @@ const RamenFooter = asyncComponent(
           <div className="bg-white text-primary ring-1 ring-primary rounded-md  place-center py-2 px-3">
             <BookmarkButton
               id={params.shopId}
-              name={shop.name}
+              name={shop?.name as string}
               Bookmarked={checkIsBookmarked(params.shopId)}
             />
             保存

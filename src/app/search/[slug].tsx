@@ -2,8 +2,10 @@
 import SearchForm from '../explore/SearchForm';
 export const revalidate = 0
 
-const SearchPage = async (
-    { searchParams, }: {
+const SearchPage = async ({
+    searchParams,
+    params, }: {
+        params: { slug: string };
         searchParams: Record<string, string | string[] | undefined>;
     }
 ) => {

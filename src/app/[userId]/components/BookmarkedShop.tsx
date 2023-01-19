@@ -33,7 +33,7 @@ const BookmarkedShop = asyncComponent(
               key={bookmark.id}
             >
               <Image
-                src={bookmark.image}
+                src={bookmark.image as string}
                 alt={bookmark.name}
                 width={50}
                 height={50}

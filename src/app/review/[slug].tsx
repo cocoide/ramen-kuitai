@@ -3,6 +3,7 @@ import { getCurrentUser } from '../../libs/server/session';
 import { redirect } from 'next/navigation';
 import CreateReview from './components/CreateReview';
 import { db } from '../../libs/client/prisma';
+
 // https://beta.nextjs.org/docs/api-reference/file-conventions/page#searchparams-optional
 
 const getShopName = cache(async (shopId: string) => {
@@ -21,7 +22,9 @@ const getShopName = cache(async (shopId: string) => {
 });
 
 export default async function Page({
+    params,
     searchParams, }: {
+        params: { slug: string };
         searchParams?: Record<string, string | string[] | undefined>;
     }) {
     const user = await getCurrentUser()
@@ -36,8 +39,8 @@ export default async function Page({
             <div className="text-lg text-gray-600 p-3">
                 <h2>{shopName}</h2>
                 {/* この記述でお店を指定せずに投稿も可能に */}
-            <CreateReview />
-        </div>
+                <CreateReview />
+            </div>
         </>
     )
 }

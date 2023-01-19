@@ -37,7 +37,7 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
     <div className="flex flex-col pt-5">
       <div className="flex flex-col bg-white mx-10 md:mx-[100px] lg:mx-[200px]">
         <div className="flex justify-between items-center">
-          <SimpleAvater w={17} h={17} image={user?.image} />
+          <SimpleAvater w={17} h={17} image={user?.image as string} />
 
           <div className="place-center text-sm space-x-3 mb-3 text-gray-600">
             <div className="flex flex-col justify-center text-center ml-12 mr-5">
@@ -68,7 +68,7 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
           <FollowButton
             following={nowUser?.id}
             followed={userId}
-            name={user?.name}
+            name={user?.name as string}
           />
         ) : (
           <Link

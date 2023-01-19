@@ -9,7 +9,7 @@ const PopularRamens = asyncComponent(async () => {
             {shops.map(shop => {
                 return (
                     <div key={shop.id} className="flex flex-col">
-                        < Image src={shop.image} alt="" width={800} height={100} className="snap-center w-[100%]" />
+                        < Image src={shop.image as string} alt="" width={800} height={100} className="snap-center w-[100%]" />
                     </div>
                 )
             })}
