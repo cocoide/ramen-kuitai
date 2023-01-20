@@ -22,9 +22,7 @@ const getShopName = cache(async (shopId: string) => {
 });
 
 export default async function Page({
-    // params,
     searchParams, }: {
-        // params: { slug: string };
         searchParams?: Record<string, string | string[] | undefined>;
     }) {
     const user = await getCurrentUser()

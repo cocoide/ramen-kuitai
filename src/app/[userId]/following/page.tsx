@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { cache } from 'react'
+import { cache, Suspense } from 'react'
 import { db } from '../../../libs/client/prisma';
+import ParcialLoading from '../../@Components/Animations/ParciaLoading';
+import ToggleButton from './SuggestFollow';
+import ModalContent from './SuggestFollow/ModalContent';
 import UnFollowButton from './UnFollowButton';
 
 const getFollowing = cache(async (userId: string) => {
@@ -20,8 +23,7 @@ const getFollowing = cache(async (userId: string) => {
                 }
             }
         })
-        const folloiwing = res?.following
-        return folloiwing
+        return res?.following
     }
 });
 
@@ -30,7 +32,10 @@ const FollowingPage = async ({ params }: { params: { userId: string } }) => {
     return (
         <div className="bg-gray-200 w-full h-screen p-3">
             <div className="bg-white rounded-md p-2 divide-y divide-gray-200">
-                {followings != null ? followings.map(follow => {
+                {followings === null || followings === undefined || followings.length === 0 ?
+                    <h2 className="place-center space-x-3"><div>フォローしてる人がいません</div>
+                        <ToggleButton ><Suspense fallback={<ParcialLoading />}></Suspense><ModalContent /></ToggleButton></h2> :
+                    followings?.map(follow => {
                     return (
                         <div key={follow.id} className="flex justify-between items-center p-2">
                             <Link className="place-center w-auto"
@@ -42,8 +47,7 @@ const FollowingPage = async ({ params }: { params: { userId: string } }) => {
                             <UnFollowButton userId={follow.id} />
                         </div>
                     )
-                })
-                    : <h2>フォローしてる人がいません</h2>
+                    })
                 }
             </div>
         </div>

@@ -9,3 +9,8 @@ export  const isReviewModalOpen = atom({
     key: "isReviewMoalOpenKey",
     default: false
 })
+
+export const isSuggestFollowModalOpen= atom({
+    key:"isSuggestFollowModalOpenKey",
+    default: false
+})
