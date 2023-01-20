@@ -62,7 +62,6 @@ const FavoritedReview = asyncComponent(
                   height={100}
                   className="h-8 w-8 rounded-full ring-primary ring-1 ring-offset-2"
                 />
-                <div className="h-8 w-8 rounded-full ring-primary ring-1 ring-offset-2 bg-secondary animate-pulse"></div>
                 <div className=""> {favorite.author?.name}</div>
               </div>
 

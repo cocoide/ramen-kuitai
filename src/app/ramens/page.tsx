@@ -20,7 +20,7 @@ export default async function Page() {
 
       <div
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 
-            place-items-center overflow-auto gap-4 px-4 sm:gap-8  sm:px-10 py-3 "
+            place-items-center overflow-auto gap-4 px-4 sm:gap-8  sm:px-10 py-4 sm:py-8"
       >
         {ramens.map((ramen) => {
           return (

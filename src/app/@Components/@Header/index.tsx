@@ -17,7 +17,7 @@ function Header() {
 
     return (
         <header className="z-50 p-2 bg-white md:flex justify-between items-center  sticky inset-x-0 top-0
-        hidden">
+        hidden border-b border-gray-200">
 
             <Link href="/ramens" className="place-center"
             ><Image src="/header-logo.svg" alt="ramen-kuitai" width={110} height={60} className="h-10" /></Link>

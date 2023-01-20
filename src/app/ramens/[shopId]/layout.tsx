@@ -19,7 +19,7 @@ export default async function ReviewDetailLayout({
     <>
       <div
         className="flex justify-between place-items-center py-2 w-full
-                sticky top-0  bg-white border-b md:border-t border-gray-200 px-6"
+                sticky top-0  bg-white border-b  border-gray-200 px-6"
       >
         <div className="place-center space-x-3">
           <Image
