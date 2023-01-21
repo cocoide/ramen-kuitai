@@ -4,7 +4,7 @@ import ShopBookmark from "./ShopBookmark";
 import { db } from "../../../libs/client/prisma";
 import { Suspense } from "react";
 
-export const revalidate = 20;
+export const revalidate = 3000;
 export const dynamicParams = false;
 
 export default async function ReviewDetailLayout({

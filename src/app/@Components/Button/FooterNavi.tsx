@@ -36,8 +36,10 @@ const FooterNavi = () => {
       </Link>
 
       <Link href={"/notifications"}>
-        <BellIcon className="h-9 text-secondary hover:scale-95 duration-300" />
+        <BellIcon className="h-9 text-secondary hover:scale-95 duration-300">
+        </BellIcon>
       </Link>
+
       {session?.status === "loading" ? (
         <div className="w-9 h-9 bg-secondary animate-pulse rounded-full" />
       ) : session?.status === "authenticated" ? (

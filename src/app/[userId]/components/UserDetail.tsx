@@ -2,13 +2,14 @@ import Link from "next/link";
 import { cache } from "react";
 import { asyncComponent } from "../../../../error/async-error";
 import { db } from "../../../libs/client/prisma";
-import { getCurrentUser } from "../../../libs/server/session";
+// import { getCurrentUser } from "../../../libs/server/session";
 import SimpleAvater from "../../@Components/UserView/SimpleAvater";
-import FollowButton from "./FollowButton";
+import FollowSection from './FollowSection';
+// import FollowButton from "./FollowButton";
 import Usertab from "./UserTab";
 
 const getUniqueUserData = cache(async (userId: string) => {
-  return await db.user.findUnique({
+  const res = await db.user.findUnique({
     where: {
       id: userId,
     },
@@ -26,9 +27,10 @@ const getUniqueUserData = cache(async (userId: string) => {
       },
     },
   });
+  return res
 });
 const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
-  const nowUser = await getCurrentUser();
+  // const nowUser = await getCurrentUser();
   // if (!nowUser) {
   //     notFound()
   // };
@@ -64,20 +66,7 @@ const UserDetail = asyncComponent(async ({ userId }: { userId: string }) => {
         <div className="text-bold text-start mt-3">{user?.name}</div>
         <div className="text-bold text-star mb-3">{user?.bio}</div>
 
-        {nowUser != null ? (
-          <FollowButton
-            following={nowUser?.id}
-            followed={userId}
-            name={user?.name as string}
-          />
-        ) : (
-          <Link
-            href={"/login"}
-            className="place-center rounded-full bg-gray-100 text-gray-600 hover:brightness-80 p-1 w-full"
-          >
-            フォローする
-          </Link>
-        )}
+        <FollowSection name={user?.id as string} id={user?.id as string} />
       </div>
 
       <Usertab userId={userId} />

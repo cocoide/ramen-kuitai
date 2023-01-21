@@ -12,7 +12,6 @@ module.exports = {
         secondary: "#e0d5c1",
         neutral: "#EBECF0",
       },
-      // extendの配下でないとデフォルトのcssが使用不可になるので注意
     },
   },
   plugins: [require("@tailwindcss/forms")],

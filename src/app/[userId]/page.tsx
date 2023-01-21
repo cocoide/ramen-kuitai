@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation'
+import { db } from '../../libs/client/prisma';
 import { getUniqueUserAllData } from '../../libs/server/services/user';
 import PostedReview from './components/PostedReview';
 
 
-export const revalidate = 3
+export const revalidate = 300
 export const dynamicParams = false
 
 export default async function Page({ params }: { params: { userId: string } }) {
@@ -18,11 +19,11 @@ export default async function Page({ params }: { params: { userId: string } }) {
     )
 };
 
-// export async function generateStaticParams() {
-//     const users = await prisma.user.findMany({
-//         select: { id: true }
-//     })
-//     return users.map((user) => ({
-//         userId: user.id
-//     }));
-// }
+export async function generateStaticParams() {
+    const users = await db.user.findMany({
+        select: { id: true }
+    })
+    return users.map((user) => ({
+        userId: user.id
+    }));
+}
