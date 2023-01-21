@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import { useSession } from 'next-auth/react';
-import FollowButton from '../FollowButton';
+import FollowButton from './FollowButton';
 
 const FollowSection = ({ id, name }: { id: string, name: string }) => {
   const session = useSession()

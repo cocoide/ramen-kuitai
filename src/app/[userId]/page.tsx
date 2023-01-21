@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { db } from '../../libs/client/prisma';
 import { getUniqueUserAllData } from '../../libs/server/services/user';
-import PostedReview from './components/PostedReview';
+import PostedReview from './components/PostedSection/index';
 
 
 export const revalidate = 300
