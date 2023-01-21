@@ -1,5 +1,4 @@
 import React, { cache } from "react";
-import { GlobeEuropeAfricaIcon, PencilIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
@@ -31,18 +30,6 @@ async function Home() {
     return (
         <>
             <div className="flex flex-col justify-center">
-                <div className="place-center w-screen space-x-10
-                sticky top-0  backdrop-blur-sm bg-white/90 border-t font-medium">
-
-                    <Link href="/ramens" className="place-center p-3 text-primary ">
-                        <GlobeEuropeAfricaIcon className="h-7 w-7" />
-                        お店</Link>
-
-                    <h3 className="border-b border-primary  p-3 place-center text-primary">
-                        <PencilIcon className="h-7 w-7" />
-                        投稿</h3>
-
-                </div>
 
                 <div className="flex flex-col mb-20 divide-y">
                     {reviews.map(review => {
