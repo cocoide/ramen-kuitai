@@ -5,9 +5,7 @@ import Image from 'next/image';
 import { cache } from 'react';
 import { asyncComponent } from '../../../../error/async-error';
 import { db } from '../../../libs/client/prisma';
-// import { getCurrentUser } from '../../../libs/server/session';
 import { cn } from '../../../utils/cn';
-// import DeleteReviewButton from './DeleteReviewButton';
 import FavoriteButton from './FavoritereviewButton';
 
 const getReviewOnUser = cache(async (userId: User["id"]) => {
@@ -26,7 +24,6 @@ const getReviewOnUser = cache(async (userId: User["id"]) => {
 
 const PostedReview = asyncComponent(async ({ userId }: { userId: string }) => {
   const reviews = await getReviewOnUser(userId);
-  // const user = await getCurrentUser()
   return (
     <div className="p-3 grid grid-cols-1 lg:grid-cols-2 gap-3 w-screen screen-full overflow-y-auto
     items-start">
