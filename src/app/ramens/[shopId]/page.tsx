@@ -5,6 +5,7 @@ import ReviewsForShops from "./ReviewsForShop.tsx";
 import ShopDetail from "./ShopDetail";
 // import AsyncImage from './AsyncImage';
 import Image from 'next/image';
+import CommentSection from './CommentSection';
 
 export const dynamicParams = false;
 
@@ -27,6 +28,7 @@ export default async function Page({ params }: { params: { shopId: string } }) {
         <div className="p-3 sm:px-0 w-full h-auto bg-white sm:w-[500px] md:rounded-xl">
           <div className="flex space-x-3 text-primary "></div>
           <ShopDetail params={params} />
+          <CommentSection shopId={params.shopId} />
           <ReviewsForShops shopId={params.shopId} />
         </div>
         {/* Article Section  */}
