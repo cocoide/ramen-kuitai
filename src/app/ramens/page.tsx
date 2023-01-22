@@ -25,13 +25,13 @@ export default async function Page() {
         {ramens.map((ramen) => {
           return (
             <div key={ramen.id} className="flex flex-col">
-              <Link href={`/ramens/${ramen.id}`} className="">
+              <Link href={`/ramens/${ramen.id}`} className="bg-gray-200">
                 <Image
                   src={ramen.image as string}
                   alt={ramen.name}
                   width={500}
                   height={500}
-                  className={cn("rounded-md h-auto aspect-square")}
+                  className={cn("rounded-md h-auto aspect-square animate-appear")}
                 />
               </Link>
 
