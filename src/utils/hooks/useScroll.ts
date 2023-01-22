@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useScroll = () => {
-
+  
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import NextAuthProvider from './@Components/Providers/NextauthProvider';
 import CircleLoading from './@Components/Animations/CircleLoading';
 import { Suspense } from 'react';
 import LoginModal from './@Components/Modals/LoginModal/index';
-import FooterNavi from './@Components/Button/FooterNavi';
+// import FooterNavi from './@Components/Button/FooterNavi';
 
 export default function RootLayout({
     children,
@@ -24,7 +24,7 @@ export default function RootLayout({
                             <Header />
                             {children}
                             <LoginModal />
-                            <FooterNavi />
+                            {/* <FooterNavi /> */}
                         </RecoilProvider>
                     </Suspense>
                 </NextAuthProvider>

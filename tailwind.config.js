@@ -29,11 +29,21 @@ module.exports = {
           "80%": { transform: "scale(1.2)" },
           "100%": { transform: "scale(1.0)" },
         },
+        down: {
+          0: { transform: "translate(0)" },
+          to: { transform: "translateY(-60px)" },
+        },
+        up: {
+          0: { transform: "translate(-60px)" },
+          to: { transform: "translateY(0)" },
+        },
       },
       animation: {
         heart: "heart 0.2s ease-in-out",
         appear: "appear 0.5s ease-in-out",
         wiggle: "wiggle 1s ease-in-out infinite",
+        down: "down 1s ease-in-out",
+        up: "up 1s ease-in-out",
       },
     },
   },
