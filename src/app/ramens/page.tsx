@@ -5,6 +5,7 @@ import { getAllShops } from "../../libs/server/services/shop";
 import { cn } from "../../utils/cn";
 import DotsLoading from "../@Components/Animations/DotsLoading";
 import RamenHomeFooter from "./RamenHomeFooter";
+import TopTab from './TopTab';
 export const revalidate = 300;
 export const dynamic = "force-static";
 
@@ -12,10 +13,9 @@ export default async function Page() {
   const ramens = await getAllShops();
   return (
     <div className="flex flex-col justify-center mb-10">
-      <div
-        className="place-center w-screen space-x-10
-                sticky top-0  backdrop-blur-sm bg-white/90 font-medium"
-      ></div>
+      <div className="place-center w-screen mt-3"
+      > <TopTab />
+      </div>
       {/* Ramen Header  */}
 
       <div

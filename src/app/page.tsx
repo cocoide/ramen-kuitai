@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { StarIcon } from '@heroicons/react/24/solid';
 import { cn } from '../utils/cn';
 import { db } from '../libs/client/prisma';
+import TopTab from './ramens/TopTab';
 
 const getRamdomReview = cache(async () => {
     const res = db.review.findMany({
@@ -30,7 +31,9 @@ async function Home() {
     return (
         <>
             <div className="flex flex-col justify-center">
-
+                <div className="place-center w-screen mt-3"
+                > <TopTab />
+                </div>
                 <div className="flex flex-col mb-20 divide-y">
                     {reviews.map(review => {
                         return (
